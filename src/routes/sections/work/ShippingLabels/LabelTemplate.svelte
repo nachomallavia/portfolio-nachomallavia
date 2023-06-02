@@ -94,7 +94,7 @@
 				},
 				body: fullLabel
 			});
-			let labelImageBlob = await res.blob();
+			let labelImageBlob = await res.json();
 			console.log(labelImageBlob);
 			if (browser) {
 				let newImg = document.createElement('img');
