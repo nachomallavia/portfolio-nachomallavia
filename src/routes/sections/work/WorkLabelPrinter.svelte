@@ -24,7 +24,7 @@
 			<p>
 				Unificamos el flujo de trabajo de empaquetado y etiquetado para todos los métodos
 				disponibles de envío o retiro de compras. Para esto utilizamos <a
-					href="http://labelary.com/"
+					href="https://labelary.com/"
 					target="_blank">labelary.com</a
 				>. Utilizamos esta API enviando requests con las etiquetas de nuestros proveedores o con las
 				nuestras, según cada orden.
@@ -33,7 +33,7 @@
 			<p>
 				We unified workflows to print shipping labels from different providers through the same
 				interface, for the people working in our production center.
-				<br />To do this, we used <a href="http://labelary.com/" target="_blank">labelary.com</a>,
+				<br />To do this, we used <a href="https://labelary.com/" target="_blank">labelary.com</a>,
 				sending requests whit the ZPL data matching each order, getting back a PNG for the
 				corresponding label.
 			</p>
