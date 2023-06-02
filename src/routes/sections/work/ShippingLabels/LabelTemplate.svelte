@@ -87,7 +87,7 @@
 	export async function fetchLabel(fullLabel = '') {
 		try {
 			loading = true;
-			let res = await fetch('https://api.labelary.com/v1/printers/8dpmm/labels/4x6/0/', {
+			let res = await fetch('https://label-api-proxy.onrender.com/label', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/x-www-form-urlencoded'
