@@ -1,0 +1,7 @@
+<svg id="Like" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="Caja" fill="none" stroke="rgba(255,255,255,0)" stroke-width="1">
+    <rect width="32" height="32" stroke="none"/>
+    <rect x="0.5" y="0.5" width="31" height="31" fill="none"/>
+  </g>
+  <path id="corazon" d="M84.994,93.572a1.377,1.377,0,0,1-1.993,0c-2.55-2.638-9.248-9.581-11.158-11.707a7.384,7.384,0,0,1,.605-10.382c3.4-3.021,7.236-.741,8.8.769C82.911,73.855,84,75.041,84,75.041s1.087-1.186,2.747-2.788c1.565-1.51,5.4-3.79,8.8-.769a7.384,7.384,0,0,1,.605,10.381C94.242,83.991,87.545,90.934,84.994,93.572Z" transform="translate(-67.998 -65.499)" fill="none" stroke="#ccc" stroke-miterlimit="10" stroke-width="1"/>
+</svg>
