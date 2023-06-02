@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { lang } from '../../configStore';
-	import { fabric } from 'fabric';
+	import { fabric } from 'fabric-pure-browser';
 
 	import logo from '$lib/images/batman-logo.png';
 
