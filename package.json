@@ -33,7 +33,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"canvas": "^2.6.1",
 		"fabric-pure-browser": "^5.1.0"
 	}
 }
