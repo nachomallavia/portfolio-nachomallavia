@@ -33,6 +33,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"canvas": "^2.6.1",
 		"fabric": "^5.3.0"
 	}
 }
