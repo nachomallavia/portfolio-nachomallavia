@@ -82,6 +82,7 @@
 	$: calculatedImageHeight = (imageHeight * scale * selectedSizeProportion).toFixed(1);
 	$: calculatedX = (imagePosition.x * scale * selectedSizeProportion).toFixed(1);
 	$: calculatedY = (imagePosition.y * scale * selectedSizeProportion).toFixed(1);
+	
 	let canvas;
 
 	function setupCanvas() {
@@ -134,6 +135,7 @@
 	});
 
 	function resetCanvas() {
+
 		canvas.dispose();
 		setupCanvas();
 	}
