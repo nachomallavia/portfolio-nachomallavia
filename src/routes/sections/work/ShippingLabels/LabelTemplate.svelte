@@ -2,7 +2,7 @@
 	import { browser } from '$app/environment';
 	import { beforeUpdate, onMount } from 'svelte';
 	import { labelList } from './labelList.js';
-	import { lang, currentLabelId } from '../../../configStore';
+	import { currentLabelId } from '../../../configStore';
 	$: label = labelList.find((order) => order.id === $currentLabelId);
 
 	export let runLabelUpdate = false;
@@ -86,19 +86,24 @@
 	}
 	export async function fetchLabel(fullLabel = '') {
 		try {
+
 			loading = true;
 			let res = await fetch('https://label-api-proxy.onrender.com/label', {
 				method: 'POST',
 				headers: {
-					'Content-Type': 'application/x-www-form-urlencoded'
+					'Content-Type': 'application/x-www-form-urlencoded',					
 				},
-				body: fullLabel
+				body:fullLabel
 			});
-			let labelImageBlob = await res.json();
-			console.log(labelImageBlob);
+			let blob =  await res.blob()
+
+
+			console.log({blob});
+
+			
 			if (browser) {
 				let newImg = document.createElement('img');
-				newImg.src = URL.createObjectURL(labelImageBlob);
+				newImg.src = URL.createObjectURL(blob);
 				newImg.style['maxWidth'] = '400px';
 				document.querySelector(`#label-text`).replaceChildren(newImg);
 				loading = false;
