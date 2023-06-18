@@ -104,7 +104,7 @@
 			let blob =  await res.blob()
 
 
-			console.log({blob});
+			// console.log({blob});
 
 			
 			if (browser) {

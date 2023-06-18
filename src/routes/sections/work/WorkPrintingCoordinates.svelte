@@ -137,8 +137,38 @@
 
 	function resetCanvas() {
 
-		canvas.dispose();
-		setupCanvas();
+		console.log(canvas)
+		canvas.clear();
+		fabric.Image.fromURL(logo, (image) => {
+			// Image configuration
+			image.centeredScaling = true;
+			image.lockScalingFlip = true;
+			image.setControlsVisibility({
+				ml: false,
+				mt: false,
+				mr: false,
+				mb: false
+			});
+			// Image scale and positioning
+			image.scaleToWidth(firstImageWidth);
+			image.set({
+				top: firstImagePosition.top,
+				left: firstImagePosition.left
+			});
+			// Image trigger setup
+			image.on('scaling', (e) => {
+				updateCoordinates(image);
+			});
+			image.on('moving', (e) => {
+				updateCoordinates(image);
+			});
+
+			canvas.add(image);
+			updateCoordinates(image);
+
+			canvas.setActiveObject(image);
+		})
+		// setupCanvas();
 	}
 	if(browser){
 		let valueCollection = document.getElementsByClassName('value');
