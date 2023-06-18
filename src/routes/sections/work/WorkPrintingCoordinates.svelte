@@ -137,7 +137,7 @@
 
 	function resetCanvas() {
 
-		console.log(canvas)
+		// console.log(canvas)
 		canvas.clear();
 		fabric.Image.fromURL(logo, (image) => {
 			// Image configuration
@@ -168,7 +168,7 @@
 
 			canvas.setActiveObject(image);
 		})
-		// setupCanvas();
+
 	}
 	if(browser){
 		let valueCollection = document.getElementsByClassName('value');
@@ -228,7 +228,7 @@
 			<button
 				on:click={() => {
 					resetCanvas();
-				}}>Reset Image</button
+				}}>{$lang="ES"?"Restaurar Imagen":"Reset Image"}</button
 			>
 			<!-- <button on:click={()=>{resetCanvas()}}>Change Image</button> -->
 		</div>
