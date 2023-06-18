@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { lang } from '../../configStore';
 	import { fabric } from 'fabric-pure-browser';
+	import {browser} from '$app/environment'
 
 	import logo from '$lib/images/batman-logo.png';
 
@@ -82,7 +83,7 @@
 	$: calculatedImageHeight = (imageHeight * scale * selectedSizeProportion).toFixed(1);
 	$: calculatedX = (imagePosition.x * scale * selectedSizeProportion).toFixed(1);
 	$: calculatedY = (imagePosition.y * scale * selectedSizeProportion).toFixed(1);
-	
+
 	let canvas;
 
 	function setupCanvas() {
@@ -128,7 +129,7 @@
 		imageHeight = image.getScaledHeight();
 		imagePosition.x = image.getCoords()[0].x;
 		imagePosition.y = image.getCoords()[0].y;
-		console.log(imageWidth, imageHeight, imagePosition);
+		// console.log(imageWidth, imageHeight, imagePosition);
 	}
 	onMount(() => {
 		setupCanvas();
@@ -139,6 +140,16 @@
 		canvas.dispose();
 		setupCanvas();
 	}
+	if(browser){
+		let valueCollection = document.getElementsByClassName('value');
+		let valueArray = [...valueCollection];
+		valueArray.forEach(value=>{
+			value.addEventListener('change',(ev)=>{
+				value.classList.toggle('changing');
+				console.log('change detected')
+			})
+
+	})}
 </script>
 
 <div class="container">
@@ -178,10 +189,10 @@
 			<span class="title">{$lang === 'ES' ? 'Alto' : 'Height'}</span>
 			<span class="title">{$lang === 'ES' ? 'Posición X' : 'X Position '}</span>
 			<span class="title">{$lang === 'ES' ? 'Posición Y' : 'Y Position '}</span>
-			<span class="2-1">{calculatedImageWidth} Cms</span>
-			<span class="2-2">{calculatedImageHeight} Cms</span>
-			<span class="2-3">{calculatedX} Cms</span>
-			<span class="2-4">{calculatedY} Cms</span>
+			<span class="2-1 value">{calculatedImageWidth} Cms</span>
+			<span class="2-2 value">{calculatedImageHeight} Cms</span>
+			<span class="2-3 value">{calculatedX} Cms</span>
+			<span class="2-4 value">{calculatedY} Cms</span>
 		</div>
 		<div class="controls">
 			<button
@@ -276,5 +287,9 @@
 	}
 	label {
 		margin-right: 0.5rem;
+	}
+	.value {
+		font-size: 1.25rem;
+		color:var(--accent-color)
 	}
 </style>

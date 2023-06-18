@@ -13,7 +13,8 @@
 		<div>
 			<!-- <LabelExample label={label}/> -->
 			<LabelTemplate bind:this={labelExample} />
-			<div id="label-template-container">
+			<p id="loading-text" class="loading">{$lang=="ES"?"Cargando etiqueta...":"Fetching Label..."}</p>
+			<div id="label-template-container" class="loading">
 				<div id="label-text" />
 			</div>
 		</div>
@@ -82,6 +83,21 @@
 		border: 1px solid var(--text-color);
 		background-color: var(--background-color);
 		border-radius: 0.5rem;
+	}
+	#loading-text{
+		opacity:0%;
+		text-align: center;
+		margin-bottom:.5rem;
+	}
+	#loading-text.loading{
+		opacity: 100%;
+	}
+	#label-template-container.loading{
+		opacity: 100%;
+		background-color: var(--background-color-2);				
+	}
+	#label-template-container.loading > *{
+		opacity: 50%;
 	}
 
 	button {

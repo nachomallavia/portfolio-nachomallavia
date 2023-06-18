@@ -85,6 +85,12 @@
 		}, 1500);
 	}
 	export async function fetchLabel(fullLabel = '') {
+		if(browser){
+			let container = document.querySelector('#label-template-container');
+			container.classList.add('loading');
+			let loadingText = document.querySelector('#loading-text');
+			loadingText.classList.add('loading');
+		}
 		try {
 
 			loading = true;
@@ -106,6 +112,10 @@
 				newImg.src = URL.createObjectURL(blob);
 				newImg.style['maxWidth'] = '400px';
 				document.querySelector(`#label-text`).replaceChildren(newImg);
+				let container = document.querySelector('#label-template-container');
+				container.classList.remove('loading');
+				let loadingText = document.querySelector('#loading-text');
+				loadingText.classList.remove('loading');
 				loading = false;
 				runLabelUpdate = false;
 			}
