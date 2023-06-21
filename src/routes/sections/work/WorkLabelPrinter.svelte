@@ -80,7 +80,7 @@
 		align-items: center;
 		min-width: 440px;
 		min-height: 640px;
-		border: 1px solid var(--text-color);
+		border: 1px solid var(--background-color-3);
 		background-color: var(--background-color);
 		border-radius: 0.5rem;
 	}

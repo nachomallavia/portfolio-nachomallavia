@@ -23,7 +23,7 @@
 			recursos <br />y supervisado el desarrollo de una plataforma web con más de 35,000 usuarios.
 		</p>
 	{:else}
-		<h1>¡HI! My name<br />is Nacho,</h1>
+		<h1>Hi! My name<br />is Nacho,</h1>
 		<h2>I'm a Fullstack Developer</h2>
 		<p>
 			Also, during the last five years I've worked as a <strong

@@ -7,7 +7,7 @@
 	let scoreArray = [];
 
 	for (let i = 1; i <= 10; i++) {
-		if(i == 10 && score == 10){
+		if(i == 10 && score==10){
 			scoreArray.push(10);
 		} else if(i == 1){
 			scoreArray.push(1)
@@ -51,11 +51,11 @@
 	}
 	.score-container {
 		display: flex;
-		gap: 0.1rem;
+		/* gap: 0.1rem; */
 	}
 	.score {
 		width: 0.5rem;
-		height: 0.5rem;
+		height: 0.25rem;
 	}
 	.point {
 		background-color: var(--accent-color);
