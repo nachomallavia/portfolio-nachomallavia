@@ -1,6 +1,11 @@
 <script>
+	import iconProgramming from '../../lib/images/icon_programming.svg'
+	import iconDesign from '../../lib/images/icon_design.svg'
+	import iconEnglish from '../../lib/images/icon_english.svg'
+	import iconGroup from '../../lib/images/icon_group.svg'
 	import { lang } from '../configStore';
 	import Skill from './skills/Skill.svelte';
+	import Icon from './skills/Icon.svelte';
 	import Detail from './skills/Detail.svelte';
 	let selectedSkillIndex=1;
 	import {skillList} from './skills/skillList.js'
@@ -24,15 +29,30 @@
 			{/if} -->
 			<div class="skill-card">
 				<div class="title-score">
-					<h3>{$lang==='ES'?skillItem.nameAr:skillItem.nameUs}</h3>
+					<div class="title">
+						<div class="icon-container">
+							{#if skillItem.nameUs === "Programming"}
+							<img src={iconProgramming} alt="" class="">
+							{:else if skillItem.nameUs === "Design" }
+							<img src={iconDesign} alt="" class="">
+							{:else if skillItem.nameUs === "English" }
+							<img src={iconEnglish} alt="" class="">
+							{:else if skillItem.nameUs === "Team management" }
+							<img src={iconGroup} alt="" class="">
+							{/if}
+						</div>
+						<h3>{$lang==='ES'?skillItem.nameAr:skillItem.nameUs}</h3>
+					</div>
 					<Skill score={skillItem.score}/>
+					
 				</div>
 				<p>{$lang==='ES'?skillItem.descriptionAr:skillItem.descriptionUs}</p>
 				{#if skillItem.details != undefined}
 				<div class="details">
 				{#each skillItem.details as detail}
+				
 				<div class="group">
-			
+					
 				<span class="detail-name">{$lang==='ES'?detail.name:detail.name}:</span>
 				<span>{$lang==='ES'?detail.levelAr:detail.levelUs}</span>
 				<Detail score={detail.number}/>
@@ -89,9 +109,9 @@
 	
 	}
 	.skill-card{
-		padding:4rem;
+		padding:2rem;
 		border: 1px solid var(--background-color-2);
-		border-radius: 1rem;
+		border-radius: .75rem;
 		transition: all .3s;
 		scale:100%;
 		line-height: 1.5rem;
@@ -102,13 +122,21 @@
 	}
 	.skill-card > .title-score{
 		display: flex;
-		gap: 1rem;
-		align-items: center;
+		flex-direction: column;
+		gap: .5rem;
+		align-items: flex-start;
 		/* justify-content: space-between; */
 		margin-bottom:1rem;
 	}
 	.title-score > h3{
 		text-transform: uppercase;
+	}
+	.title{
+		display: flex;
+		justify-content: baseline;
+		align-items: center;
+		gap: .25rem;
+
 	}
 	.details{
 		margin-top: 2rem;
@@ -122,5 +150,9 @@
 	.detail-name{
 		font-weight: 600;
 		margin-right: .25rem;
+	}
+	.icon-container{
+		min-width: 40px;
+		min-height: 40px;
 	}
 </style>

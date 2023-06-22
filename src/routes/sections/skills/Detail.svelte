@@ -54,7 +54,7 @@
 		/* gap: 0.1rem; */
 	}
 	.score {
-		width: 0.5rem;
+		width: 0.75rem;
 		height: 0.25rem;
 	}
 	.point {

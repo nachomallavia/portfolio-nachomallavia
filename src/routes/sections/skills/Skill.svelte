@@ -54,7 +54,7 @@
 		gap: 0.1rem;
 	}
 	.score {
-		width: 0.5rem;
+		width: 0.75rem;
 		height: 0.5rem;
 	}
 	.point {
@@ -64,7 +64,7 @@
 		background-color: var(--background-color-3);
 	}
 	.first{
-		border-radius: 1rem 0 0 1rem;
+		border-radius: 0rem 0 0 0rem;
 	}
 	.last{
 		border-radius: 0 1rem 1rem 0;

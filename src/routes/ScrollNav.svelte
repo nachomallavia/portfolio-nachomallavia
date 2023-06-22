@@ -62,7 +62,7 @@
 		gap: 1rem;
 	}
 	button {
-		font-size: 0.75rem;
+		font-size: 1rem;
 		background-color: transparent;
 		border: transparent;
 		color: var(--text-color);

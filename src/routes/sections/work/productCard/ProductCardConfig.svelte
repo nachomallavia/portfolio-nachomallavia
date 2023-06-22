@@ -52,8 +52,13 @@
 		}
 	}
 	onMount(() => {
+		randomize('all')
 		if (browser) {
-			randomize('all');
+			
+			let btnAll = document.getElementById('randomize-all');
+			let btnBackground = document.getElementById('randomize-background');
+			btnAll.click()
+			btnBackground.click()
 		}
 	});
 </script>
@@ -61,7 +66,7 @@
 <div class="container">
 	<div class="title-random">
 		<h3>{$lang === 'ES' ? 'Cambiar opciones' : 'Change options'}</h3>
-		<button
+		<button id="randomize-all"
 			on:click={() => {
 				randomize('all');
 			}}
@@ -116,9 +121,10 @@
 				{/each}
 			</select>
 			<div class="random">
-				<button
+				<button id="randomize-background"
 					on:click={() => {
 						randomize('background');
+						console.log('randomized background')
 					}}
 				>
 					{$lang === 'ES' ? 'Randomizar' : 'Randomize'}

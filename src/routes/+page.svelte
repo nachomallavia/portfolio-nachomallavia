@@ -4,7 +4,7 @@
 	import AboutMe from './sections/AboutMe.svelte';
 	import Work from './sections/Work.svelte';
 	import Skills from './sections/Skills.svelte';
-	import SectionWhy from './sections/Why.svelte';
+	import Studies from './sections/Studies.svelte';
 	import SectionWhere from './sections/Where.svelte';
 	import ContactData from './ContactData.svelte';
 	import Config from './Config.svelte';
@@ -86,7 +86,7 @@
 			<AboutMe />
 			<Work />
 			<Skills />
-			<SectionWhy />
+			<Studies />
 			<SectionWhere />
 		</div>
 		<div class="right">

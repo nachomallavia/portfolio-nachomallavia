@@ -120,7 +120,7 @@
 	.work-nav > button:hover {
 		cursor: pointer;
 		border-bottom: 2px solid orange;
-		color: white;
+
 	}
 	.work-nav > button.active {
 		color: white;
