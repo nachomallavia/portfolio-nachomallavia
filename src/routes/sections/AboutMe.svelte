@@ -2,6 +2,7 @@
 	import profilePicture from '$lib/images/profile.webp'
 	import StatsAbout from './StatsAbout.svelte';
 	import { lang } from '../configStore';
+
 </script>
 
 <section class="full about" id="section-aboutme">

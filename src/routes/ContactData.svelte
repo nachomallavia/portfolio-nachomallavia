@@ -8,10 +8,11 @@
 	import linkedInLogo from '$lib/images/linkedin.svg';
 	import mailIcon from '$lib/images/mail.svg';
 
+	let expandPicture = true;
+
 	onMount(() => {
 		if (browser) {
-			let img = document.getElementById('profile-picture');
-			img.click()
+			
 			let iconCollection = document.querySelectorAll('#contact-group > a > img');
 			let iconArray = [...iconCollection];
 			if ($theme === 'Light mode') {
@@ -24,19 +25,33 @@
 	});
 	function expandProfilePicture(){
 		if(browser){
+			expandPicture = !expandPicture;
 			let img = document.getElementById('profile-picture');
 			let container = document.getElementById('profile-container');
-			container.classList.toggle('wrap')
-			img.classList.toggle('expand')
+			
+			if(img.style['maxWidth']=='3rem'){
+				img.style['maxWidth']='12rem'
+			} else if(img.style['maxWidth']='20rem'){
+				img.style['maxWidth']='3rem'
+			}
+			// if(expandPicture === true){
+			// img.style['maxWidth'] = '12rem';
+			// container.classList.toggle('wrap')
+			// } else if(expandPicture === false){
+			// 	img.style['maxWidth'] = '3rem';
+			// 	container.classList.toggle('wrap')
+			// }
 		}
 	}
+	
 </script>
 
 <div class="contact-container">
-	<div class="profile-name wrap" id="profile-container">
-		<img src={profilePicture} alt="" class="expand"id="profile-picture" on:click={()=>{expandProfilePicture()}}>
-		<p>Ignacio Mallaviabarrena</p>
+	<div class="profile-name wrap" id="profile-container" on:click={()=>{expandProfilePicture()}}>
+		<img src={profilePicture} alt="" class="expand"id="profile-picture" >
+		<p>Ignacio Mallaviabarrena</p>		
 	</div>
+	
 	<div class="contacts" id="contact-group">
 		<a href="https://github.com/nachomallavia" target="blank"
 			><img src={gitHubLogo} alt="Github Ignacio Mallaviabarrena" class="icon darkmode" /></a
@@ -52,37 +67,46 @@
 
 <style>
 	
-	.contact-container:hover{
-		max-width: 15rem;
-	}
+	
 	.profile-name{
+		width:100%;
 		display: flex;
-		flex-wrap:nowrap;
+		flex-wrap: wrap;		
 		gap: 1rem;
 		align-items: center;
+		justify-content: center;
+		transition: all;
+		padding-left: 2rem;
+		padding-right: 1rem;
+		padding-bottom: 1rem;
+		border-bottom: 1px solid var(--background-color-2);
+		cursor: pointer;
 	}
 	.profile-name.wrap{
-		flex-wrap: wrap;
+		flex-wrap: nowrap;
+		justify-content: start;
+
+		padding-left: 2rem;
+		/* min-width: 12rem; */
 
 	}
 	#profile-picture{
 		
-		max-width: 3rem;
+		max-width: 100%;
 		border-radius: 50%;
 		stroke: 1px solid var(--background-color-2);
-		transition: all .3s;
+		transition: all .5s;
 		cursor: pointer;
 		
 	}
-	#profile-picture.expand{
-		max-width: 12rem;
-	}
+	
 	p {
-		/* margin-bottom: 0.5rem; */
+		margin-bottom: 0.5rem;
 	}
 	.contacts {
+		padding-left: 2rem;
 		display: flex;
-		margin-top: 1.25rem;
+		margin-top: 1.2rem;
 		gap: 0.25rem;
 
 	}

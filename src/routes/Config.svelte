@@ -13,10 +13,10 @@
 		display: flex;
 		/* flex-direction: column; */
 		gap: 1rem;
-		padding-top: 0.75rem;
+		padding-top: 1.5rem;
 		align-items: center;
 		justify-content: center;
-		padding-right: 1rem;
+		padding-right: 2rem;
 		width: 100%;
 	}
 </style>

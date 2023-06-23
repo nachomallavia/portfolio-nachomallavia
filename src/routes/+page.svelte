@@ -52,16 +52,26 @@
 			let navCollection = document.getElementsByClassName('scroll-btn');
 			let navArray = [...navCollection];
 			let sectionArray = [...sectionCollection];
+			let img = document.getElementById('profile-picture');
+			let container = document.getElementById('profile-container');
 
 			sectionArray.forEach((section, index) => {
-				// console.log(section.offsetHeight)
 				let sectionOffset = section.offsetHeight * index - 100;
 				if (main.scrollTop >= sectionOffset) {
-					// console.log(main.scrollTop);
-					// console.log(sectionOffset)
+
 					navArray.forEach((nav) => {
 						if ('section-' + nav.id === section.id) {
 							nav.classList.add('current');
+							if(section.id === 'section-aboutme'){
+								if(sectionOffset > 0){
+								img.style['maxWidth'] = '12rem';
+								// container.classList.add('wrap')
+								}
+								else if(sectionOffset){
+								img.style['maxWidth'] = '3rem';
+								// container.classList.remove('wrap')
+								}
+							}
 						} else {
 							nav.classList.remove('current');
 						}
@@ -123,15 +133,15 @@
 	}
 
 	.grid > .left {
-		padding: 2rem;
-		padding-top: 1rem;
+
+		padding-top: 1.25rem;
 		border-right: 1px solid var(--background-color-2);
 	}
 	.grid > .right {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		padding: 0.65rem;
+		padding-left: 2rem;
 		border-left: 1px solid var(--background-color-2);
 	}
 
