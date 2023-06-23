@@ -124,6 +124,7 @@
 
 	.grid > .left {
 		padding: 2rem;
+		padding-top: 1rem;
 		border-right: 1px solid var(--background-color-2);
 	}
 	.grid > .right {

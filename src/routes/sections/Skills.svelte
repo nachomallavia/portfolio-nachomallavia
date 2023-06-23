@@ -14,7 +14,7 @@
 </script>
 
 <section class="full" id="section-skills">
-	<h2>{$lang === 'ES' ? 'Habilidades' : 'Skills'}</h2>
+	<h2>{$lang === 'ES' ? 'HABILIDADES' : 'SKILLS'}</h2>
 	<div class="skill-container">
 		<div class="skill-list">
 			{#each skillList as skillItem, index}

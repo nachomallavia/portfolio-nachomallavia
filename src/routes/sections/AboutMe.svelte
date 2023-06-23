@@ -1,12 +1,17 @@
 <script>
+	import profilePicture from '$lib/images/profile.webp'
 	import StatsAbout from './StatsAbout.svelte';
 	import { lang } from '../configStore';
 </script>
 
 <section class="full about" id="section-aboutme">
 	<span>&</span>
+
+
 	{#if $lang === 'ES'}
+		
 		<h1>¡HOLA!<br /> Mi nombre <br /> es Nacho,</h1>
+		
 		<h2>Soy un desarrollador Fullstack</h2>
 		<p>
 			Además, durante los últimos 5 años he trabajado como <strong
@@ -42,6 +47,13 @@
 </section>
 
 <style>
+	#profile{
+		position: absolute;
+		right: 4rem;
+		top: 2rem;
+		max-width:20rem;
+	}
+
 	.about {
 		position: relative;
 		width: 100%;
