@@ -1,5 +1,5 @@
 <script>
-	import profilePicture from '$lib/images/foto2 copy.png'
+	import profilePicture from '$lib/images/foto2.png'
 	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
 	import { theme } from './configStore';
@@ -66,21 +66,21 @@
 </div>
 
 <style>
+
 	.contact-container{
 		width: 100%;
-	}
-	
+	}	
 	.profile-name{
 		max-width:100%;
 		display: flex;
-		flex-wrap: wrap;		
+		flex-direction: column;	
 		gap: 1rem;
 		align-items: center;
 		justify-content: center;
 		transition: all;
 		padding-top: 1rem;
 		padding-left: 2rem;
-		padding-right: 1rem;
+		padding-right: 2rem;
 		padding-bottom: 1rem;
 		border-top: 1px solid var(--background-color-2);
 		border-bottom: 1px solid var(--background-color-2);

@@ -49,12 +49,7 @@
 </section>
 
 <style>
-	#profile{
-		position: absolute;
-		right: 4rem;
-		top: 2rem;
-		max-width:20rem;
-	}
+	
 
 	.about {
 		position: relative;

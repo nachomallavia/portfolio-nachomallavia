@@ -60,6 +60,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
+		padding-left:2.5rem;
 	}
 	button {
 		font-size: 1rem;

@@ -65,11 +65,14 @@
 							if(section.id === 'section-aboutme'){
 								if(sectionOffset > 0){
 								img.style['maxWidth'] = '12rem';
-								// container.classList.add('wrap')
+								container.style['flexDirection'] = 'column';
+								container.style['justifyContent'] = 'center';
+								// container.classList.add('wrap')flex-direction: column;
 								}
 								else if(sectionOffset){
 								img.style['maxWidth'] = '3rem';
-								// container.classList.remove('wrap')
+								container.style['flexDirection'] = 'row';
+								container.style['justifyContent'] = 'flex-start';
 								}
 							}
 						} else {
