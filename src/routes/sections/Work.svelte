@@ -24,7 +24,7 @@
 
 <section class="full" id="section-work">
 	<div class="work-header">
-		<h2 class="work-title">{$lang === 'ES' ? 'TRABAJOS' : 'WORK'}</h2>
+		<h2 class="section-title">{$lang === 'ES' ? 'TRABAJOS' : 'WORK'}</h2>
 		<div class="work-nav">
 			<button
 				class="work-btn active"
@@ -72,14 +72,11 @@
 	.full {
 		display: flex;
 		flex-direction: column;
-		/* justify-content: space-between; */
-		border-top: 1px solid var(--background-color-2);
 		gap: 2rem;
 		width: 100%;
 		min-height: 100%;
 		background-color: var(--background-color-1);
 		color: var(--text-color);
-
 		padding-bottom: 8rem;
 	}
 	.work-header {
@@ -92,34 +89,33 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: baseline;
-		outline: 1px solid var(--background-color-2);
-		/* background-color: var(--background-color-2); */
+		border-top: 1px solid var(--background-color-2);
+		border-bottom: 1px solid var(--background-color-2);
+
+
 	}
-	h2.work-title {
+	h2.section-title {
 		font-size: 1.25rem;
 		/* padding-right:2rem; */
 	}
 	.work-nav {
 		display: flex;
-		/* border: 1px solid var(--backgorund-color-2); */
+
 	}
 
 	.work-nav > button {
-		background-color: transparent;
-		border: transparent;
-		/* outline: 1px solid var(--background-color-2); */
-		/* border-right: 1px solid var(--background-color-2); */
-
+		background-color: var(--background-color-2);
+		border: none;
 		color: var(--text-color);
 		min-height: 4rem;
-		padding-top: 2.1rem;
+		padding-top: 2rem;
 		padding-bottom: 2rem;
 		padding-inline: 1rem;
-		margin: 0;
 	}
 	.work-nav > button:hover {
 		cursor: pointer;
-		border-bottom: 2px solid orange;
+		background-color: var(--accent-color-2);
+		color: white;
 
 	}
 	.work-nav > button.active {

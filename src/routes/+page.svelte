@@ -134,14 +134,14 @@
 
 	.grid > .left {
 
-		padding-top: 1.25rem;
+
 		border-right: 1px solid var(--background-color-2);
 	}
 	.grid > .right {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		padding-left: 2rem;
+
 		border-left: 1px solid var(--background-color-2);
 	}
 

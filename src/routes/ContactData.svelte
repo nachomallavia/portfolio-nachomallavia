@@ -66,19 +66,23 @@
 </div>
 
 <style>
-	
+	.contact-container{
+		width: 100%;
+	}
 	
 	.profile-name{
-		width:100%;
+		max-width:100%;
 		display: flex;
 		flex-wrap: wrap;		
 		gap: 1rem;
 		align-items: center;
 		justify-content: center;
 		transition: all;
+		padding-top: 1rem;
 		padding-left: 2rem;
 		padding-right: 1rem;
 		padding-bottom: 1rem;
+		border-top: 1px solid var(--background-color-2);
 		border-bottom: 1px solid var(--background-color-2);
 		cursor: pointer;
 	}

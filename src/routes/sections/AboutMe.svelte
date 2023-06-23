@@ -2,10 +2,11 @@
 	import profilePicture from '$lib/images/profile.webp'
 	import StatsAbout from './StatsAbout.svelte';
 	import { lang } from '../configStore';
+	import {fade} from 'svelte/transition';
 
 </script>
 
-<section class="full about" id="section-aboutme">
+<section class="full about" id="section-aboutme" >
 	<span>&</span>
 
 

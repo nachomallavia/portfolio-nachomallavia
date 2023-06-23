@@ -14,7 +14,9 @@
 </script>
 
 <section class="full" id="section-skills">
-	<h2>{$lang === 'ES' ? 'HABILIDADES' : 'SKILLS'}</h2>
+	<div class="skills-header">
+		<h2 class="section-title">{$lang === 'ES' ? 'HABILIDADES' : 'SKILLS'}</h2>
+	</div>
 	<div class="skill-container">
 		<div class="skill-list">
 			{#each skillList as skillItem, index}
@@ -75,38 +77,29 @@
 		background-color: var(--background-color-1);
 		color: var(--text-color);
 	}
-	.full > h2{
+	.full > .skills-header{
 		padding-left:4rem;
-		padding-top: 1.5rem;
+		padding-top: 2rem;
+		padding-bottom: 1.5rem;
 		margin-bottom: 4rem;
+		border-top: 1px solid var(--background-color-2);
+		border-bottom: 1px solid var(--background-color-2);
+	}
+	h2.section-title {
+		font-size: 1.25rem;
+		/* padding-right:2rem; */
 	}
 	.skill-container{
 		max-width: 1200px;
 		min-height: 60%;
-		display: grid;
-		
+		display: grid;		
 		padding-left:4rem;
 	}
-	/* .skill-container{
-		max-width: 1000px;
-		min-height: 100%;		
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		gap: 2rem;
-		padding-left: 4rem;
-		padding-right: 8rem;
-	} */
-	.selected{
-		background-color: red;
-	}
+	
 	.skill-list{
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-		gap: 2rem;
-		/* justify-content: center; */
-		/* align-items: center; */
-	
+		gap: 2rem;	
 	}
 	.skill-card{
 		padding:2rem;
