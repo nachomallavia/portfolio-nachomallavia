@@ -1,6 +1,8 @@
 <script>
+// @ts-nocheck
+
 	import {lang} from '../configStore';
-	import Timeline from '../sections/experience/Timeline.svelte'
+	import Timeline from './experience/Timeline.svelte'
 </script>
 <section class="full" id="section-experience">
 	<div class="experience-header">
