@@ -2,7 +2,19 @@
     import {lang} from '../../configStore';
     import logoFlashcookie from '../../../lib/images/timeline/flashcookie.webp'
     import logoCoupe from '../../../lib/images/timeline/coupe.webp'
-    let experience = [
+    let showStudies = false;
+    let studyExperience = [
+        {   
+            date : "Nov. 2020 - Jun. 2021",
+            type: "Study",
+            place: "Digital House",
+            url:"https://www.digitalhouse.com",
+            detailAr: "Programador Fullstack Jr.",
+            detailUs: "Jr. Fullstack Developer"
+        }
+    ]
+    let workExperience = [
+        
         {   
             date : "May. 2020 - Jul. 2023",
             type: "Work",
@@ -46,60 +58,65 @@
         ]
 </script>
 <div class="data-labels">
-    <div class="spot orange"></div><span>{$lang=="ES"?"Trabajo":"Work"}</span>
-    <div class="spot blue"></div><span>{$lang=="ES"?"Estudios":"Studies"}</span>
+    <button><div class="spot orange"></div>{$lang=="ES"?"Trabajo":"Work"}</button>
+    <button><div class="spot blue"></div>{$lang=="ES"?"Estudios":"Studies"}</button>
 </div>
 <div class="timeline-container">
+    
     <div class="timeline">
-        <div class=" spot orange"></div>
-        {#each experience as item, index}
-        <div class="line-segment"></div>
-        <div class="relative-container">
-            {#if item.type == "Work"}
-            {#if index%2!=0 }
-                
-                <div class="timeline-item right big-offset-left">
-                    <div class="timeline-pointer">
-                        <div class="big spot orange">
-                            {#if item.place == "Flashcookie"}
-                            <img src={logoFlashcookie} alt="logo Flashcookie">
-                            {:else if item.place == "Coupé"}
-                            <img src={logoCoupe} alt="logo Coupé" class="bigger">
-                            {/if}
+        {#if showStudies == false}
+            <div class=" spot orange"></div>
+            {#each workExperience as item, index}
+            
+                <div class="line-segment"></div>
+                <div class="relative-container">            
+                    {#if index%2!=0 }                    
+                        <div class="timeline-item right big-offset-left">
+                            <div class="timeline-pointer">
+                                <div class="spot orange">
+                                    <!-- {#if item.place == "Flashcookie"}
+                                    <img src={logoFlashcookie} alt="logo Flashcookie">
+                                    {:else if item.place == "Coupé"}
+                                    <img src={logoCoupe} alt="logo Coupé" class="bigger">
+                                    {/if} -->
+                                </div>
+                                <div class="tiny-line orange"></div>
+                            </div>
+                            <div class="item-description">
+                                <h4>{item.date}</h4>
+                                <p><a href={item.url} target="blank" class="work">{item.place}</a> - {$lang == "ES"?item.detailAr:item.detailUs}</p>
+                            </div>
                         </div>
-                        <div class="tiny-line orange"></div>
-                    </div>
-                    <div class="item-description">
-                        <h4>{item.date}</h4>
-                        <p><a href={item.url} target="blank" class="work">{item.place}</a> - {$lang == "ES"?item.detailAr:item.detailUs}</p>
-                    </div>
+                    {:else}
+                        <div class="timeline-item left big-offset-right">
+                            <div class="timeline-pointer">
+                                <div class=" spot orange">
+                                    <!-- {#if item.place == "Flashcookie"}
+                                    <img src={logoFlashcookie} alt="logo Flashcookie">
+                                    {:else if item.place == "Coupé"}
+                                    <img src={logoCoupe} alt="logo Coupé" class="bigger">
+                                    {/if} -->
+                                </div>
+                                <div class="tiny-line orange"></div>
+                            </div>
+                            <div class="item-description">
+                                <h4>{item.date}</h4>
+                                <p><a href={item.url} target="blank" class="work">{item.place}</a> - {$lang == "ES"?item.detailAr:item.detailUs}</p>
+                            </div>
+                        </div>
+                    {/if}
+                    
                 </div>
-                {:else}
-                <div class="timeline-item left big-offset-right">
-                    <div class="timeline-pointer">
-                        <div class="big spot orange">
-                            {#if item.place == "Flashcookie"}
-                            <img src={logoFlashcookie} alt="logo Flashcookie">
-                            {:else if item.place == "Coupé"}
-                            <img src={logoCoupe} alt="logo Coupé" class="bigger">
-                            {/if}
-                        </div>
-                        <div class="tiny-line orange">
-
-                        </div>
-                    </div>
-                    <div class="item-description">
-                        <h4>{item.date}</h4>
-                        <p><a href={item.url} target="blank" class="work">{item.place}</a> - {$lang == "ES"?item.detailAr:item.detailUs}</p>
-                    </div>
-                </div>
-                {/if}
+                {/each}
             {/if}
-        </div>
-        {/each}
     </div>
-
 </div>
+
+            
+
+    
+
+
 
 <style>
     .timeline-container{
