@@ -4,7 +4,7 @@
 	import AboutMe from './sections/AboutMe.svelte';
 	import Work from './sections/Work.svelte';
 	import Skills from './sections/Skills.svelte';
-	import Studies from './sections/Studies.svelte';
+	import Experience from './sections/Experience.svelte';
 	import SectionWhere from './sections/Where.svelte';
 	import ContactData from './ContactData.svelte';
 	import Config from './Config.svelte';
@@ -70,6 +70,7 @@
 								// container.classList.add('wrap')flex-direction: column;
 								}
 								else if(sectionOffset){
+								container.style['height']='5.2rem';	
 								img.style['maxWidth'] = '3rem';
 								container.style['flexDirection'] = 'row';
 								container.style['justifyContent'] = 'flex-start';
@@ -99,7 +100,7 @@
 			<AboutMe />
 			<Work />
 			<Skills />
-			<Studies />
+			<Experience />
 			<SectionWhere />
 		</div>
 		<div class="right">

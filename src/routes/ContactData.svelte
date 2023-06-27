@@ -28,11 +28,30 @@
 			expandPicture = !expandPicture;
 			let img = document.getElementById('profile-picture');
 			let container = document.getElementById('profile-container');
+			let name = document.getElementById('name');
 			
 			if(img.style['maxWidth']=='3rem'){
-				img.style['maxWidth']='12rem'
+				img.style['maxWidth']='12rem';
+				container.style['height']='16rem';
+				name.style['display']='none';
+
+				setTimeout(()=>{
+					name.style['display']='inline';
+					container.style['flexDirection'] = 'column';
+					container.style['justifyContent'] = 'center';
+					
+					
+				},400)
+				
 			} else if(img.style['maxWidth']='20rem'){
+				container.style['flexDirection'] = 'row';
+				container.style['justifyContent'] = 'flex-start';
 				img.style['maxWidth']='3rem'
+				container.style['height']='5.2rem';
+				name.style['display']='none';
+				setTimeout(()=>{
+					name.style['display']='inline';
+				},400)
 			}
 			// if(expandPicture === true){
 			// img.style['maxWidth'] = '12rem';
@@ -49,7 +68,7 @@
 <div class="contact-container">
 	<div class="profile-name wrap" id="profile-container" on:click={()=>{expandProfilePicture()}}>
 		<img src={profilePicture} alt="" class="expand"id="profile-picture" >
-		<p>Ignacio Mallaviabarrena</p>		
+		<p id="name">Ignacio Mallaviabarrena</p>		
 	</div>
 	
 	<div class="contacts" id="contact-group">
@@ -68,16 +87,18 @@
 <style>
 
 	.contact-container{
-		width: 100%;
+		max-width: 20rem;
+		overflow: hidden;
 	}	
 	.profile-name{
 		max-width:100%;
+		height: 16rem;
 		display: flex;
 		flex-direction: column;	
 		gap: 1rem;
 		align-items: center;
 		justify-content: center;
-		transition: all;
+		transition: all .5s;
 		padding-top: 1rem;
 		padding-left: 2rem;
 		padding-right: 2rem;
@@ -85,6 +106,7 @@
 		border-top: 1px solid var(--background-color-2);
 		border-bottom: 1px solid var(--background-color-2);
 		cursor: pointer;
+		
 	}
 	.profile-name.wrap{
 		flex-wrap: nowrap;
@@ -101,11 +123,13 @@
 		stroke: 1px solid var(--background-color-2);
 		transition: all .5s;
 		cursor: pointer;
+
 		
 	}
 	
-	p {
-		margin-bottom: 0.5rem;
+	#name {
+
+		transition: all .1s;
 	}
 	.contacts {
 		padding-left: 2rem;

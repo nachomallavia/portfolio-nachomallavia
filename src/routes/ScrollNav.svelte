@@ -42,9 +42,9 @@
 	<button
 		class="scroll-btn"
 		on:click={(e) => {
-			scroller('section-why', e);
+			scroller('section-experience', e);
 		}}
-		id="why">¿Por qué?</button
+		id="experience">{$lang === 'ES' ? 'Experiencia' : 'Experience'}</button
 	>
 	<button
 		class="scroll-btn"

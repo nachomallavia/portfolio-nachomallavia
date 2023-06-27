@@ -87,6 +87,7 @@
 	}
 	h2.section-title {
 		font-size: 1.25rem;
+		text-transform: uppercase;
 		/* padding-right:2rem; */
 	}
 	.skill-container{

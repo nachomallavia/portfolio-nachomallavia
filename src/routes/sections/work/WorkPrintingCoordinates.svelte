@@ -228,7 +228,7 @@
 			<button
 				on:click={() => {
 					resetCanvas();
-				}}>{$lang="ES"?"Restaurar Imagen":"Reset Image"}</button
+				}}>{$lang==="ES"?"Restaurar Imagen":"Reset Image"}</button
 			>
 			<!-- <button on:click={()=>{resetCanvas()}}>Change Image</button> -->
 		</div>
