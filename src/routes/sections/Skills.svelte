@@ -91,7 +91,7 @@
 		/* padding-right:2rem; */
 	}
 	.skill-container{
-		max-width: 1200px;
+		max-width: 1100px;
 		min-height: 60%;
 		display: grid;		
 		padding-left:4rem;
