@@ -116,7 +116,7 @@
 		overflow: hidden;
 		width: 9rem;
 	}
-	option {
-		color: var(--text-color);
-	}
+	/* option {
+		color: var(--lightmode-text);
+	} */
 </style>

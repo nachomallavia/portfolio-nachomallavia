@@ -169,6 +169,9 @@
 		overflow: hidden;
 		width: 9rem;
 	}
+	/* select > option{
+		color:var(--lightmode-text);
+	} */
 	button {
 		font-size: 1rem;
 		padding: 0.5rem 1rem;

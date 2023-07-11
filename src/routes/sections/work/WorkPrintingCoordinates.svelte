@@ -315,6 +315,9 @@
 		overflow: hidden;
 		width: 9rem;
 	}
+	/* select > option {
+		color: var(--lightmode-color);
+	} */
 	label {
 		margin-right: 0.5rem;
 	}
