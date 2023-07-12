@@ -54,7 +54,8 @@
 	.about {
 		position: relative;
 		width: 100%;
-		min-height: 100%;
+		min-height: 1000px;
+		height: clamp(200px, 100vh, 2000px);
 		background-color: var(--background-color-1);
 		color: var(--text-color);
 		display: flex;

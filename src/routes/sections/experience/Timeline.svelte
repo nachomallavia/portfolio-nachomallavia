@@ -2,15 +2,19 @@
     import {lang} from '../../configStore';
     import logoFlashcookie from '../../../lib/images/timeline/flashcookie.webp'
     import logoCoupe from '../../../lib/images/timeline/coupe.webp'
-    let showStudies = false;
+    export let studies = false;
+    $: watchStudies = studies;
+    
     let studyExperience = [
         {   
             date : "Nov. 2020 - Jun. 2021",
             type: "Study",
             place: "Digital House",
             url:"https://www.digitalhouse.com",
-            detailAr: "Programador Fullstack Jr.",
-            detailUs: "Jr. Fullstack Developer"
+            titleAr: "Programador Fullstack Jr.",
+            titleUs: "Jr. Fullstack Developer",
+            detailAr: "Aprendí a programar en Javascript con NodeJS + Express en back-end y React en front-end",
+            detailUs: "I learned Javascript programming with NodeJS and Express on the back-end and React on the front-end"
         }
     ]
     let workExperience = [
@@ -20,51 +24,48 @@
             type: "Work",
             place: "Flashcookie",
             url:"https://www.flashcookie.com",
-            detailAr: "Director de Operaciones",
-            detailUs: "Chief Operating Officer"
+            titleAr: "Director de Operaciones",
+            titleUs: "Chief Operating Officer"
         },
         {
             date : "Oct. 2019 - May. 2020",
             type: "Work",
             place: "Flashcookie",
             url:"https://www.flashcookie.com",
-            detailAr: "Director de producto",
-            detailUs: "Product Manager"
+            titleAr: "Director de producto",
+            titleUs: "Product Manager"
         },
         {
             date : "Oct. 2018 - Oct. 2019",
             type: "Work",
             place: "Flashcookie",
             url:"https://www.flashcookie.com",
-            detailAr: "Director creativo",
-            detailUs: "Creative Director"
+            titleAr: "Director creativo",
+            titleUs: "Creative Director"
         },
         {
             date : "May. 2015 - Sept. 2019",
             type: "Work",
             place: "Coupé",
             url:"https://www.coupe.com.ar",
-            detailAr: "Director de arte Senior",
-            detailUs: "Senior Art Director"
+            titleAr: "Director de arte Senior",
+            titleUs: "Senior Art Director"
         },
         {
             date : "Oct. 2013 - May. 2015",
             type: "Work",
             place: "Coupé",
             url:"https://www.coupe.com.ar",
-            detailAr: "Director de arte Junior",
-            detailUs: "Junior Art Director"
+            titleAr: "Director de arte Junior",
+            titleUs: "Junior Art Director"
         }
         ]
 </script>
-<div class="data-labels">
-    <button><div class="spot orange"></div>{$lang=="ES"?"Trabajo":"Work"}</button>
-    <button><div class="spot blue"></div>{$lang=="ES"?"Estudios":"Studies"}</button>
-</div>
+
 <div class="timeline-container">
     
     <div class="timeline">
-        {#if showStudies == false}
+        {#if watchStudies == false}
             <div class=" spot orange"></div>
             {#each workExperience as item, index}
             
@@ -84,7 +85,7 @@
                             </div>
                             <div class="item-description">
                                 <h4>{item.date}</h4>
-                                <p><a href={item.url} target="blank" class="work">{item.place}</a> - {$lang == "ES"?item.detailAr:item.detailUs}</p>
+                                <p><a href={item.url} target="blank" class="work">{item.place}</a> - {$lang == "ES"?item.titleAr:item.titleUs}</p>
                             </div>
                         </div>
                     {:else}
@@ -101,13 +102,57 @@
                             </div>
                             <div class="item-description">
                                 <h4>{item.date}</h4>
-                                <p><a href={item.url} target="blank" class="work">{item.place}</a> - {$lang == "ES"?item.detailAr:item.detailUs}</p>
+                                <p><a href={item.url} target="blank" class="work">{item.place}</a> - {$lang == "ES"?item.titleAr:item.titleUs}</p>
                             </div>
                         </div>
                     {/if}
                     
                 </div>
                 {/each}
+            {:else}
+            {#each studyExperience as item, index}
+            
+            <div class="line-segment"></div>
+            <div class="relative-container">            
+                {#if index%2!=0 }                    
+                    <div class="timeline-item right big-offset-left">
+                        <div class="timeline-pointer">
+                            <div class="spot blue">
+                                <!-- {#if item.place == "Flashcookie"}
+                                <img src={logoFlashcookie} alt="logo Flashcookie">
+                                {:else if item.place == "Coupé"}
+                                <img src={logoCoupe} alt="logo Coupé" class="bigger">
+                                {/if} -->
+                            </div>
+                            <div class="tiny-line blue"></div>
+                        </div>
+                        <div class="item-description">
+                            <h4>{item.date}</h4>
+                            <p><a href={item.url} target="blank" class="study">{item.place}</a> - {$lang == "ES"?item.titleAr:item.titleUs}</p>
+                        </div>
+                    </div>
+                {:else}
+                    <div class="timeline-item left big-offset-right">
+                        <div class="timeline-pointer">
+                            <div class=" spot blue">
+                                <!-- {#if item.place == "Flashcookie"}
+                                <img src={logoFlashcookie} alt="logo Flashcookie">
+                                {:else if item.place == "Coupé"}
+                                <img src={logoCoupe} alt="logo Coupé" class="bigger">
+                                {/if} -->
+                            </div>
+                            <div class="tiny-line blue"></div>
+                        </div>
+                        <div class="item-description">
+                            <h4>{item.date}</h4>
+                            <p><a href={item.url} target="blank" class="study">{item.place}</a> - {$lang == "ES"?item.titleAr:item.titleUs}</p>
+                        </div>
+                    </div>
+                {/if}
+                
+            </div>
+            {/each}
+                
             {/if}
     </div>
 </div>
@@ -119,19 +164,18 @@
 
 
 <style>
+    
     .timeline-container{
-        display: flex;
-        width: 100%;
-        min-height: 100%;
+        
         background-color: var(--background-color);
-        align-items: center;
-        justify-content: center;
+     
     }
     .timeline{
         width: 100%;
+        height: 100%;
         display: flex;
         flex-direction: column;
-        /* justify-content: center; */
+        justify-content: center;
         align-items: center;
         gap:.25rem;
     }
@@ -144,7 +188,23 @@
     .data-labels{
         display: flex;
         gap:1rem;
+        padding-block:1rem;
         padding-left: 4rem;
+    }
+    .data-labels > button {
+        display: flex;
+        gap: .75rem;
+        padding-inline: .75rem;
+        padding-block:.5rem;
+        border: none;
+        border-bottom: 1px solid var(--background-color-3);
+        /* border-radius: .5rem; */
+        background-color: var(--background-color);
+        color: var(--text-color);
+        cursor: pointer;
+    }
+    button.selected{
+        border-bottom: 1px solid var(--accent-color);
     }
     .spot{
         height: 1.25rem;
@@ -188,17 +248,16 @@
         
     }
     .big-offset-left{
-        margin-left:50%;
+        margin-left: calc(50% + .75rem);
     }
 
     .left{
-        flex-direction: row-reverse;
-        
+        flex-direction: row-reverse;  
 
     }
     
     .big-offset-right{
-        margin-right:50%;
+        margin-right: calc(50% + .5rem);
     }
     .timeline-pointer{
         display: flex;

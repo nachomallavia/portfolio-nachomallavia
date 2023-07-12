@@ -125,7 +125,8 @@
 		display: flex;
 		flex-direction: column;
 		min-height: 100%;
-		overflow: scroll;
+		overflow-y: scroll;
+		overflow-x:none;
 		scroll-snap-type: y mandatory;
 	}
 	.center::-webkit-scrollbar {
