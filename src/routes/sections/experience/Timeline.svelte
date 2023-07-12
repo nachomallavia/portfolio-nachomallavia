@@ -3,7 +3,7 @@
     import logoFlashcookie from '../../../lib/images/timeline/flashcookie.webp'
     import logoCoupe from '../../../lib/images/timeline/coupe.webp'
     export let studies = false;
-    $: watchStudies = studies;
+    
     
     let studyExperience = [
         {   
@@ -25,7 +25,9 @@
             place: "Flashcookie",
             url:"https://www.flashcookie.com",
             titleAr: "Director de Operaciones",
-            titleUs: "Chief Operating Officer"
+            titleUs: "Chief Operating Officer",
+            detailAr: "Lideré un equipo de 16 personas coordinando el desarrollo de features, supervisando la relación con clientes, ideando y optimizando el proceso de producción On-demand de Merchandise. ",
+            detailUs: "I led a team of 16 people, coordinating the development of new features, supervising customer relations, divising and improving the production process for On-demand Merchandise."
         },
         {
             date : "Oct. 2019 - May. 2020",
@@ -33,7 +35,9 @@
             place: "Flashcookie",
             url:"https://www.flashcookie.com",
             titleAr: "Director de producto",
-            titleUs: "Product Manager"
+            titleUs: "Product Manager",
+            detailAr: "Me enfoqué en el diseño y supervisión del desarrollo de una plataforma de E-commerce de On-demand Merchandise. Trabajé junto al equipo de desarrollo planificando features, diseñando experiencias de usuario y programando demos y bocetos de estos avances. ",
+            detailUs: "I focused on designing and supervising the development of an e-commerce platform for On-demand Merchandise. I worked together with a team of developers, planning new features, designing the User Experience and coding demos and drafts of these improvements."
         },
         {
             date : "Oct. 2018 - Oct. 2019",
@@ -41,7 +45,9 @@
             place: "Flashcookie",
             url:"https://www.flashcookie.com",
             titleAr: "Director creativo",
-            titleUs: "Creative Director"
+            titleUs: "Creative Director",
+            detailAr: "Lideré el equipo de diseño de la empresa, supervisando la creación de contenidos para la plataforma y sus redes sociales. También diseñé la primera iteración del front-end de Flashcookie",
+            detailUs: "I led the company's design team, supervising content creation for our platform and social networks. I also designed the first iteration of Flashcookie's front-end "
         },
         {
             date : "May. 2015 - Sept. 2019",
@@ -49,7 +55,9 @@
             place: "Coupé",
             url:"https://www.coupe.com.ar",
             titleAr: "Director de arte Senior",
-            titleUs: "Senior Art Director"
+            titleUs: "Senior Art Director",
+            detailAr: "Diseñé y produje piezas de comunicación gráfica para todo tipo de medios. Trabajé junto a diseñadores gráficos, fotógrafos y animadores en campañas publicitarias para diferentes clientes de la agencia.",
+            detailUs: "I designed and produced communication pieces for every type of media. I worked together with graphic designers, photographers and animators on advertising campaigns for the agency's clients"
         },
         {
             date : "Oct. 2013 - May. 2015",
@@ -57,17 +65,27 @@
             place: "Coupé",
             url:"https://www.coupe.com.ar",
             titleAr: "Director de arte Junior",
-            titleUs: "Junior Art Director"
+            titleUs: "Junior Art Director",
+            detailAr: "Diseñé piezas de comunicación digital para las marcas con las que trabajaba la agencia. Principalmente posteos para redes sociales, mailings y banners web.",
+            detailUs: "I designed digital communication pieces for the brands that worked with our agency. I Mainly focused on social media posts, e-mail marketing and web banners."
         }
         ]
+    let experience = workExperience;
+   
+    $:if(studies){
+            experience = studyExperience;
+        } else {
+            experience = workExperience;
+        }
+    ;
 </script>
 
 <div class="timeline-container">
     
     <div class="timeline">
-        {#if watchStudies == false}
+        {#if studies == false}
             <div class=" spot orange"></div>
-            {#each workExperience as item, index}
+            {#each experience as item, index}
             
                 <div class="line-segment"></div>
                 <div class="relative-container">            
@@ -85,7 +103,8 @@
                             </div>
                             <div class="item-description">
                                 <h4>{item.date}</h4>
-                                <p><a href={item.url} target="blank" class="work">{item.place}</a> - {$lang == "ES"?item.titleAr:item.titleUs}</p>
+                                <p class="experience-title"><a href={item.url} target="blank" class="work">{item.place}</a> - {$lang == "ES"?item.titleAr:item.titleUs}</p>
+                                <p class="detail">{$lang == "ES"?item.detailAr:item.detailUs}</p>
                             </div>
                         </div>
                     {:else}
@@ -102,7 +121,8 @@
                             </div>
                             <div class="item-description">
                                 <h4>{item.date}</h4>
-                                <p><a href={item.url} target="blank" class="work">{item.place}</a> - {$lang == "ES"?item.titleAr:item.titleUs}</p>
+                                <p class="experience-title"><a href={item.url} target="blank" class="work">{item.place}</a> - {$lang == "ES"?item.titleAr:item.titleUs}</p>
+                                <p class="detail">{$lang == "ES"?item.detailAr:item.detailUs}</p>
                             </div>
                         </div>
                     {/if}
@@ -128,7 +148,8 @@
                         </div>
                         <div class="item-description">
                             <h4>{item.date}</h4>
-                            <p><a href={item.url} target="blank" class="study">{item.place}</a> - {$lang == "ES"?item.titleAr:item.titleUs}</p>
+                            <p class="experience-title"><a href={item.url} target="blank" class="study">{item.place}</a> - {$lang == "ES"?item.titleAr:item.titleUs}</p>
+                            <p class="detail">{$lang == "ES"?item.detailAr:item.detailUs}</p>
                         </div>
                     </div>
                 {:else}
@@ -145,7 +166,8 @@
                         </div>
                         <div class="item-description">
                             <h4>{item.date}</h4>
-                            <p><a href={item.url} target="blank" class="study">{item.place}</a> - {$lang == "ES"?item.titleAr:item.titleUs}</p>
+                            <p class="experience-title"><a href={item.url} target="blank" class="study">{item.place}</a> - {$lang == "ES"?item.titleAr:item.titleUs}</p>
+                            <p class="detail">{$lang == "ES"?item.detailAr:item.detailUs}</p>
                         </div>
                     </div>
                 {/if}
@@ -236,7 +258,7 @@
         height: 2px;
     }
     .relative-container{
-        width:50%;
+        width:80%;
     }
     .timeline-item{
         display: flex;
@@ -274,8 +296,18 @@
         text-decoration: none;
         font-weight: 600;
     }
+    .item-description > h4{
+        font-size: 1.25rem;
+    }
+    .experience-title{
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+
+    }
     .left > .item-description{
         text-align: right;
+
     }
     a.work{
         color:var(--accent-color);

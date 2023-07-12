@@ -24,7 +24,7 @@
 	.full {
 		width: 100%;
 
-		min-height: min(1000px, 100vh);
+
 		background-color: var(--background-color-1);
 		color: var(--text-color);
 
