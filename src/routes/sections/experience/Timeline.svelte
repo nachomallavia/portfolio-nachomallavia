@@ -26,8 +26,8 @@
             url:"https://www.flashcookie.com",
             titleAr: "Director de Operaciones",
             titleUs: "Chief Operating Officer",
-            detailAr: "Lideré un equipo de 16 personas coordinando el desarrollo de features, supervisando la relación con clientes, ideando y optimizando el proceso de producción On-demand de Merchandise. ",
-            detailUs: "I led a team of 16 people, coordinating the development of new features, supervising customer relations, divising and improving the production process for On-demand Merchandise."
+            detailAr: "Dirigí un equipo de 16 personas coordinando el desarrollo de features, supervisando la relación con clientes, ideando y optimizando el proceso de producción On-demand de Merchandise. ",
+            detailUs: "I directed a team of 16 people, coordinating the development of new features, supervising customer relations, divising and improving the production process for On-demand Merchandise."
         },
         {
             date : "Oct. 2019 - May. 2020",

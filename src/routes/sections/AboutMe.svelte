@@ -54,15 +54,15 @@
 	.about {
 		position: relative;
 		width: 100%;
-		min-height: 1000px;
-		height: clamp(200px, 100vh, 2000px);
+		padding-top: 6rem;
+		padding-bottom: 10rem;
 		background-color: var(--background-color-1);
 		color: var(--text-color);
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: start;
-		padding-left: 4rem;
+		padding-left: 8rem;
 	}
 	.full h2 {
 		font-weight: 600;
