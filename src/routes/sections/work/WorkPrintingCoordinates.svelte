@@ -251,7 +251,8 @@
 		margin-bottom: 1rem;
 	}
 	.description > p {
-		line-height: 1.5rem;
+		font-size: var(--font-size);
+        line-height:var(--font-line-height);
 		margin-bottom: 3rem;
 	}
 	.layer-container {

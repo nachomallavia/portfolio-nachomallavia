@@ -1,10 +1,9 @@
 <script>
-    import {lang} from '../../configStore';
-    import logoFlashcookie from '../../../lib/images/timeline/flashcookie.webp'
-    import logoCoupe from '../../../lib/images/timeline/coupe.webp'
+    import {lang} from '../../configStore';    
     export let studies = false;
-    
-    
+    let lineColor = 'orange';
+    let textColor = 'orangeText';
+
     let studyExperience = [
         {   
             date : "Nov. 2020 - Jun. 2021",
@@ -74,8 +73,12 @@
    
     $:if(studies){
             experience = studyExperience;
+            lineColor = 'blue';
+            textColor= 'blueText';
         } else {
             experience = workExperience;
+            lineColor = 'orange';
+            textColor= 'orangeText';
         }
     ;
 </script>
@@ -84,10 +87,9 @@
     
     <div class="timeline">
         {#if studies == false}
-            <div class=" spot orange"></div>
+
             {#each experience as item, index}
-            
-                <div class="line-segment"></div>
+                
                 <div class="relative-container">            
                     {#if index%2!=0 }                    
                         <div class="timeline-item right big-offset-left">
@@ -103,7 +105,7 @@
                             </div>
                             <div class="item-description">
                                 <h4>{item.date}</h4>
-                                <p class="experience-title"><a href={item.url} target="blank" class="work">{item.place}</a> - {$lang == "ES"?item.titleAr:item.titleUs}</p>
+                                <p class="experience-title"><a href={item.url} target="blank" class="work">{item.place}</a> - <em class={textColor}>{$lang == "ES"?item.titleAr:item.titleUs}</em></p>
                                 <p class="detail">{$lang == "ES"?item.detailAr:item.detailUs}</p>
                             </div>
                         </div>
@@ -121,7 +123,7 @@
                             </div>
                             <div class="item-description">
                                 <h4>{item.date}</h4>
-                                <p class="experience-title"><a href={item.url} target="blank" class="work">{item.place}</a> - {$lang == "ES"?item.titleAr:item.titleUs}</p>
+                                <p class="experience-title"><a href={item.url} target="blank" class="work">{item.place}</a> - <em class={textColor}>{$lang == "ES"?item.titleAr:item.titleUs}</em></p>
                                 <p class="detail">{$lang == "ES"?item.detailAr:item.detailUs}</p>
                             </div>
                         </div>
@@ -132,7 +134,7 @@
             {:else}
             {#each studyExperience as item, index}
             
-            <div class="line-segment"></div>
+            
             <div class="relative-container">            
                 {#if index%2!=0 }                    
                     <div class="timeline-item right big-offset-left">
@@ -148,7 +150,7 @@
                         </div>
                         <div class="item-description">
                             <h4>{item.date}</h4>
-                            <p class="experience-title"><a href={item.url} target="blank" class="study">{item.place}</a> - {$lang == "ES"?item.titleAr:item.titleUs}</p>
+                            <p class="experience-title"><a href={item.url} target="blank" class="study">{item.place}</a> - <em class={textColor}>{$lang == "ES"?item.titleAr:item.titleUs}</em></p>
                             <p class="detail">{$lang == "ES"?item.detailAr:item.detailUs}</p>
                         </div>
                     </div>
@@ -166,7 +168,7 @@
                         </div>
                         <div class="item-description">
                             <h4>{item.date}</h4>
-                            <p class="experience-title"><a href={item.url} target="blank" class="study">{item.place}</a> - {$lang == "ES"?item.titleAr:item.titleUs}</p>
+                            <p class="experience-title"><a href={item.url} target="blank" class="study">{item.place}</a> - <em class={textColor}>{$lang == "ES"?item.titleAr:item.titleUs}</em></p>
                             <p class="detail">{$lang == "ES"?item.detailAr:item.detailUs}</p>
                         </div>
                     </div>
@@ -177,6 +179,7 @@
                 
             {/if}
     </div>
+    <div id="line"class={lineColor}></div>
 </div>
 
             
@@ -190,9 +193,19 @@
     .timeline-container{
         
         background-color: var(--background-color);
+        position: relative;
      
     }
+    #line{
+        width: 2px;
+        height:100%;
+        position: absolute;
+        left: 50%;
+        top:0;
+
+    }
     .timeline{
+        padding-top: 5rem;
         width: 100%;
         height: 100%;
         display: flex;
@@ -200,12 +213,9 @@
         justify-content: center;
         align-items: center;
         gap:.25rem;
+
     }
-    .line-segment{
-        height: 4rem;
-        width:2px;
-        background-color: var(--background-color-3);
-    }
+   
     
     .data-labels{
         display: flex;
@@ -247,12 +257,7 @@
     .spot > img.bigger{
         width:2rem;
     }
-    .orange{
-        background-color: var(--accent-color);
-    }
-    .blue{
-        background-color: var(--secondary-color);
-    }
+   
     .tiny-line{
         width: 2rem;
         height: 2px;
@@ -291,28 +296,48 @@
         margin-left:0;
         margin-right: -1.2rem;
     }
-
+    .item-description > p{
+        font-size: var(--font-size);
+        line-height:var(--font-line-height);
+        max-width: 22rem;
+    }
     .item-description > p > a{
         text-decoration: none;
         font-weight: 600;
     }
     .item-description > h4{
-        font-size: 1.25rem;
+        font-size: 1.4rem;
     }
     .experience-title{
         font-size: 1rem;
         font-weight: 600;
         margin-bottom: 1rem;
-
     }
+    
+    
     .left > .item-description{
         text-align: right;
 
     }
     a.work{
-        color:var(--accent-color);
+        color:var(--text-color);
     }
     a.study{
-        color: var(--secondary-color)
+        color: var(--text-color)
     }
+    .orange{
+        background-color: var(--accent-color);
+        
+    }
+    .blue{
+        background-color: var(--secondary-color);
+
+    }
+    .orangeText{
+        color: var(--accent-color);
+    }
+    .blueText{
+        color: var(--secondary-color);
+    }
+   
 </style>

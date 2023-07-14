@@ -163,7 +163,8 @@
 		margin-bottom: 2rem;
 	}
 	p {
-		line-height: 1.5rem;
+		font-size: var(--font-size);
+        line-height:var(--font-line-height);
 		max-width: 560px;
 		margin-bottom: 2rem;
 	}

@@ -80,8 +80,8 @@
 	}
 	p {
 		max-width: 800px;
-		font-size: 1.25rem;
-		line-height: 2rem;
+		font-size: var(--font-size);
+        line-height:var(--font-line-height);
 		font-weight: var(--font-weight-regular);
 	}
 	.full > span {

@@ -68,10 +68,12 @@
 		display: flex;
 		flex-direction: column;
 		/* gap:2rem; */
-		max-width: 600px;
+		max-width: 32rem;
+
 	}
 	.description > p {
-		line-height: 1.5rem;
+		font-size: var(--font-size);
+        line-height:var(--font-line-height);
 		margin-bottom: 3rem;
 	}
 	#label-template-container {

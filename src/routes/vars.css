@@ -19,6 +19,8 @@
 	--lightmode-text: hsl(300, 10%, 20%);
 	--lightmode-text-weight-regular: 300;
 	--shadow: hsla(0, 10%, 65%, 0.8);
+	--font-size: 1.2rem;
+	--font-line-height: 1.8rem;
 }
 * {
 	box-sizing: border-box;

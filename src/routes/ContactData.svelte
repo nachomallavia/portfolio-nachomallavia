@@ -98,7 +98,7 @@
 		gap: 1rem;
 		align-items: center;
 		justify-content: center;
-		transition: all .5s;
+		transition: all .25s, border-bottom none;
 		padding-top: 1rem;
 		padding-left: 2rem;
 		padding-right: 2rem;
@@ -121,7 +121,7 @@
 		max-width: 100%;
 		border-radius: 50%;
 		stroke: 1px solid var(--background-color-2);
-		transition: all .5s;
+		transition: all .35s;
 		cursor: pointer;
 
 		
@@ -129,7 +129,7 @@
 	
 	#name {
 
-		transition: all .1s;
+		transition: all .25s;
 	}
 	.contacts {
 		padding-left: 2rem;

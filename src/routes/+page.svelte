@@ -46,6 +46,7 @@
 	function updateScrollPosition() {
 		if (browser) {
 			let main = document.getElementById('main');
+			
 			// console.log(main.scrollTop);
 
 			let sectionCollection = document.getElementsByTagName('section');
@@ -56,12 +57,17 @@
 			let container = document.getElementById('profile-container');
 
 			sectionArray.forEach((section, index) => {
-				let sectionOffset = section.offsetHeight * index - 100;
+				if(index != 10){
+					console.log(main.scrollTop)
+					console.log(`${index+1}-Scroll Height: ${section.scrollHeight}`)
+					console.log(`${index+1}-Offset Height: ${section.offsetHeight}`)
+				}
+				let sectionOffset = section.offsetHeight * index - 200;
 				if (main.scrollTop >= sectionOffset) {
 
-					navArray.forEach((nav) => {
-						if ('section-' + nav.id === section.id) {
-							nav.classList.add('current');
+					navArray.forEach((navButton) => {
+						if ('section-' + navButton.id === section.id) {
+							navButton.classList.add('current');
 							if(section.id === 'section-aboutme'){
 								if(sectionOffset > 0){
 								img.style['maxWidth'] = '12rem';
@@ -77,7 +83,7 @@
 								}
 							}
 						} else {
-							nav.classList.remove('current');
+							navButton.classList.remove('current');
 						}
 					});
 				}

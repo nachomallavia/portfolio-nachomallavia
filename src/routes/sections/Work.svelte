@@ -74,10 +74,11 @@
 		flex-direction: column;
 		gap: 2rem;
 		width: 100%;
-		min-height: 100%;
+
 		background-color: var(--background-color-1);
 		color: var(--text-color);
 		padding-bottom: 8rem;
+		margin-bottom:8rem;
 	}
 	.work-header {
 		width: 100%;
