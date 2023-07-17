@@ -38,7 +38,6 @@
 		padding-left:4rem;
 		padding-top: 1.25rem;
 		padding-bottom: 1.5rem;
-
 		border-top: 1px solid var(--background-color-2);
 		border-bottom: 1px solid var(--background-color-2);
 	}

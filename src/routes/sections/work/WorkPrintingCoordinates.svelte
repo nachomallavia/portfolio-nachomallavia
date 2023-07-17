@@ -244,7 +244,7 @@
 		align-items: start;
 	}
 	.description {
-		max-width: 600px;
+		padding-right: 4rem;
 	}
 	.description > h2 {
 		font-size: 1.75rem;

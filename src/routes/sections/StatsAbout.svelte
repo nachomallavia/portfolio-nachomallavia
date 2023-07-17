@@ -9,13 +9,13 @@
 	let about = {
 		Age: '36 y/o',
 		Country: 'Argentina',
-		Experience: '1+ years'
+		'Coding Experience': '1+ years'
 	};
 	let selectedStats = about;
 	let aboutEsp = {
 		Edad: '36 años',
 		País: 'Argentina',
-		Experiencia: '1+ años'
+		'Experiencia con código': '1+ años'
 	};
 	$: if ($lang === 'ES') {
 		selectedStats = aboutEsp;

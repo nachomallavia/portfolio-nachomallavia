@@ -96,7 +96,7 @@
 		gap: 1rem;
 	}
 	input {
-		max-width: 20rem;
+		/* max-width: 20rem; */
 		margin-top: 0.25rem;
 		padding: 0.5rem;
 		padding-bottom: 0.25rem;
@@ -114,7 +114,7 @@
 		color: var(--text-color);
 		font-size: 1rem;
 		overflow: hidden;
-		width: 9rem;
+		/* width: 9rem; */
 	}
 	/* option {
 		color: var(--lightmode-text);

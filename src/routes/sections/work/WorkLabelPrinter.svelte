@@ -67,10 +67,11 @@
 	.description {
 		display: flex;
 		flex-direction: column;
-		/* gap:2rem; */
-		max-width: 32rem;
-
+		/* gap:2rem; */		
+		padding-right: 4rem;
 	}
+
+	
 	.description > p {
 		font-size: var(--font-size);
         line-height:var(--font-line-height);
@@ -121,5 +122,6 @@
 	}
 	#update-btn {
 		margin-top: 2rem;
+		max-width: 11rem;
 	}
 </style>

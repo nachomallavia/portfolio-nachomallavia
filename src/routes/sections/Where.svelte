@@ -1,4 +1,9 @@
-<section class="full" id="section-where">asdgdasgg</section>
+<script>
+	import { lang } from '../configStore';
+</script>
+<section class="full" id="section-contact">
+	<h2>{$lang=="ES"?"Contacto":"Contact"}</h2>
+</section>
 
 <style>
 	.full {

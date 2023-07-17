@@ -157,6 +157,7 @@
 
 	.description {
 		padding-top: 2rem;
+		padding-right: 4rem;
 	}
 	h2 {
 		font-size: 1.75rem;
@@ -165,7 +166,7 @@
 	p {
 		font-size: var(--font-size);
         line-height:var(--font-line-height);
-		max-width: 560px;
+		/* max-width: 560px; */
 		margin-bottom: 2rem;
 	}
 </style>

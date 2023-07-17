@@ -20,15 +20,7 @@
 	<div class="skill-container">
 		<div class="skill-list">
 			{#each skillList as skillItem, index}
-			<!-- {#if index === selectedSkillIndex}
-			<div class="skills-container selected" data-index={index}>
-				<Skill skillNameAr={skillItem.nameAr} skillNameUs={skillItem.nameUs} score={skillItem.score} />
-			</div>
-			{:else}
-			<div class="skills-container" data-index={index}>
-				<Skill skillNameAr={skillItem.nameAr} skillNameUs={skillItem.nameUs} score={skillItem.score} />
-			</div>
-			{/if} -->
+			
 			<div class="skill-card">
 				<div class="title-score">
 					<div class="title">
@@ -92,16 +84,18 @@
 		/* padding-right:2rem; */
 	}
 	.skill-container{
-		max-width: 1100px;
-		min-height: 60%;
-		display: grid;		
-		padding-left:4rem;
+		
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding-left:6rem;
+		padding-right: 6rem;
 	}
 	
 	.skill-list{
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-		gap: 2rem;	
+		gap: 2rem;
 	}
 	.skill-card{
 		padding:2rem;

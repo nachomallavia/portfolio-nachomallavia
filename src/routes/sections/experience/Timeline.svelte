@@ -6,20 +6,55 @@
 
     let studyExperience = [
         {   
-            date : "Nov. 2020 - Jun. 2021",
+            dateAr: "Noviembre 2020 - Junio 2021",
+            dateUs: "November 2020 - June 2021",
             type: "Study",
             place: "Digital House",
             url:"https://www.digitalhouse.com",
-            titleAr: "Programador Fullstack Jr.",
-            titleUs: "Jr. Fullstack Developer",
+            titleAr: "Programación Fullstack Jr.",
+            titleUs: "Jr. Fullstack Development",
             detailAr: "Aprendí a programar en Javascript con NodeJS + Express en back-end y React en front-end",
             detailUs: "I learned Javascript programming with NodeJS and Express on the back-end and React on the front-end"
-        }
+        },
+        {
+            dateAr:'Febrero 2019 - Diciembre 2019',    
+            dateUs:'February 2019 - December 2019',
+            type: "Study",
+            place:"Acámica",
+            url:"https://www.acamica.com",
+            titleAr:"Diseño UX/UI",
+            titleUs:"UX/UI Design",
+            detailAr: "Aprendí a de diseñar alrededor de las necesidades del Usuario y las ventajas de iterar en baja fidelidad. ",
+            detailUs: "I learned the process of designing around Users needs and the advantages of iterating in low fidelity."
+        },
+        {
+            dateAr:'Abril 2018 - Diciembre 2018',    
+            dateUs:'April 2018 - December 2018',
+            type: "Study",
+            place:"Escuela Relacional",
+            url:"https://www.escuelarelacional.com",
+            titleAr:"Dirección de arte II",
+            titleUs:"Art direction II",
+            detailAr: "Aprendí a apoyarme en nociones de morfología, composición, teoría del color y tipografía en pos de comunicar mis ideas de manera efectiva. ",
+            detailUs: "I learned to use morphology, composition, color theory and typography to communicate my own ideas effectively."
+        },
+        {
+            dateAr:'Abril 2017 - Diciembre 2017',    
+            dateUs:'April 2017 - December 2017',
+            type: "Study",
+            place:"Escuela Relacional",
+            url:"https://www.escuelarelacional.com",
+            titleAr:"Dirección de arte",
+            titleUs:"Art direction",
+            detailAr: "Aprendí conceptos de diseño como morfología, composición, teoría del color y tipografía. También estudié diferentes exponentes del diseño, la fotografía y la dirección de arte en todos sus ámbitos",
+            detailUs: "I learned design concepts such as morphology, composition, color theory and typography. I also studied different historical figures in the world of design, photography and art direction in all of its venues."
+        },
     ]
     let workExperience = [
         
         {   
-            date : "May. 2020 - Jul. 2023",
+            dateAr : "Mayo 2020 - Agosto 2023",
+            dateUs : "May 2020 - August 2023",
             type: "Work",
             place: "Flashcookie",
             url:"https://www.flashcookie.com",
@@ -29,7 +64,8 @@
             detailUs: "I directed a team of 16 people, coordinating the development of new features, supervising customer relations, divising and improving the production process for On-demand Merchandise."
         },
         {
-            date : "Oct. 2019 - May. 2020",
+            dateAr : "Octubre 2019 - Mayo 2020",
+            dateUs : "October 2019 - May 2020",
             type: "Work",
             place: "Flashcookie",
             url:"https://www.flashcookie.com",
@@ -39,7 +75,8 @@
             detailUs: "I focused on designing and supervising the development of an e-commerce platform for On-demand Merchandise. I worked together with a team of developers, planning new features, designing the User Experience and coding demos and drafts of these improvements."
         },
         {
-            date : "Oct. 2018 - Oct. 2019",
+            dateAr : "Octubre 2018 - Octubre 2019",
+            dateUs : "October 2018 - October 2019",
             type: "Work",
             place: "Flashcookie",
             url:"https://www.flashcookie.com",
@@ -49,7 +86,8 @@
             detailUs: "I led the company's design team, supervising content creation for our platform and social networks. I also designed the first iteration of Flashcookie's front-end "
         },
         {
-            date : "May. 2015 - Sept. 2019",
+            dateAr : "Mayo 2015 - Septiembre 2019",
+            dateUs : "May 2015 - September 2019",
             type: "Work",
             place: "Coupé",
             url:"https://www.coupe.com.ar",
@@ -59,7 +97,8 @@
             detailUs: "I designed and produced communication pieces for every type of media. I worked together with graphic designers, photographers and animators on advertising campaigns for the agency's clients"
         },
         {
-            date : "Oct. 2013 - May. 2015",
+            dateAr : "Octubre 2013 - Mayo 2015",
+            dateUs : "October 2013 - May 2015",
             type: "Work",
             place: "Coupé",
             url:"https://www.coupe.com.ar",
@@ -104,7 +143,7 @@
                                 <div class="tiny-line orange"></div>
                             </div>
                             <div class="item-description">
-                                <h4>{item.date}</h4>
+                                <h4>{$lang=="ES"?item.dateAr:item.dateUs}</h4>
                                 <p class="experience-title"><a href={item.url} target="blank" class="work">{item.place}</a> - <em class={textColor}>{$lang == "ES"?item.titleAr:item.titleUs}</em></p>
                                 <p class="detail">{$lang == "ES"?item.detailAr:item.detailUs}</p>
                             </div>
@@ -122,7 +161,7 @@
                                 <div class="tiny-line orange"></div>
                             </div>
                             <div class="item-description">
-                                <h4>{item.date}</h4>
+                                <h4>{$lang=="ES"?item.dateAr:item.dateUs}</h4>
                                 <p class="experience-title"><a href={item.url} target="blank" class="work">{item.place}</a> - <em class={textColor}>{$lang == "ES"?item.titleAr:item.titleUs}</em></p>
                                 <p class="detail">{$lang == "ES"?item.detailAr:item.detailUs}</p>
                             </div>
@@ -149,7 +188,7 @@
                             <div class="tiny-line blue"></div>
                         </div>
                         <div class="item-description">
-                            <h4>{item.date}</h4>
+                            <h4>{$lang=="ES"?item.dateAr:item.dateUs}</h4>
                             <p class="experience-title"><a href={item.url} target="blank" class="study">{item.place}</a> - <em class={textColor}>{$lang == "ES"?item.titleAr:item.titleUs}</em></p>
                             <p class="detail">{$lang == "ES"?item.detailAr:item.detailUs}</p>
                         </div>
@@ -167,7 +206,7 @@
                             <div class="tiny-line blue"></div>
                         </div>
                         <div class="item-description">
-                            <h4>{item.date}</h4>
+                            <h4>{$lang=="ES"?item.dateAr:item.dateUs}</h4>
                             <p class="experience-title"><a href={item.url} target="blank" class="study">{item.place}</a> - <em class={textColor}>{$lang == "ES"?item.titleAr:item.titleUs}</em></p>
                             <p class="detail">{$lang == "ES"?item.detailAr:item.detailUs}</p>
                         </div>

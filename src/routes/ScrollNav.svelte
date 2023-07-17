@@ -49,9 +49,9 @@
 	<button
 		class="scroll-btn"
 		on:click={(e) => {
-			scroller('section-where', e);
+			scroller('section-contact', e);
 		}}
-		id="where">¿Dónde?</button
+		id="where">{$lang =='ES'?'Contacto':'Contact'}</button
 	>
 </div>
 

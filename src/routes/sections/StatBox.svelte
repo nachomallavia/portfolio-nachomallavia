@@ -11,7 +11,7 @@
 		icon = iconAge;
 	} else if(title == 'Country' || title == 'País'){
 		icon = iconCountry;
-	} else if(title == 'Experience'|| title == 'Experiencia'){
+	} else if(title == 'Coding Experience'|| title == 'Experiencia con código'){
 		icon = iconExperience;
 	}
 </script>

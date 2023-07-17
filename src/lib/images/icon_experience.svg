@@ -5,32 +5,59 @@
 	 style="enable-background:new 0 0 40.5 40.5;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:none;}
-	.st1{fill:none;stroke:#E18009;stroke-linecap:round;stroke-linejoin:round;}
-	.st2{display:none;}
+	.st1{filter:url(#Adobe_OpacityMaskFilter);}
+	.st2{fill:#FFFFFF;}
+	.st3{mask:url(#SVGID_1_);fill:#E18009;}
+	.st4{fill:none;stroke:#E18009;stroke-linecap:round;stroke-linejoin:round;}
+	.st5{display:none;}
 </style>
 <g id="Layer_1-2">
 	<g>
 		<rect x="0.2" y="0.2" class="st0" width="40" height="40"/>
 		<g>
-			<rect x="7.5" y="7.8" class="st1" width="25.3" height="15.4"/>
+			<defs>
+				<filter id="Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x="9.4" y="8.7" width="21.6" height="13.2">
+					
+						<feColorMatrix  type="matrix" values="-1 0 0 0 1  0 -1 0 0 1  0 0 -1 0 1  0 0 0 1 0" color-interpolation-filters="sRGB" result="source"/>
+					<feFlood  style="flood-color:white;flood-opacity:1" result="back"/>
+					<feBlend  in="source" in2="back" mode="normal"/>
+				</filter>
+			</defs>
+			<mask maskUnits="userSpaceOnUse" x="9.4" y="8.7" width="21.6" height="13.2" id="SVGID_1_">
+				<g class="st1">
+					<g>
+						<g>
+							<path class="st2" d="M16.7,17.9c-0.1,0-0.2,0-0.3-0.1l-2-2c-0.1-0.1-0.1-0.2-0.1-0.3c0-0.1,0-0.2,0.1-0.3l2-2
+								c0.2-0.2,0.4-0.2,0.6,0c0.2,0.2,0.2,0.4,0,0.6l-1.7,1.7l1.7,1.7c0.2,0.2,0.2,0.4,0,0.6C16.9,17.9,16.8,17.9,16.7,17.9z"/>
+						</g>
+						<g>
+							<path class="st2" d="M23.7,17.9c-0.1,0-0.2,0-0.3-0.1c-0.2-0.2-0.2-0.4,0-0.6l1.7-1.7l-1.7-1.7c-0.2-0.2-0.2-0.4,0-0.6
+								c0.2-0.2,0.4-0.2,0.6,0l2,2c0.1,0.1,0.1,0.2,0.1,0.3c0,0.1,0,0.2-0.1,0.3l-2,2C23.9,17.9,23.8,17.9,23.7,17.9z"/>
+						</g>
+						<g>
+							<path class="st2" d="M19,19.3c0,0-0.1,0-0.1,0c-0.2-0.1-0.3-0.3-0.3-0.5L21,12c0.1-0.2,0.3-0.3,0.5-0.3
+								c0.2,0.1,0.3,0.3,0.3,0.5L19.4,19C19.3,19.1,19.2,19.3,19,19.3z"/>
+						</g>
+					</g>
+				</g>
+			</mask>
+			<path class="st3" d="M31.1,22H9.4V9.7c0-0.5,0.4-0.9,0.9-0.9h19.8c0.5,0,0.9,0.4,0.9,0.9V22z"/>
 			<g>
-				<polyline class="st1" points="15.9,18.1 13.6,15.7 15.9,13.3 				"/>
-				<polyline class="st1" points="24.1,18.1 26.5,15.7 24.1,13.3 				"/>
-				<line class="st1" x1="18.6" y1="19.6" x2="21.4" y2="11.8"/>
+				<path class="st4" d="M33,24.1H7.2l-2.4,6.4c-0.6,1.5,0.5,3.1,2.2,3.1h26.5c1.7,0,2.8-1.7,2.1-3.2L33,24.1z"/>
+				<line class="st4" x1="4.8" y1="31.4" x2="35.8" y2="31.4"/>
+				<line class="st4" x1="17.2" y1="33.7" x2="17.2" y2="31.5"/>
+				<line class="st4" x1="22.9" y1="33.7" x2="22.9" y2="31.5"/>
+				<polyline class="st4" points="11.5,28.6 32.5,28.6 31.6,26.5 8.4,26.5 7.5,28.5 				"/>
+				<path class="st4" d="M7.2,24.1V8.8c0-1.1,0.9-2,2-2h21.7c1.1,0,2,0.9,2,2v15.3"/>
 			</g>
-			<path class="st1" d="M32.7,23.3L7.5,23.5l-2.3,6c-0.6,1.5,0.5,3.1,2.1,3.1h26c1.6,0,2.7-1.7,2.1-3.1L32.7,23.3z"/>
-			<line class="st1" x1="5.1" y1="30.4" x2="35.5" y2="30.4"/>
-			<line class="st1" x1="17.3" y1="32.6" x2="17.3" y2="30.5"/>
-			<line class="st1" x1="22.9" y1="32.6" x2="22.9" y2="30.5"/>
-			<polyline class="st1" points="11.6,27.6 32.3,27.6 31.4,25.6 8.6,25.6 7.8,27.6 			"/>
 		</g>
 	</g>
 </g>
 <image style="display:none;overflow:visible;" width="352" height="348" xlink:href="../../../../../../../Desktop/Screenshot 2023-07-14 at 15.47.42.png"  transform="matrix(0.1221 0 0 0.1221 45.0482 -10.6498)">
 </image>
-<g id="AhFnRQ_00000114795677538422025080000012810382521275145897_" class="st2">
+<g id="AhFnRQ_00000114795677538422025080000012810382521275145897_" class="st5">
 	
-		<image style="display:inline;overflow:visible;" width="1088" height="928" id="AhFnRQ" xlink:href="345711D97D39A4EC.png"  transform="matrix(4.437089e-02 0 0 4.437089e-02 75.0978 4.8652)">
+		<image style="display:inline;overflow:visible;" width="1088" height="928" id="AhFnRQ" xlink:href="345711D97D39A4E5.png"  transform="matrix(4.437089e-02 0 0 4.437089e-02 75.0978 4.8652)">
 	</image>
 </g>
 </svg>
