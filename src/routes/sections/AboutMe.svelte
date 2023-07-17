@@ -4,6 +4,7 @@
 	import { lang } from '../configStore';
 	import {fade} from 'svelte/transition';
 
+
 </script>
 
 <section class="full about" id="section-aboutme" >
@@ -54,8 +55,8 @@
 	.about {
 		position: relative;
 		width: 100%;
-		padding-top: 6rem;
-		padding-bottom: 10rem;
+		padding-top: 8rem;
+		padding-bottom: 20rem;
 		background-color: var(--background-color-1);
 		color: var(--text-color);
 		display: flex;
@@ -63,6 +64,7 @@
 		justify-content: center;
 		align-items: start;
 		padding-left: 8rem;
+		min-height: 100dvh;
 	}
 	.full h2 {
 		font-weight: 600;
@@ -70,8 +72,8 @@
 	h1 {
 		font-size: 6.5rem;
 		font-weight: 700;
-		line-height: 5.5rem;
-		max-width: 800px;
+		line-height: 6rem;
+		/* max-width: 800px; */
 		color: var(--accent-color);
 		margin-bottom: 2rem;
 	}

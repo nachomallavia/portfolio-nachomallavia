@@ -145,7 +145,6 @@
 
 	.grid > .left {
 
-
 		border-right: 1px solid var(--background-color-2);
 	}
 	.grid > .right {
@@ -156,7 +155,7 @@
 		border-left: 1px solid var(--background-color-2);
 	}
 
-	@media screen and (max-width: 768px) {
+	@media screen and (max-width: 821px) {
 		div.grid {
 			grid-template-columns: 4fr 2fr;
 		}
@@ -169,6 +168,9 @@
 		div.grid {
 			display: flex;
 			flex-direction: column;
+		}
+		.right{
+			display: none;
 		}
 	}
 </style>

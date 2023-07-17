@@ -75,7 +75,8 @@
 		width: 100%;
 		background-color: var(--background-color-1);
 		color: var(--text-color);
-		margin-bottom:8rem;
+		/* margin-bottom:8rem; */
+		min-height: 100dvh;
 	}
 	.full > .skills-header{
 		padding-left:4rem;

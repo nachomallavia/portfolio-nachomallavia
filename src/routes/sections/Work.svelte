@@ -79,6 +79,7 @@
 		color: var(--text-color);
 		padding-bottom: 8rem;
 		margin-bottom:8rem;
+		min-height: 100dvh;
 	}
 	.work-header {
 		width: 100%;

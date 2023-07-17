@@ -29,7 +29,7 @@
 		width: 100%;
 		background-color: var(--background-color-1);
 		color: var(--text-color);
-		margin-bottom:8rem;
+		margin-bottom:10rem;
 	}	
 	.full > .experience-header{
 		display: flex;
@@ -38,7 +38,7 @@
 		padding-left:4rem;
 		padding-top: 1.25rem;
 		padding-bottom: 1.5rem;
-		/* margin-bottom: 2rem; */
+
 		border-top: 1px solid var(--background-color-2);
 		border-bottom: 1px solid var(--background-color-2);
 	}

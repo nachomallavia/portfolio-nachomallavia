@@ -92,13 +92,14 @@
 	}	
 	.profile-name{
 		max-width:100%;
-		height: 16rem;
+		min-height: 16rem;
 		display: flex;
 		flex-direction: column;	
-		gap: 1rem;
+		
+		/* gap: 1rem; */
 		align-items: center;
 		justify-content: center;
-		transition: all .25s, border-bottom none;
+		transition: all 1s, border-bottom none;
 		padding-top: 1rem;
 		padding-left: 2rem;
 		padding-right: 2rem;
@@ -111,9 +112,9 @@
 	.profile-name.wrap{
 		flex-wrap: nowrap;
 		justify-content: start;
-
+		
 		padding-left: 2rem;
-		/* min-width: 12rem; */
+		min-height: 4rem;
 
 	}
 	#profile-picture{
@@ -121,15 +122,16 @@
 		max-width: 100%;
 		border-radius: 50%;
 		stroke: 1px solid var(--background-color-2);
-		transition: all .35s;
+		transition: all .65s;
 		cursor: pointer;
+		margin: 1rem;
 
 		
 	}
 	
 	#name {
 
-		transition: all .25s;
+		transition: all .55s;
 	}
 	.contacts {
 		padding-left: 2rem;
