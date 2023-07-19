@@ -124,15 +124,17 @@
 		left:0;
 		z-index: 90;
 		width: 100%;
-		background-color: var(--background-color-1);
+		background: var(--gradient-fade-1);
 		color: var(--text-color);
 		display: flex;
 		justify-content: flex-end;
 		padding-block:1rem;
 		padding-inline: 2rem;
+
 	}
 	.mobile-menu-toggle > button{
-		background-color: var(--background-color-1);
+		background: none;
+		height: 100%;
 		border: none;
 		border-radius: 50%;
 	}

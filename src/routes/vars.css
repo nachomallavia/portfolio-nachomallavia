@@ -3,6 +3,7 @@
 	--translateZ: '0px';
 
 	--darkmode-1: hsl(300, 10%, 12%);
+	--darkmode-fade-1: hsla(300, 10%, 12%, 0.0);
 	--darkmode-2: hsl(300, 15%, 25%);
 	--darkmode-3: hsl(300, 5%, 40%);
 	--darkmode-text: hsl(300, 0%, 85%);
@@ -11,6 +12,7 @@
 	--darkmode-secondary: #37A9FD;
 	--font-family: 'Source Sans Pro', sans-serif;
 	--lightmode-1: hsl(0, 0%, 96%);
+	--lightmode-fade-1: hsla(0, 0%, 96%, 0.0);
 	--lightmode-2: hsl(0, 0%, 82%);
 	--lightmode-3: hsl(300, 0%, 60%);
 	--lightmode-shadow: hsla(0, 0%, 65%, 0.35);
@@ -35,6 +37,7 @@ body > * {
 	--accent-color-2: var(--darkmode-accent);
 	--secondary-color: var(--darkmode-secondary);
 	--background-color-1: var(--lightmode-1);
+	--background-fade-1: var(--lightmode-fade-1);
 	--background-color-2: var(--lightmode-2);
 	--background-color-3: var(--lightmode-3);
 	--font-weight-regular: var(--lightmode-text-weight-regular);
@@ -46,7 +49,12 @@ body.darkmode > * {
 	--accent-color-2: var(--lightmode-accent);
 	--secondary-color: var(--lightmode-secondary);
 	--background-color-1: var(--darkmode-1);
+	--background-fade-1: var(--darkmode-fade-1);
 	--background-color-2: var(--darkmode-2);
 	--background-color-3: var(--darkmode-3);
 	--font-weight-regular: var(--darkmode-text-weight-regular);
+}
+
+body > * {
+	--gradient-fade-1: linear-gradient(180deg, var(--background-color-1) 50%, var(--background-fade-1) 100%)
 }
