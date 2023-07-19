@@ -81,8 +81,8 @@
 
 	$: calculatedImageWidth = (imageWidth * scale * selectedSizeProportion).toFixed(1);
 	$: calculatedImageHeight = (imageHeight * scale * selectedSizeProportion).toFixed(1);
-	$: calculatedX = (imagePosition.x * scale * selectedSizeProportion).toFixed(1);
-	$: calculatedY = (imagePosition.y * scale * selectedSizeProportion).toFixed(1);
+	$: calculatedX = (imagePosition.x * scale * 1 + (imagePosition.x * scale * 1 - imagePosition.x * scale *selectedSizeProportion)).toFixed(1);
+	$: calculatedY = (imagePosition.y * scale * 1 + (imagePosition.y * scale * 1 - imagePosition.y * scale * selectedSizeProportion)).toFixed(1);
 
 	let canvas;
 
@@ -316,9 +316,7 @@
 		overflow: hidden;
 		width: 9rem;
 	}
-	/* select > option {
-		color: var(--lightmode-color);
-	} */
+
 	label {
 		margin-right: 0.5rem;
 	}
