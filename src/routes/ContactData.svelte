@@ -8,11 +8,12 @@
 	import linkedInLogo from '$lib/images/linkedin.svg';
 	import mailIcon from '$lib/images/mail.svg';
 
+	
 	let expandPicture = true;
 
 	onMount(() => {
 		if (browser) {
-			
+
 			let iconCollection = document.querySelectorAll('#contact-group > a > img');
 			let iconArray = [...iconCollection];
 			if ($theme === 'Light mode') {
@@ -53,7 +54,7 @@
 		
 		display: flex;
 		flex-direction: column;	
-		
+		max-height: 15rem;
 		/* gap: 1rem; */
 		align-items: center;
 		justify-content: center;
@@ -67,6 +68,7 @@
 		cursor: pointer;
 		
 	}
+	
 	
 	#profile-picture{
 		width: 80%;

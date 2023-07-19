@@ -1,6 +1,8 @@
 <script>
 	import { browser } from '$app/environment';
 	import { lang } from './configStore';
+	
+
 	function scroller(id, e) {
 		let btnColection = document.getElementsByClassName('scroll-btn');
 		let btnArray = [...btnColection];

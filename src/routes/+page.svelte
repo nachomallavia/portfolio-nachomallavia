@@ -8,8 +8,15 @@
 	import SectionWhere from './sections/Where.svelte';
 	import ContactData from './ContactData.svelte';
 	import Config from './Config.svelte';
-	import { lang, theme } from './configStore';
+	import { lang, theme, open } from './configStore';
 	import MobileMenu from './MobileMenu.svelte';
+	import iconMenu from '$lib/images/icon_menu.svg'
+
+	function openMobileMenu(){
+		if(browser){
+			$open = true;
+		}
+	}
 
 	import ScrollNav from './ScrollNav.svelte';
 
@@ -88,6 +95,9 @@
 <svelte:window />
 <div class="page-container">
 	<MobileMenu/>
+	<div class="mobile-menu-toggle" on:click={()=>{openMobileMenu()}}>
+		<button><img src={iconMenu} alt="Menu"></button>
+	</div>
 	<div class="grid">
 		<div class="left">
 			<ContactData />
@@ -108,6 +118,35 @@
 </div>
 
 <style>
+	.mobile-menu-toggle{
+		position: fixed;
+		top:0;
+		left:0;
+		z-index: 90;
+		width: 100%;
+		background-color: var(--background-color-1);
+		color: var(--text-color);
+		display: flex;
+		justify-content: flex-end;
+		padding-block:1rem;
+		padding-inline: 2rem;
+	}
+	.mobile-menu-toggle > button{
+		background-color: var(--background-color-1);
+		border: none;
+		border-radius: 50%;
+	}
+	.mobile-menu-toggle > button:active{
+		background-color: var(--background-color-2);
+	}
+	.mobile-menu-toggle > button > img{
+		height: 40px;
+	}
+	@media screen and (min-width: 513px) {
+		.mobile-menu-toggle{
+			display: none;
+		}
+	}
 	.page-container{
 		position: relative;
 	}
