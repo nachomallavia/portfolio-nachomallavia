@@ -35,8 +35,8 @@
 <style>
 	.stats {
 		margin-top: 2rem;
-		/* width: 100%; */
-		/* max-width: 700px; */
+		width: 100%;
+		max-width: 700px;
 		/* padding-inline: 2rem; */
 		padding-block: 1rem;
 		background-color: var(--background-color);

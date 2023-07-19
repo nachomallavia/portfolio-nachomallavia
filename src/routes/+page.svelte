@@ -9,6 +9,7 @@
 	import ContactData from './ContactData.svelte';
 	import Config from './Config.svelte';
 	import { lang, theme } from './configStore';
+	import MobileNav from './MobileNav.svelte';
 
 	import ScrollNav from './ScrollNav.svelte';
 
@@ -85,7 +86,8 @@
 	<meta name="description" content="Dev Portfolio" />
 </svelte:head>
 <svelte:window />
-<div>
+<div class="page-container">
+	<MobileNav/>
 	<div class="grid">
 		<div class="left">
 			<ContactData />
@@ -106,6 +108,9 @@
 </div>
 
 <style>
+	.page-container{
+		position: relative;
+	}
 	div.grid {
 		display: grid;
 		height: 100vh;
@@ -120,7 +125,6 @@
 		flex-direction: column;
 		min-height: 100%;
 		overflow-y: scroll;
-		overflow-x:none;
 		scroll-snap-type: y mandatory;
 	}
 	.center::-webkit-scrollbar {
@@ -157,7 +161,7 @@
 			display: flex;
 			flex-direction: column;
 		}
-		.right{
+		.grid > .right {
 			display: none;
 		}
 	}

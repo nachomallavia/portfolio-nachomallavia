@@ -48,13 +48,9 @@
 
 <style>
 
-	.contact-container{
-		max-width: 20rem;
-		overflow: hidden;
-	}	
+	
 	.profile-name{
-		max-width:100%;
-		min-height: 16rem;
+		
 		display: flex;
 		flex-direction: column;	
 		
@@ -73,13 +69,13 @@
 	}
 	
 	#profile-picture{
-		
-		max-width: 80%;
+		width: 80%;
+		max-width: 10rem;
 		border-radius: 50%;
 		stroke: 1px solid var(--background-color-2);
 		transition: all .65s;
 		cursor: pointer;
-		margin: 1rem;
+		margin-block: 1rem;
 
 		
 	}

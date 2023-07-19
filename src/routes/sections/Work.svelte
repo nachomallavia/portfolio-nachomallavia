@@ -114,12 +114,12 @@
 	}
 	.work-nav > button:hover {
 		cursor: pointer;
-		background-color: var(--background-color-2);
+		background-color: var(--accent-color-2);
 		color: white;
 
 	}
 	.work-nav > button.active {
-		color: white;
+		color: var(--text-color);
 		font-weight: 600;
 		background-color: var(--background-color);
 		border: 1px solid var(--accent-color-2);

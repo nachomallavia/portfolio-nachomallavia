@@ -56,13 +56,12 @@
 		position: relative;
 		width: 100%;
 		padding-top: 8rem;
-		padding-bottom: 20rem;
 		background-color: var(--background-color-1);
 		color: var(--text-color);
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
-		align-items: start;
+		/* justify-content: center;
+		align-items: start; */
 		padding-left: 8rem;
 		min-height: 100dvh;
 	}
@@ -91,12 +90,34 @@
 		left: 38%;
 		top: 10%;
 		z-index: 1;
-		font-size: 25rem;
+		font-size: 20rem;
 		font-weight: 600;
 		color: var(--background-color-2);
 	}
 	a {
 		color: var(--accent-color);
 		font-weight: 600;
+	}
+	@media screen and (max-width: 512px){
+		.about{
+			padding-block: 4rem;
+			padding-inline: 2rem;
+		}
+		h1{
+			font-size: 4rem;
+			line-height: 3.5rem;
+		}
+		.full > span {
+		position: absolute;
+		left: 50%;
+		top: 12%;
+		z-index: 1;
+		font-size: 12rem;
+		font-weight: 600;
+		color: var(--background-color-2);
+		}
+		p{
+			font-size: 1rem;
+		}
 	}
 </style>

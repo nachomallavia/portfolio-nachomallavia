@@ -62,6 +62,11 @@
 		gap: 1rem;
 		padding-left:2.5rem;
 	}
+	/* @media screen and (max-width: 512px){
+		.scroll-nav{
+			display: none;
+		}
+	} */
 	button {
 		font-size: 1rem;
 		background-color: transparent;
