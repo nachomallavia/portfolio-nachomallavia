@@ -13,8 +13,8 @@
             url:"https://www.digitalhouse.com",
             titleAr: "Programación Fullstack Jr.",
             titleUs: "Jr. Fullstack Development",
-            detailAr: "Aprendí a programar en Javascript con NodeJS + Express en back-end y React en front-end",
-            detailUs: "I learned Javascript programming with NodeJS and Express on the back-end and React on the front-end"
+            detailAr: "Aprendí a programar en Javascript con NodeJS + Express en back-end y React en front-end.",
+            detailUs: "I learned Javascript programming with NodeJS and Express on the back-end and React on the front-end."
         },
         {
             dateAr:'Febrero 2019 - Diciembre 2019',    
@@ -46,7 +46,7 @@
             url:"https://www.escuelarelacional.com",
             titleAr:"Dirección de arte",
             titleUs:"Art direction",
-            detailAr: "Aprendí conceptos de diseño como morfología, composición, teoría del color y tipografía. También estudié diferentes exponentes del diseño, la fotografía y la dirección de arte en todos sus ámbitos",
+            detailAr: "Aprendí conceptos de diseño como morfología, composición, teoría del color y tipografía. También estudié diferentes exponentes del diseño, la fotografía y la dirección de arte en todos sus ámbitos.",
             detailUs: "I learned design concepts such as morphology, composition, color theory and typography. I also studied different historical figures in the world of design, photography and art direction in all of its venues."
         },
     ]
@@ -82,8 +82,8 @@
             url:"https://www.flashcookie.com",
             titleAr: "Director creativo",
             titleUs: "Creative Director",
-            detailAr: "Lideré el equipo de diseño de la empresa, supervisando la creación de contenidos para la plataforma y sus redes sociales. También diseñé la primera iteración del front-end de Flashcookie",
-            detailUs: "I led the company's design team, supervising content creation for our platform and social networks. I also designed the first iteration of Flashcookie's front-end "
+            detailAr: "Lideré el equipo de diseño de la empresa, supervisando la creación de contenidos para la plataforma y sus redes sociales. También diseñé la primera iteración del front-end de Flashcookie.",
+            detailUs: "I led the company's design team, supervising content creation for our platform and social networks. I also designed the first iteration of Flashcookie's front-end."
         },
         {
             dateAr : "Mayo 2015 - Septiembre 2019",
@@ -94,7 +94,7 @@
             titleAr: "Director de arte Senior",
             titleUs: "Senior Art Director",
             detailAr: "Diseñé y produje piezas de comunicación gráfica para todo tipo de medios. Trabajé junto a diseñadores gráficos, fotógrafos y animadores en campañas publicitarias para diferentes clientes de la agencia.",
-            detailUs: "I designed and produced communication pieces for every type of media. I worked together with graphic designers, photographers and animators on advertising campaigns for the agency's clients"
+            detailUs: "I designed and produced communication pieces for every type of media. I worked together with graphic designers, photographers and animators on advertising campaigns for the agency's clients."
         },
         {
             dateAr : "Octubre 2013 - Mayo 2015",

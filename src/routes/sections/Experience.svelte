@@ -30,6 +30,7 @@
 		background-color: var(--background-color-1);
 		color: var(--text-color);
 		margin-bottom:10rem;
+		
 	}	
 	.full > .experience-header{
 		display: flex;

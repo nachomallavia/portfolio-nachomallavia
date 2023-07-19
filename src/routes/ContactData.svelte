@@ -114,7 +114,7 @@
 		justify-content: start;
 		
 		padding-left: 2rem;
-		min-height: 4rem;
+		min-height: 3rem;
 
 	}
 	#profile-picture{

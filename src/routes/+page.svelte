@@ -58,30 +58,18 @@
 
 			sectionArray.forEach((section, index) => {
 				if(index != 10){
-					console.log(main.scrollTop)
-					console.log(`${index+1}-Scroll Height: ${section.scrollHeight}`)
+					console.log(`------------Main scroll top: ${main.scrollTop}`)
+					console.log(`${index+1}-Offset Top:${section.offsetTop}`)
 					console.log(`${index+1}-Offset Height: ${section.offsetHeight}`)
 				}
-				let sectionOffset = section.offsetHeight * index - 200;
-				if (main.scrollTop >= sectionOffset) {
+				let sectionRange = section.offsetTop + section.offsetHeight;
+				console.log(sectionRange)
+				if (main.scrollTop >= section.offsetTop && main.scrollTop < sectionRange-200) {
 
 					navArray.forEach((navButton) => {
 						if ('section-' + navButton.id === section.id) {
 							navButton.classList.add('current');
-							if(section.id === 'section-aboutme'){
-								if(sectionOffset > 0){
-								img.style['maxWidth'] = '12rem';
-								container.style['flexDirection'] = 'column';
-								container.style['justifyContent'] = 'center';
-								// container.classList.add('wrap')flex-direction: column;
-								}
-								else if(sectionOffset){
-								container.style['height']='5.2rem';	
-								img.style['maxWidth'] = '3rem';
-								container.style['flexDirection'] = 'row';
-								container.style['justifyContent'] = 'flex-start';
-								}
-							}
+							
 						} else {
 							navButton.classList.remove('current');
 						}

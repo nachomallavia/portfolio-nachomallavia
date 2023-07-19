@@ -51,7 +51,7 @@
 		on:click={(e) => {
 			scroller('section-contact', e);
 		}}
-		id="where">{$lang =='ES'?'Contacto':'Contact'}</button
+		id="contact">{$lang =='ES'?'Contacto':'Contact'}</button
 	>
 </div>
 
