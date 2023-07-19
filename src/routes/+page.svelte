@@ -9,7 +9,7 @@
 	import ContactData from './ContactData.svelte';
 	import Config from './Config.svelte';
 	import { lang, theme } from './configStore';
-	import MobileNav from './MobileNav.svelte';
+	import MobileMenu from './MobileMenu.svelte';
 
 	import ScrollNav from './ScrollNav.svelte';
 
@@ -87,7 +87,7 @@
 </svelte:head>
 <svelte:window />
 <div class="page-container">
-	<MobileNav/>
+	<MobileMenu/>
 	<div class="grid">
 		<div class="left">
 			<ContactData />
