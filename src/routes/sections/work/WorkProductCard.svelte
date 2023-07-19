@@ -30,7 +30,7 @@
 		let designBox = document.getElementById('design-box');
 		let textureBox = document.getElementById('texture-box');
 
-		btn.addEventListener('click', (e) => {
+		btn?.addEventListener('click', (e) => {
 			if (expand === true) {
 				translateZ(backgroundBox, '100px', expand);
 				translateZ(colorBox, '200px', expand);

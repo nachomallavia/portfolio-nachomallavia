@@ -33,12 +33,11 @@
 		
 	}	
 	.full > .experience-header{
+		min-height: 5rem;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		padding-left:4rem;
-		padding-top: 1.25rem;
-		padding-bottom: 1.5rem;
 		border-top: 1px solid var(--background-color-2);
 		border-bottom: 1px solid var(--background-color-2);
 	}
@@ -50,8 +49,8 @@
 	.experience-nav{
 		display: flex;
 		align-items: center;
-		gap: .8rem;
-		margin-right: 2rem;
+		gap: 1rem;
+		padding-right: 2rem;
 	}
 	.experience-nav > button {
         display: flex;
@@ -69,7 +68,7 @@
 		background-color: var(--background-color-2);
 	}
 	button.selected{
-        border: 1px solid var(--background-color-3);
+        border: 1px solid var(--accent-color-2);
     }
     .spot{
         height: 1.25rem;

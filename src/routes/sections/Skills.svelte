@@ -71,9 +71,10 @@
 		min-height: 100dvh;
 	}
 	.full > .skills-header{
-		padding-left:4rem;
-		padding-top: 2rem;
-		padding-bottom: 1.5rem;
+		padding-left:6rem;
+		min-height: 5rem;
+		display: flex;		
+		align-items: center;
 		margin-bottom: 4rem;
 		border-top: 1px solid var(--background-color-2);
 		border-bottom: 1px solid var(--background-color-2);

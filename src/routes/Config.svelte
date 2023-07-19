@@ -11,10 +11,9 @@
 <style>
 	.config {
 		display: flex;
-		/* flex-direction: column; */
+		min-height: 5rem;
 		gap: 1rem;
-		padding-top: 1rem;
-		padding-bottom: 1.5rem;
+		
 		align-items: center;
 		justify-content: center;
 		padding-right: 2rem;

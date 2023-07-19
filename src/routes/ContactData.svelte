@@ -23,50 +23,12 @@
 			
 		}
 	});
-	function expandProfilePicture(){
-		if(browser){
-			expandPicture = !expandPicture;
-			let img = document.getElementById('profile-picture');
-			let container = document.getElementById('profile-container');
-			let name = document.getElementById('name');
-			
-			if(img.style['maxWidth']=='3rem'){
-				img.style['maxWidth']='12rem';
-				container.style['height']='16rem';
-				name.style['display']='none';
-
-				setTimeout(()=>{
-					name.style['display']='inline';
-					container.style['flexDirection'] = 'column';
-					container.style['justifyContent'] = 'center';
-					
-					
-				},400)
-				
-			} else if(img.style['maxWidth']='20rem'){
-				container.style['flexDirection'] = 'row';
-				container.style['justifyContent'] = 'flex-start';
-				img.style['maxWidth']='3rem'
-				container.style['height']='5.2rem';
-				name.style['display']='none';
-				setTimeout(()=>{
-					name.style['display']='inline';
-				},400)
-			}
-			// if(expandPicture === true){
-			// img.style['maxWidth'] = '12rem';
-			// container.classList.toggle('wrap')
-			// } else if(expandPicture === false){
-			// 	img.style['maxWidth'] = '3rem';
-			// 	container.classList.toggle('wrap')
-			// }
-		}
-	}
+	
 	
 </script>
 
 <div class="contact-container">
-	<div class="profile-name wrap" id="profile-container" on:click={()=>{expandProfilePicture()}}>
+	<div class="profile-name wrap" id="profile-container">
 		<img src={profilePicture} alt="" class="expand"id="profile-picture" >
 		<p id="name">Ignacio Mallaviabarrena</p>		
 	</div>
@@ -109,17 +71,10 @@
 		cursor: pointer;
 		
 	}
-	.profile-name.wrap{
-		flex-wrap: nowrap;
-		justify-content: start;
-		
-		padding-left: 2rem;
-		min-height: 3rem;
-
-	}
+	
 	#profile-picture{
 		
-		max-width: 100%;
+		max-width: 80%;
 		border-radius: 50%;
 		stroke: 1px solid var(--background-color-2);
 		transition: all .65s;
