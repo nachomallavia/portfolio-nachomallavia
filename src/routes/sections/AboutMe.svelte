@@ -27,7 +27,7 @@
 		<p>
 			A lo largo de los años, <strong
 				>diseñé y programé varios features dentro de la plataforma.</strong
-			><br /> También he gestionado y coordinado un equipo de 15 personas, dirigido y asignado
+			><br /> También he gestionado y coordinado un equipo de 16 personas, dirigido y asignado
 			recursos <br />y supervisado el desarrollo de una plataforma web con más de 35,000 usuarios.
 		</p>
 	{:else}

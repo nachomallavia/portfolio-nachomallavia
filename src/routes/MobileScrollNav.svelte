@@ -1,6 +1,6 @@
 <script>
 	import { browser } from '$app/environment';
-	import { lang } from './configStore';
+	import { lang, open } from './configStore';
 	
 
 	function scroller(id, e) {
@@ -12,12 +12,11 @@
 		el.scrollIntoView({
 			behavior: 'smooth'
 		});
-		let menu = document.getElementById("mobile-menu");
-			menu.dataset.open = 'false';
+		$open=false;
 	}
 </script>
 
-<div class="scroll-nav">
+<div class="scroll-nav" on:click={()=>{$open = false}}>
 	<button
 		class="scroll-btn current"
 		on:click={(e) => {
@@ -58,6 +57,7 @@
 <style>
 	.scroll-nav {
 		display: flex;
+		width: 100%;
 		flex-direction: column;
 		align-items: center;
 		gap: 2rem;

@@ -6,7 +6,7 @@
 
 </script>
 
-<div id="mobile-menu" data-open={$open}>
+<div id="mobile-menu" data-open={$open} >
 
     <MobileConfig />
     <MobileScrollNav/>
