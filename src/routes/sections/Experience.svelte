@@ -26,10 +26,11 @@
 
 <style>
 	.full {
+		
 		width: 100%;
 		background-color: var(--background-color-1);
 		color: var(--text-color);
-		margin-bottom:10rem;
+		margin-bottom:8rem;
 		
 	}	
 	.full > .experience-header{
@@ -81,4 +82,9 @@
     .blue{
         background-color: var(--secondary-color);
     }
+	@media screen and (max-width:512px){
+		.full{
+			padding-top: 5rem;
+		}
+	}
 </style>

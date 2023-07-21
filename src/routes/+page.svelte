@@ -5,7 +5,7 @@
 	import Work from './sections/Work.svelte';
 	import Skills from './sections/Skills.svelte';
 	import Experience from './sections/Experience.svelte';
-	import SectionWhere from './sections/Where.svelte';
+	import Contact from './sections/Contact.svelte';
 	import ContactData from './ContactData.svelte';
 	import Config from './Config.svelte';
 	import { lang, theme, open } from './configStore';
@@ -107,7 +107,7 @@
 			<Work />
 			<Skills />
 			<Experience />
-			<SectionWhere />
+			<Contact />
 		</div>
 		<div class="right">
 			<Config />

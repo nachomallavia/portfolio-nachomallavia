@@ -63,7 +63,8 @@
 		/* justify-content: center;
 		align-items: start; */
 		padding-left: 8rem;
-		min-height: 100dvh;
+		margin-bottom: 8rem;
+
 	}
 	.full h2 {
 		font-weight: 600;
