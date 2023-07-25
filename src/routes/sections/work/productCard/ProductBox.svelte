@@ -5,7 +5,7 @@
 	import BackgroundBox from './BackgroundBox.svelte';
 </script>
 
-<div class="box">
+<div class="box" id="box">
 	<BackgroundBox />
 	<ColorBox />
 	<DesignBox />

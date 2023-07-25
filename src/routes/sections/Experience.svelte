@@ -86,5 +86,15 @@
 		.full{
 			padding-top: 5rem;
 		}
+		h2.section-title {
+			display: none;
+		}
+		.experience-nav{
+			padding-right: 0;
+		}
+		.full > .experience-header{
+			padding-left: 0;
+			justify-content: center;			
+		}
 	}
 </style>

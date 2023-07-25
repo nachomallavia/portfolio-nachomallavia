@@ -19,7 +19,7 @@ export const productList = [
 		id: 2,
 		priceAr: '9.500',
 		priceUs: 20,
-		nameAr: 'Buzo Oversized',
+		nameAr: 'Buzo Canguro',
 		nameUs: 'Oversized Hoodie',
 		availableColorIDs: [1, 2, 4, 6],
 		availableSizesPerColor: {

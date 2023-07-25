@@ -8,16 +8,17 @@
 	import Contact from './sections/Contact.svelte';
 	import ContactData from './ContactData.svelte';
 	import Config from './Config.svelte';
-	import { lang, theme, open } from './configStore';
+	import { lang, theme, open, section } from './configStore';
 	import MobileMenu from './MobileMenu.svelte';
-	import iconMenu from '$lib/images/icon_menu.svg'
+	import MobileTitleToggle from './MobileTitleToggle.svelte';
+	import iconMenu from '$lib/images/icon_menu.svg';
 
-	function openMobileMenu(){
-		if(browser){
-			$open = true;
-		}
+	
+	function updateSection(value){
+
+		$section=value;
+
 	}
-
 	import ScrollNav from './ScrollNav.svelte';
 
 	if (data.lang) {
@@ -65,18 +66,15 @@
 			let container = document.getElementById('profile-container');
 
 			sectionArray.forEach((section, index) => {
-				if(index != 10){
-					console.log(`------------Main scroll top: ${main.scrollTop}`)
-					console.log(`${index+1}-Offset Top:${section.offsetTop}`)
-					console.log(`${index+1}-Offset Height: ${section.offsetHeight}`)
-				}
-				let sectionRange = section.offsetTop + section.offsetHeight;
-				console.log(sectionRange)
-				if (main.scrollTop >= section.offsetTop && main.scrollTop < sectionRange-200) {
+				
+				let sectionRange = section.offsetTop + section.offsetHeight-50;
+
+				if (main.scrollTop >= section.offsetTop && main.scrollTop < sectionRange) {
 
 					navArray.forEach((navButton) => {
 						if ('section-' + navButton.id === section.id) {
 							navButton.classList.add('current');
+							updateSection(navButton.id);
 							
 						} else {
 							navButton.classList.remove('current');
@@ -94,10 +92,9 @@
 </svelte:head>
 <svelte:window />
 <div class="page-container">
+	<MobileTitleToggle/>
 	<MobileMenu/>
-	<div class="mobile-menu-toggle" on:click={()=>{openMobileMenu()}}>
-		<button><img src={iconMenu} alt="Menu"></button>
-	</div>
+	
 	<div class="grid">
 		<div class="left">
 			<ContactData />
@@ -118,37 +115,7 @@
 </div>
 
 <style>
-	.mobile-menu-toggle{
-		position: fixed;
-		top:0;
-		left:0;
-		z-index: 90;
-		width: 100%;
-		background: var(--gradient-fade-1);
-		color: var(--text-color);
-		display: flex;
-		justify-content: flex-end;
-		padding-block:1rem;
-		padding-inline: 2rem;
-
-	}
-	.mobile-menu-toggle > button{
-		background: none;
-		height: 100%;
-		border: none;
-		border-radius: 50%;
-	}
-	.mobile-menu-toggle > button:active{
-		background-color: var(--background-color-2);
-	}
-	.mobile-menu-toggle > button > img{
-		height: 40px;
-	}
-	@media screen and (min-width: 513px) {
-		.mobile-menu-toggle{
-			display: none;
-		}
-	}
+	
 	.page-container{
 		position: relative;
 	}

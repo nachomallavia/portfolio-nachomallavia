@@ -46,4 +46,17 @@
 	h3 {
 		font-size: 1.5rem;
 	}
+	@media screen and (max-width:512px){
+		.stat-container{
+			border-bottom: 1px solid var(--background-color-3);
+			padding-bottom: .25rem;
+		}
+		h3{
+			font-size: 1.25rem;
+		}
+		img{
+			border: none;
+			margin-right: .5rem;
+		}
+	}
 </style>

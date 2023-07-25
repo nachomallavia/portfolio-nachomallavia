@@ -13,7 +13,7 @@
 
 	{#if $lang === 'ES'}
 		
-		<h1>¡HOLA!<br /> Mi nombre <br /> es Nacho,</h1>
+		<h1>¡HOLA!<br /> Mi nombre <br /> es Nacho.</h1>
 		
 		<h2>Soy un desarrollador Fullstack Jr.</h2>
 		<p>
@@ -27,12 +27,12 @@
 		<p>
 			A lo largo de los años, <strong
 				>diseñé y programé varios features dentro de la plataforma.</strong
-			><br /> También he gestionado y coordinado un equipo de 16 personas, dirigido y asignado
+			><br /> También he gestionado y coordinado un equipo de hasta 20 personas, dirigido y asignado
 			recursos <br />y supervisado el desarrollo de una plataforma web con más de 35,000 usuarios.
 		</p>
 	{:else}
-		<h1>Hi! My name<br />is Nacho,</h1>
-		<h2>I'm a Jr. Fullstack Developer</h2>
+		<h1>Hi! My name<br />is Nacho.</h1>
+		<h2>I'm a Jr. Fullstack Developer.</h2>
 		<p>
 			Also, during the last five years I've worked as a <strong
 				>Product Designer and Operations Manager</strong
@@ -41,8 +41,8 @@
 		</p>
 		<br />
 		<p>
-			Through the years, <strong>I've designed and programmed many of the Platforms features</strong
-			><br /> I've also been in charge of and coordinated a team of 15 people, managed and assigned resources
+			Through the years, <strong>I've designed and programmed many of the Platforms features.</strong
+			><br /> I've also been in charge of coordinating a team of up to 20 people, managed and assigned resources
 			and supervised the development of a Marketplace with over 35,000 users.
 		</p>
 	{/if}
@@ -100,25 +100,27 @@
 		font-weight: 600;
 	}
 	@media screen and (max-width: 512px){
+		
 		.about{
-			padding-block: 4rem;
-			padding-inline: 2rem;
+			padding-top: 6rem;
+			padding-inline: 1.5rem;
+
 		}
 		h1{
-			font-size: 4rem;
-			line-height: 3.5rem;
+			font-size: 3.5rem;
+			line-height: 3.2rem;
+			margin-bottom: .75rem;
+		}
+		h2{
+			font-size: 1.5rem;
+			margin-bottom: 2rem;
 		}
 		.full > span {
-		position: absolute;
-		left: 50%;
-		top: 12%;
-		z-index: 1;
-		font-size: 12rem;
-		font-weight: 600;
-		color: var(--background-color-2);
+			display: none;			
 		}
 		p{
 			font-size: 1rem;
 		}
+		
 	}
 </style>

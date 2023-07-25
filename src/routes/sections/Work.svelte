@@ -33,8 +33,8 @@
 					showWork(e);
 				}}
 				>{$lang === 'ES'
-					? 'Tarjeta de producto con capas dinámicas'
-					: 'Dynamic Layered Product Card'}</button
+					? 'Tarjeta dinámica'
+					: 'Dynamic Product Card'}</button
 			>
 			<button
 				class="work-btn"
@@ -72,13 +72,11 @@
 	.full {
 		display: flex;
 		flex-direction: column;
-		gap: 2rem;
 		width: 100%;
-
 		background-color: var(--background-color-1);
-		color: var(--text-color);
-
+		color: var(--text-color);		
 		margin-bottom:8rem;
+
 
 	}
 	.work-header {
@@ -146,6 +144,20 @@
 	@media screen and (max-width:512px){
 		.full{
 			padding-top: 5rem;
+		}
+		.work-header{
+			padding-inline: 1rem;
+			min-height: auto;
+		}
+		.work-header > h2{
+			display: none;
+		}
+		.work-header > .work-nav{
+			gap:0;
+		}
+		.work-nav > button.active {
+			border-radius: 0;
+			background-color:var(--accent-color-2);
 		}
 	}
 </style>

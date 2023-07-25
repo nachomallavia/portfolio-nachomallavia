@@ -290,12 +290,6 @@
         justify-content: center;
         align-items: center;
     }
-    .spot > img{
-        width:1.75rem;
-    }
-    .spot > img.bigger{
-        width:2rem;
-    }
    
     .tiny-line{
         width: 2rem;
@@ -378,5 +372,22 @@
     .blueText{
         color: var(--secondary-color);
     }
-   
+   @media screen and (max-width:512px){
+    #line{
+        /* display: none; */
+        left:1rem;
+    }
+    .big-offset-left{
+        margin-left: 0;
+    }
+    .big-offset-right{
+        margin-right: 0;
+    }
+    .timeline-pointer{
+        display: none;
+    }
+    .item-description{
+        text-align: left;
+    }
+   }
 </style>

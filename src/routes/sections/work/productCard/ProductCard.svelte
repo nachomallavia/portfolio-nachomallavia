@@ -58,4 +58,9 @@
 	#product-card:hover {
 		transform: perspective(2500px) rotateY(var(--rotateX)) rotateX(var(--rotateY));
 	}
+	@media screen and (max-width:512px){
+		.product-card{
+			min-width: 0;
+		}
+	}
 </style>

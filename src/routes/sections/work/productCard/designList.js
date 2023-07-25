@@ -23,18 +23,24 @@ export const designList = [
 		placementCoordinates: [
 			{
 				productId: 1,
-				scale: '30%',
-				translate: '96px 140px'
+				scale: 43,
+				translate: '96px 140px',
+				translateX: 29,
+				translateY: 31
 			},
 			{
 				productId: 2,
-				scale: '26%',
-				translate: '106px 116px'
+				scale: 42,
+				translate: '106px 116px',
+				translateX: 29,
+				translateY: 26
 			},
 			{
 				productId: 3,
-				scale: '35%',
-				translate: '82px 192px'
+				scale: 50,
+				translate: '82px 192px',
+				translateX: 25,
+				translateY: 45
 			}
 		],
 		palette: ['#c04f49', '#5d98c6', '#e6c963'],
@@ -64,18 +70,24 @@ export const designList = [
 		placementCoordinates: [
 			{
 				productId: 1,
-				scale: '36%',
-				translate: '80px 98px'
+				scale: 53,
+				translate: '80px 98px',
+				translateX: 24,
+				translateY: 22
 			},
 			{
 				productId: 2,
-				scale: '32%',
-				translate: '90px 82px'
+				scale: 48,
+				translate: '90px 82px',
+				translateX: 25,
+				translateY: 18
 			},
 			{
 				productId: 3,
-				scale: '42%',
-				translate: '61px 180px'
+				scale: 60,
+				translate: '61px 180px',
+				translateX: 20,
+				translateY: 40
 			}
 		],
 		palette: ['#000000'],
@@ -105,18 +117,24 @@ export const designList = [
 		placementCoordinates: [
 			{
 				productId: 1,
-				scale: '34%',
-				translate: '85px 150px'
+				scale: 48,
+				translate: '85px 150px',
+				translateX: 26,
+				translateY: 32
 			},
 			{
 				productId: 2,
-				scale: '28%',
-				translate: '99px 120px'
+				scale: 42,
+				translate: '99px 120px',
+				translateX: 29,
+				translateY: 26
 			},
 			{
 				productId: 3,
-				scale: '35%',
-				translate: '82px 192px'
+				scale: 52,
+				translate: '82px 192px',
+				translateX: 23,
+				translateY: 42
 			}
 		],
 		palette: ['#f2b71b', '#031620', '#f6ecd6'],
@@ -132,18 +150,24 @@ export const designList = [
 		placementCoordinates: [
 			{
 				productId: 1,
-				scale: '29%',
-				translate: '99px 120px'
+				scale: 46,
+				translate: '99px 120px',
+				translateX: 27.5,
+				translateY: 25.5
 			},
 			{
 				productId: 2,
-				scale: '27%',
-				translate: '104px 94px'
+				scale: 42,
+				translate: '104px 94px',
+				translateX: 28.5,
+				translateY: 21
 			},
 			{
 				productId: 3,
-				scale: '36%',
-				translate: '78px 192px'
+				scale: 52,
+				translate: '78px 192px',
+				translateX: 24,
+				translateY: 40
 			}
 		],
 		selectedProductColors: [
@@ -173,18 +197,24 @@ export const designList = [
 		placementCoordinates: [
 			{
 				productId: 1,
-				scale: '42%',
-				translate: '59px 127px'
+				scale: 59,
+				translate: '59px 127px',
+				translateX: 22,
+				translateY: 30
 			},
 			{
 				productId: 2,
-				scale: '34%',
-				translate: '79px 102px'
+				scale: 50,
+				translate: '79px 102px',
+				translateX: 24,
+				translateY: 24
 			},
 			{
 				productId: 3,
-				scale: '45%',
-				translate: '48px 182px'
+				scale: 56,
+				translate: '48px 182px',
+				translateX: 24,
+				translateY: 45
 			}
 		],
 		selectedProductColors: [
@@ -205,18 +235,24 @@ export const designList = [
 		placementCoordinates: [
 			{
 				productId: 1,
-				scale: '42%',
-				translate: '61px 140px'
+				scale: 42,
+				translate: '61px 140px',
+				translateX: 25,
+				translateY: 30
 			},
 			{
 				productId: 2,
-				scale: '31%',
-				translate: '91px 107px'
+				scale: 31,
+				translate: '91px 107px',
+				translateX: 25,
+				translateY: 30
 			},
 			{
 				productId: 3,
-				scale: '42%',
-				translate: '57px 186px'
+				scale: 42,
+				translate: '57px 186px',
+				translateX: 25,
+				translateY: 30
 			}
 		],
 		selectedProductColors: [
@@ -237,18 +273,24 @@ export const designList = [
 		placementCoordinates: [
 			{
 				productId: 1,
-				scale: '30%',
-				translate: '98px 152px'
+				scale: 30,
+				translate: '98px 152px',
+				translateX: 25,
+				translateY: 30
 			},
 			{
 				productId: 2,
-				scale: '26%',
-				translate: '108px 125px'
+				scale: 26,
+				translate: '108px 125px',
+				translateX: 25,
+				translateY: 30
 			},
 			{
 				productId: 3,
-				scale: '38%',
-				translate: '72px 192px'
+				scale: 38,
+				translate: '72px 192px',
+				translateX: 25,
+				translateY: 30
 			}
 		],
 		selectedProductColors: [
@@ -269,18 +311,24 @@ export const designList = [
 		placementCoordinates: [
 			{
 				productId: 1,
-				scale: '31%',
-				translate: '96px 148px'
+				scale: 31,
+				translate: '96px 148px',
+				translateX: 25,
+				translateY: 30
 			},
 			{
 				productId: 2,
-				scale: '28%',
-				translate: '100px 120px'
+				scale: 28,
+				translate: '100px 120px',
+				translateX: 25,
+				translateY: 30
 			},
 			{
 				productId: 3,
-				scale: '38%',
-				translate: '74px 191px'
+				scale: 38,
+				translate: '74px 191px',
+				translateX: 25,
+				translateY: 30
 			}
 		],
 		selectedProductColors: [
@@ -301,18 +349,24 @@ export const designList = [
 		placementCoordinates: [
 			{
 				productId: 1,
-				scale: '42%',
-				translate: '61px 140px'
+				scale: 42,
+				translate: '61px 140px',
+				translateX: 25,
+				translateY: 30
 			},
 			{
 				productId: 2,
-				scale: '31%',
-				translate: '91px 107px'
+				scale: 31,
+				translate: '91px 107px',
+				translateX: 25,
+				translateY: 30
 			},
 			{
 				productId: 3,
-				scale: '42%',
-				translate: '57px 186px'
+				scale: 42,
+				translate: '57px 186px',
+				translateX: 25,
+				translateY: 30
 			}
 		],
 		selectedProductColors: [
@@ -333,18 +387,24 @@ export const designList = [
 		placementCoordinates: [
 			{
 				productId: 1,
-				scale: '34%',
-				translate: '89px 134px'
+				scale: 24,
+				translate: '89px 134px',
+				translateX: 25,
+				translateY: 30
 			},
 			{
 				productId: 2,
-				scale: '31%',
-				translate: '91px 107px'
+				scale: 21,
+				translate: '91px 107px',
+				translateX: 25,
+				translateY: 30
 			},
 			{
 				productId: 3,
-				scale: '40%',
-				translate: '69px 186px'
+				scale: 20,
+				translate: '69px 186px',
+				translateX:40,
+				translateY:30
 			}
 		],
 		selectedProductColors: [

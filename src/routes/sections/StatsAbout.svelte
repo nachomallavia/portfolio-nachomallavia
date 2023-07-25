@@ -46,4 +46,10 @@
 		gap: 4rem;
 		justify-content: space-between;
 	}
+	@media screen and (max-width:512px){
+		.stats{
+			flex-direction: column;
+			gap: 2rem;
+		}
+	}
 </style>

@@ -106,13 +106,16 @@
 </script>
 
 <div class="container" id="work-product-card">
+	<div class="mobile-on">
+		<ProductCardConfig />
+		</div>
 	<div id="card-container" class="product-card">
 		<ProductCard />
 		<button id="expand-btn">{$lang == 'ES' ? btnTextAr : btnTextUs}</button>
 	</div>
 	<div class="description">
 		<h2>
-			{$lang === 'ES' ? 'Tarjeta de producto con capas dinámicas' : 'Dynamic Layered Product Card'}
+			{$lang === 'ES' ? `Tarjeta de producto con capas dinámicas` : 'Dynamic Layered Product Card'}
 		</h2>
 		{#if $lang === 'ES'}
 			<p>
@@ -127,19 +130,20 @@
 				Users defined when creating their own products.
 			</p>
 		{/if}
+		<div class="mobile-off">
 		<ProductCardConfig />
+		</div>
 	</div>
 </div>
 
 <style>
 	.container {
 		display: flex;
-		padding-left: 2rem;
-		margin-top: 2rem;
+		padding-inline: 4rem;
 		gap: 2rem;
 	}
 	#card-container {
-		padding-inline: 4rem;
+		padding-inline: 2rem;
 		display: flex;
 		flex-direction: column;
 		cursor: pointer;
@@ -155,12 +159,9 @@
 		z-index: 100;
 	}
 
-	.description {
-		padding-top: 2rem;
-		padding-right: 4rem;
-	}
+	
 	h2 {
-		font-size: 1.75rem;
+		font-size: 2rem;
 		margin-bottom: 2rem;
 	}
 	p {
@@ -168,5 +169,36 @@
         line-height:var(--font-line-height);
 		/* max-width: 560px; */
 		margin-bottom: 2rem;
+	}
+	.mobile-off{
+		display: block;
+	}
+	.mobile-on{
+		display: none;
+	}
+
+	@media screen and (max-width: 512px){
+		.container{
+			flex-direction: column-reverse;
+			padding-inline: 0rem;
+
+		}
+		h2{
+			font-size: 1.5rem;
+		}
+		#card-container{
+			padding-inline: 1.5rem;
+		}
+		.description{
+			padding-top: 0;
+			padding-inline: 1.25rem;
+		}
+		.mobile-off{
+		display: none;
+		}
+		.mobile-on{
+		display: block;
+		}
+		
 	}
 </style>
