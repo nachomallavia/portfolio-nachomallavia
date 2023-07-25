@@ -28,6 +28,7 @@
 <style>
 	.product-card {
 		background-color: var(--lightmode-1);
+
 		min-width: 24rem;
 		border: 1px solid var(--lightmode-2);
 		box-shadow: 0rem 2rem 4rem var(--lightmode-shadow);

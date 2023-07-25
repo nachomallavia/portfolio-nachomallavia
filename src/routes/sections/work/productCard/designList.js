@@ -197,9 +197,9 @@ export const designList = [
 		placementCoordinates: [
 			{
 				productId: 1,
-				scale: 59,
+				scale: 60,
 				translate: '59px 127px',
-				translateX: 22,
+				translateX: 20.5,
 				translateY: 30
 			},
 			{
@@ -211,10 +211,10 @@ export const designList = [
 			},
 			{
 				productId: 3,
-				scale: 56,
+				scale: 62,
 				translate: '48px 182px',
-				translateX: 24,
-				translateY: 45
+				translateX: 18,
+				translateY: 42
 			}
 		],
 		selectedProductColors: [
@@ -235,24 +235,24 @@ export const designList = [
 		placementCoordinates: [
 			{
 				productId: 1,
-				scale: 42,
+				scale: 56,
 				translate: '61px 140px',
-				translateX: 25,
-				translateY: 30
+				translateX: 22.5,
+				translateY: 32
 			},
 			{
 				productId: 2,
-				scale: 31,
+				scale: 49,
 				translate: '91px 107px',
 				translateX: 25,
-				translateY: 30
+				translateY: 24
 			},
 			{
 				productId: 3,
-				scale: 42,
+				scale: 62,
 				translate: '57px 186px',
-				translateX: 25,
-				translateY: 30
+				translateX: 19,
+				translateY: 42
 			}
 		],
 		selectedProductColors: [
@@ -273,24 +273,24 @@ export const designList = [
 		placementCoordinates: [
 			{
 				productId: 1,
-				scale: 30,
+				scale: 51,
 				translate: '98px 152px',
-				translateX: 25,
-				translateY: 30
+				translateX: 24,
+				translateY: 32
 			},
 			{
 				productId: 2,
-				scale: 26,
+				scale: 46,
 				translate: '108px 125px',
-				translateX: 25,
-				translateY: 30
+				translateX: 25.5,
+				translateY: 25
 			},
 			{
 				productId: 3,
-				scale: 38,
+				scale: 55,
 				translate: '72px 192px',
-				translateX: 25,
-				translateY: 30
+				translateX: 22,
+				translateY: 45
 			}
 		],
 		selectedProductColors: [
@@ -311,24 +311,24 @@ export const designList = [
 		placementCoordinates: [
 			{
 				productId: 1,
-				scale: 31,
+				scale: 47,
 				translate: '96px 148px',
-				translateX: 25,
-				translateY: 30
+				translateX: 26,
+				translateY: 32
 			},
 			{
 				productId: 2,
-				scale: 28,
+				scale: 44,
 				translate: '100px 120px',
-				translateX: 25,
-				translateY: 30
+				translateX: 26,
+				translateY: 27
 			},
 			{
 				productId: 3,
-				scale: 38,
+				scale: 55,
 				translate: '74px 191px',
-				translateX: 25,
-				translateY: 30
+				translateX: 22,
+				translateY: 45
 			}
 		],
 		selectedProductColors: [
@@ -349,24 +349,24 @@ export const designList = [
 		placementCoordinates: [
 			{
 				productId: 1,
-				scale: 42,
+				scale: 48,
 				translate: '61px 140px',
 				translateX: 25,
 				translateY: 30
 			},
 			{
 				productId: 2,
-				scale: 31,
+				scale: 46,
 				translate: '91px 107px',
 				translateX: 25,
-				translateY: 30
+				translateY: 25
 			},
 			{
 				productId: 3,
-				scale: 42,
+				scale: 52,
 				translate: '57px 186px',
-				translateX: 25,
-				translateY: 30
+				translateX: 22,
+				translateY: 44
 			}
 		],
 		selectedProductColors: [
@@ -387,24 +387,24 @@ export const designList = [
 		placementCoordinates: [
 			{
 				productId: 1,
-				scale: 24,
+				scale: 54,
 				translate: '89px 134px',
-				translateX: 25,
+				translateX: 23,
 				translateY: 30
 			},
 			{
 				productId: 2,
-				scale: 21,
+				scale: 48,
 				translate: '91px 107px',
-				translateX: 25,
-				translateY: 30
+				translateX: 25.5,
+				translateY: 22
 			},
 			{
 				productId: 3,
-				scale: 20,
+				scale: 58,
 				translate: '69px 186px',
-				translateX:40,
-				translateY:30
+				translateX:20,
+				translateY:44
 			}
 		],
 		selectedProductColors: [

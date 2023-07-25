@@ -65,17 +65,19 @@
 	}
 	$: if (product.id != undefined) {
 		if (design != undefined) {
-			// if (browser) {
-			// 	let coordinates = design.placementCoordinates;
-			// 	designScale = coordinates[product.id - 1].scale;
-			// 	designTranslate = coordinates[product.id - 1].translate;
-
-			// 	let designElement = document.querySelector('.artboard > img');
-			// 	designElement.style['scale'] = designScale;
-			// 	designElement.style['translate'] = designTranslate;
-			// }
+			
 			if (browser) {
-				let container = document.getElementById('box');
+				applyCoordinates()
+			}
+		}
+	}
+	if(browser){
+		window.addEventListener('resize',(e)=>{
+			applyCoordinates()
+		})
+	}
+	function applyCoordinates(){
+		let container = document.getElementById('box');
 				let containerWidth = container.offsetWidth;
 				let containerHeight = container.offsetHeight;
 
@@ -102,50 +104,13 @@
 				designElement.style['width'] = designWidth;
 
 				designElement.style['translate'] = designTranslate;
-			}
-		}
+
 	}
 	onMount(() => {
 		// scaleDesign()
 		// applyCoordinates();
 	});
-	function scaleDesign(){
-		if(browser){
-			let container = document.getElementById('product-card');
-			console.log(container.offsetWidth);
-			console.log(container.offsetHeight);
-		}
-	}
-	function applyCoordinates() {
-		if (product.id != undefined) {
-			if (design != undefined) {
-				let coordinates = design.placementCoordinates;
-
-				designScale = coordinates[product.id - 1].scale;
-				// designTranslate = coordinates[product.id - 1].translate;
-				
-			}
-
-			if (browser) {
-				let container = document.getElementById('box');
-				let containerWidth = container.offsetWidth;
-				let containerHeight = container.offsetHeight;
-				let designTranslateX = design.placementCoordinates.translateX;
-				let designTranslateY = design.placementCoordinates.translateY;
-
-				let designCoordinateX = Math.floor(containerWidth/100 * designTranslateX);
-				let designCoordinateY = Math.floor(containerHeight/100 * designTranslateY);
-
-				designTranslate = `${designCoordinateX}px ${designCoordinateY}px`;
-
-				let designElement = document.querySelector('.artboard > img');
-
-				designElement.style['scale'] = designScale;
-
-				designElement.style['translate'] = designTranslate;
-			}
-		}
-	}
+	
 </script>
 
 <div class="design-container card-expand" id="design-box">
