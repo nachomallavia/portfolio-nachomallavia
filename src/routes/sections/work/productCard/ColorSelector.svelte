@@ -93,13 +93,13 @@
 	}
 	.color-menu {
 		display: flex;
-		gap: 1rem;
+		gap: .75rem;
 		min-width: 20rem;
 	}
 	.color-option {
 		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
+		gap: 0.25rem;
 		align-items: center;
 	}
 	.color-option:hover {
@@ -121,5 +121,15 @@
 	}
 	.label {
 		text-align: center;
+	}
+	@media screen and (max-width: 512px){
+		h3{
+			font-size:1.1rem;
+		}
+		.sample{
+			width: 36px;
+			min-height: 36px;
+			
+		}
 	}
 </style>

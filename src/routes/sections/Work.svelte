@@ -146,7 +146,7 @@
 			padding-top: 5rem;
 		}
 		.work-header{
-			padding-inline: 1rem;
+			padding-inline: 0rem;
 			min-height: auto;
 		}
 		.work-header > h2{
@@ -154,8 +154,12 @@
 		}
 		.work-header > .work-nav{
 			gap:0;
+			padding-inline: 0;
 		}
-		.work-nav > button.active {
+		.work-nav > button{
+			width: 33%;
+		}
+		.work-nav > button.active {			
 			border-radius: 0;
 			background-color:var(--accent-color-2);
 		}

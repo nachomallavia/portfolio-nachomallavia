@@ -141,12 +141,13 @@
 		display: flex;
 		flex-direction: column;
 		gap: 2rem;
+		max-width: 360px;
 	}
 	.title-random {
 		display: flex;
 		gap: 1rem;
 		align-items: baseline;
-		/* justify-content: space-between; */
+		justify-content: space-between;
 	}
 
 	.selects {
@@ -157,7 +158,10 @@
 	.option {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
+
+	}
+	.option > label{
+		margin-right:.5rem;
 	}
 	select {
 		padding: 0.5rem;
@@ -167,7 +171,9 @@
 		color: var(--text-color);
 		font-size: 1rem;
 		overflow: hidden;
-		width: 9rem;
+		/* max-width: 9rem; */
+		flex-grow: 1;
+		/* margin-right: 1rem; */
 	}
 	/* select > option{
 		color:var(--lightmode-text);
@@ -179,6 +185,15 @@
 		border: 1px solid var(--background-color-3);
 		border-radius: 0.25rem;
 		color: var(--text-color);
+		margin-left:.5rem;
+	}
+	#randomize-all{
+			background-color: var(--accent-color-2);
+			border: 1px solid var(--accent-color-2);
+			color: white;
+		}
+	#randomize-all:hover{
+		background-color: var(--accent-color);
 	}
 	button:hover {
 		background-color: var(--accent-color);
@@ -192,5 +207,16 @@
 	.random {
 		display: flex;
 		gap: 2rem;
+	}
+
+	@media screen and (max-width: 512px){
+		.container{
+			max-width: 100%;
+			gap:2rem;
+			padding-inline: 1rem;
+		}
+		h3{
+			font-size: 1.1rem;
+		}
 	}
 </style>

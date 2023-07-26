@@ -187,7 +187,7 @@
 			font-size: 1.5rem;
 		}
 		#card-container{
-			padding-inline: 1.5rem;
+			padding-inline: 1rem;
 		}
 		.description{
 			padding-top: 0;
