@@ -110,7 +110,8 @@
 			if (browser) {
 				let newImg = document.createElement('img');
 				newImg.src = URL.createObjectURL(blob);
-				newImg.style['maxWidth'] = '400px';
+				newImg.style['maxWidth'] = '90%';
+				newImg.classList.add('label-img');
 				document.querySelector(`#label-text`).replaceChildren(newImg);
 				let container = document.querySelector('#label-template-container');
 				container.classList.remove('loading');

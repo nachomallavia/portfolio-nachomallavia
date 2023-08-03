@@ -1,24 +1,44 @@
 <script>
+	import {browser} from '$app/environment';
+	import { onMount } from 'svelte';
 	import { lang } from '../../configStore';
-	import { labelList } from './ShippingLabels/labelList.js';
-	import { currentLabelId } from '../../configStore';
 	import LabelConfig from './ShippingLabels/LabelConfig.svelte';
 
 	import LabelTemplate from './ShippingLabels/LabelTemplate.svelte';
 	let labelExample;
+	let mobileScreenDetected = false;
+
+	onMount(()=>{
+		if(browser){
+
+			if(window.innerWidth <= 512){
+				mobileScreenDetected = true;
+			}
+		}
+	})
 </script>
 
 <div class="container" id="work-label-printer">
 	<div class="label-example">
 		<div>
-			<!-- <LabelExample label={label}/> -->
 			<LabelTemplate bind:this={labelExample} />
 			<p id="loading-text" class="loading">{$lang=="ES"?"Cargando etiqueta...":"Fetching Label..."}</p>
 			<div id="label-template-container" class="loading">
-				<div id="label-text" />
+				<div id="label-text">
+
+				</div> 
 			</div>
 		</div>
 	</div>
+	{#if mobileScreenDetected}
+		<button
+			id="update-btn"
+			on:click={() => {
+				labelExample.fetchLabel(labelExample.setupLabel());
+			}}>{$lang === 'ES' ? 'Actualizar etiqueta' : 'Update label'}</button
+		>
+		<LabelConfig />
+	{/if}
 	<div class="description">
 		<h2>{$lang === 'ES' ? 'Impresora de etiquetas de envío' : 'Shipping label printer'}</h2>
 		{#if $lang === 'ES'}
@@ -39,6 +59,7 @@
 				corresponding label.
 			</p>
 		{/if}
+		{#if !mobileScreenDetected}
 		<LabelConfig />
 		<button
 			id="update-btn"
@@ -46,15 +67,18 @@
 				labelExample.fetchLabel(labelExample.setupLabel());
 			}}>{$lang === 'ES' ? 'Actualizar etiqueta' : 'Update label'}</button
 		>
+		{/if}
+
+		
 	</div>
 </div>
 
-<style>
+<style global>
 	#work-label-printer {
 		display: flex;
 		gap: 4rem;
 		align-items: center;
-		padding-left: 4rem;
+		padding-inline: 4rem;
 	}
 	h2 {
 		font-size: 1.75rem;
@@ -68,7 +92,7 @@
 		display: flex;
 		flex-direction: column;
 		/* gap:2rem; */		
-		padding-right: 4rem;
+
 	}
 
 	
@@ -102,6 +126,11 @@
 	#label-template-container.loading > *{
 		opacity: 50%;
 	}
+	#label-text{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 
 	button {
 		font-size: 1rem;
@@ -123,5 +152,20 @@
 	#update-btn {
 		margin-top: 2rem;
 		max-width: 11rem;
+	}
+	@media screen and (max-width:512px){
+		#work-label-printer{
+			flex-direction: column-reverse;
+			padding-inline: 1.5rem;
+		}
+		#label-template-container{
+			min-width: auto;
+			min-height: auto;
+			padding-block: 1rem;
+		}
+		#label-text{
+			min-width: 96vw;
+
+		}
 	}
 </style>
