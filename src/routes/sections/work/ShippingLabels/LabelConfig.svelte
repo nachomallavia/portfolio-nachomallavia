@@ -29,7 +29,7 @@
             </select> -->
 		</div>
 
-		<div class="field-group">
+		<div class="field-group">			
 			<div class="field">
 				<label for="name">{$lang === 'ES' ? 'Nombre' : 'First name'}</label>
 				<input type="text" name="name" bind:value={label.customerName} />
@@ -38,7 +38,7 @@
 				<label for="last_name">{$lang === 'ES' ? 'Apellido' : 'Last name'}</label>
 				<input type="text" name="last_name" bind:value={label.customerLastName} />
 			</div>
-			<div class="field number">
+			<div class="field phonenumber">
 				<label for="phone_number">{$lang === 'ES' ? 'Teléfono' : 'Phone number'}</label>
 				<input type="number" name="phone_number" bind:value={label.customerPhone} />
 			</div>
@@ -58,12 +58,12 @@
 			</div>
 		</div>
 		<div class="field-group">
-			<div class="field floor">
+			<div class="field neighbourhood">
 				<label for="address_neighbourhood">{$lang === 'ES' ? 'Localidad' : 'Neighbourhood'}</label>
 				<input type="text" name="address_neighbourhood" bind:value={label.neighbourhood} />
 			</div>
 			<div class="field postcode">
-				<label for="address_street">{$lang === 'ES' ? 'Código postal' : 'postal code'}</label>
+				<label for="address_street">{$lang === 'ES' ? 'CP' : 'PC'}</label>
 				<input type="number" name="address_postcode" bind:value={label.postalCode} />
 			</div>
 			<div class="field city">
@@ -78,13 +78,11 @@
 	
 	#main-select-group {
 		display: flex;
-		gap: 1rem;
+		gap: 2rem;
 		align-items: baseline;
+		
 	}
-	.field {
-		display: flex;
-		flex-direction: column;
-	}
+	
 	label {
 		margin-top: 1rem;
 		font-size: 0.8rem;
@@ -95,6 +93,11 @@
 	.field-group {
 		display: flex;
 		gap: 1rem;
+	}
+	.field {
+		display: flex;
+		flex-direction: column;
+		width: 30%;
 	}
 	input {
 		/* max-width: 20rem; */
@@ -119,12 +122,44 @@
 	}
 	@media screen and (max-width:512px){
 		#form-container{
-
+			width: 100%;			
 		}
 		.field-group {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: .5rem;
-	}
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: .25rem;
+		}
+		.field{
+			/* flex-basis: 100px; */
+		}
+		 .field.street{
+			min-width: 180px;			
+		}
+		
+		.field.number{
+			max-width: 70px;
+			flex-shrink: 10;
+		}
+		.field.floor{
+			max-width: 70px;
+			flex-shrink: 10;
+		}
+		.field.neighbourhood{
+			min-width: 120px;
+		}
+		.field.postcode{
+			min-width: 50px;
+			flex-shrink: 10;
+		}
+		.field.city{
+			min-width: 150px;
+		}
+		input{
+			padding:0;
+		}
+		label{
+			font-size: .75rem;
+		}
+		
 	}
 </style>
