@@ -148,6 +148,7 @@
 		.work-header{
 			padding-inline: 0rem;
 			min-height: auto;
+			margin-bottom: 2rem;
 		}
 		.work-header > h2{
 			display: none;

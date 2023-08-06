@@ -25,7 +25,7 @@
 
 <style>
 	.config {
-		padding-inline: 2rem;
+		padding-inline: 1.5rem;
 		display: flex;
 		min-height: 5rem;
 

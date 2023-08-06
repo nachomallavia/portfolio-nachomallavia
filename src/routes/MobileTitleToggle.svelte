@@ -66,7 +66,7 @@
 		justify-content: space-between;
         align-items: center;
 		padding-block:1rem;
-		padding-inline: 2rem;
+		padding-inline: 1.5rem;
 
 	}
     h4{

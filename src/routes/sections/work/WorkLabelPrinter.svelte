@@ -6,7 +6,7 @@
 
 	import LabelTemplate from './ShippingLabels/LabelTemplate.svelte';
 	let labelExample;
-	let mobileScreenDetected = false;
+	let mobileScreenDetected = true;
 
 	onMount(()=>{
 		if(browser){
@@ -30,7 +30,7 @@
 			</div>
 		</div>
 	</div>
-	{#if mobileScreenDetected}
+	{#if mobileScreenDetected == true}
 		<button
 			id="update-btn"
 			on:click={() => {
@@ -59,14 +59,13 @@
 				corresponding label.
 			</p>
 		{/if}
-		{#if !mobileScreenDetected}
-		<LabelConfig />
-		<button
+		{#if mobileScreenDetected == false}
+			<LabelConfig />
+			<button
 			id="update-btn"
 			on:click={() => {
 				labelExample.fetchLabel(labelExample.setupLabel());
-			}}>{$lang === 'ES' ? 'Actualizar etiqueta' : 'Update label'}</button
-		>
+			}}>{$lang === 'ES' ? 'Actualizar etiqueta' : 'Update label'}</button>
 		{/if}
 
 		
@@ -157,6 +156,11 @@
 		#work-label-printer{
 			flex-direction: column-reverse;
 			padding-inline: 1.5rem;
+			gap: 0;
+		}
+		h2 {
+		font-size: 1.5rem;
+		margin-bottom: 2rem;
 		}
 		#label-template-container{
 			min-width: auto;
@@ -166,6 +170,14 @@
 		#label-text{
 			min-width: 96vw;
 
+		}
+		.description > p {
+			margin-bottom: 2rem;
+		}
+		#update-btn {
+		margin-top: 1rem;
+		max-width: 100%;
+		width: 100%;
 		}
 	}
 </style>

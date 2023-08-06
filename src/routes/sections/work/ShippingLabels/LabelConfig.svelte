@@ -7,7 +7,7 @@
 	$: currentShippingType = label.shippingTypeId;
 </script>
 
-<div>
+<div id="form-container">
 	<form action="?/label" method="POST">
 		<div class="field-group">
 			<div id="main-select-group">
@@ -75,6 +75,7 @@
 </div>
 
 <style>
+	
 	#main-select-group {
 		display: flex;
 		gap: 1rem;
@@ -116,7 +117,14 @@
 		overflow: hidden;
 		/* width: 9rem; */
 	}
-	/* option {
-		color: var(--lightmode-text);
-	} */
+	@media screen and (max-width:512px){
+		#form-container{
+
+		}
+		.field-group {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: .5rem;
+	}
+	}
 </style>
