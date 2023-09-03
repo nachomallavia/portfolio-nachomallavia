@@ -76,8 +76,6 @@
 		background-color: var(--background-color-1);
 		color: var(--text-color);		
 		margin-bottom:8rem;
-
-
 	}
 	.work-header {
 		width: 100%;

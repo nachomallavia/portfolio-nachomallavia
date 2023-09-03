@@ -244,7 +244,7 @@
 
     }
     .timeline{
-        padding-top: 5rem;
+        padding-block: 4rem;
         width: 100%;
         height: 100%;
         display: flex;
