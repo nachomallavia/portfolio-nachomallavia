@@ -375,6 +375,7 @@
 	.mobile{
 		display: none;
 	}
+	
 	@media screen and (max-width:512px){
 		.container{
 			flex-direction: column-reverse;

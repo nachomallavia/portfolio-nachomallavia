@@ -58,3 +58,7 @@ body.darkmode > * {
 body > * {
 	--gradient-fade-1: linear-gradient(180deg, var(--background-color-1) 50%, var(--background-fade-1) 100%)
 }
+option{
+	color:var(--text-color);
+	background-color: var(--background-color-2);
+}
