@@ -136,6 +136,8 @@
 	}
 	.details > .group{
 		margin-bottom: .5rem;
+		display: flex;
+		flex-direction: column;
 	}
 	.detail-name{
 		font-weight: 600;
@@ -145,4 +147,44 @@
 		min-width: 40px;
 		min-height: 40px;
 	}
+	@media screen and (max-width:512px){
+		.full{
+			margin-bottom:2rem;
+		}
+		h2.section-title {
+		display: none;
+		}
+		.skill-container{
+			padding-inline: 1.5rem;
+		}
+		.skill-list{
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		}
+		.skill-card{
+			padding:1rem;
+		}
+		.title > h3{
+		font-size: 1.5rem;
+		}
+		.group{
+			line-height: 2rem;
+			
+		}
+		.details{
+		margin-top: 2rem;
+		/* display: flex;
+		flex-wrap: wrap; */
+		gap: 1rem;
+		
+		
+		}
+		.details > .group{
+		margin-bottom: 1rem;
+
+		}
+	
+	}
+
 </style>

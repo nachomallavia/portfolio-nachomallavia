@@ -1,8 +1,8 @@
 export const skillList = [{   nameAr:'Programación',
 nameUs:'Programming',
 score:7,
-descriptionAr:'Hoy en día trabajo principalmente en cuestiones de front-end, ya que el back de nuestra aplicación fue construido en Laravel. Sin embargo, las aplicaciones y proyectos que hago por mi cuenta, los encaro con Javascript en el back-end. ' ,
-descriptionUs:'Right now I mostly work on the front-end, since our application was built on Laravel. However, my side projects and trials are done with a Javascript back-end. ',
+descriptionAr:'Hoy en día trabajo principalmente en cuestiones de desarrollo web front-end. Sin embargo, las aplicaciones y proyectos que hago por mi cuenta, los encaro con Javascript en el back-end. ' ,
+descriptionUs:'Right now I mostly work on the front-end. However, my side projects and trials are done with a Javascript back-end. ',
 details:[
 {name: 'Svelte', levelAr:'Muy Bueno', levelUs: 'Very Good',number:9},
 {name:'NodeJs',levelAr:'Bueno',levelUs:'Good',number:7},

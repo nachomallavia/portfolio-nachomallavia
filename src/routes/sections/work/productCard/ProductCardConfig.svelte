@@ -124,7 +124,7 @@
 				<button id="randomize-background"
 					on:click={() => {
 						randomize('background');
-						console.log('randomized background')
+
 					}}
 				>
 					{$lang === 'ES' ? 'Randomizar' : 'Randomize'}

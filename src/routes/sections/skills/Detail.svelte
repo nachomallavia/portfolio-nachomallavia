@@ -1,6 +1,6 @@
 <script>
 	import {lang} from '../../configStore';
-	export let icon;
+	
 	export let skillNameAr = '';
 	export let skillNameUs = '';
 	export let score = 10;
@@ -20,7 +20,7 @@
 </script>
 
 <div class="skill-container">
-	<img src={icon} alt="" class="skill-icon" />
+	
 	<div class="title-score">
 		<h3>{$lang==="ES"?skillNameAr:skillNameUs}</h3>
 		<div class="score-container">
