@@ -16,7 +16,7 @@
 	}
 </script>
 
-<div class="scroll-nav" on:click={()=>{$open = false}}>
+<div class="scroll-nav" on:click={()=>{$open = false}} on:keyup={(e)=>{if(e.key == "Escape"){$open = false}}}>
 	<button
 		class="scroll-btn current"
 		on:click={(e) => {

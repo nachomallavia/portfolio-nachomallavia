@@ -32,43 +32,43 @@
 		<div class="field-group">			
 			<div class="field">
 				<label for="name">{$lang === 'ES' ? 'Nombre' : 'First name'}</label>
-				<input type="text" name="name" bind:value={label.customerName} />
+				<input type="text" name="name" bind:value={label.customerName} autocomplete="given-name"/>
 			</div>
 			<div class="field">
 				<label for="last_name">{$lang === 'ES' ? 'Apellido' : 'Last name'}</label>
-				<input type="text" name="last_name" bind:value={label.customerLastName} />
+				<input type="text" name="last_name" bind:value={label.customerLastName} autocomplete="family-name" />
 			</div>
 			<div class="field phonenumber">
 				<label for="phone_number">{$lang === 'ES' ? 'Teléfono' : 'Phone number'}</label>
-				<input type="number" name="phone_number" bind:value={label.customerPhone} />
+				<input type="number" name="phone_number" bind:value={label.customerPhone} autocomplete="tel"/>
 			</div>
 		</div>
 		<div class="field-group">
 			<div class="field street">
 				<label for="address_street_name">{$lang === 'ES' ? 'Calle' : 'Street'}</label>
-				<input type="text" name="address_street_name" bind:value={label.addressStreet} />
+				<input type="text" name="address_street_name" bind:value={label.addressStreet} autocomplete="street-address"/>
 			</div>
 			<div class="field number">
 				<label for="address_street_number">{$lang === 'ES' ? 'Número' : 'Number'}</label>
-				<input type="number" name="address_street_number" bind:value={label.addressStreetNumber} />
+				<input type="number" name="address_street_number" bind:value={label.addressStreetNumber} autocomplete="address-line2"/>
 			</div>
 			<div class="field floor">
 				<label for="address_street">{$lang === 'ES' ? 'Depto' : 'floor'}</label>
-				<input type="text" name="address_floor" bind:value={label.addressFloor} />
+				<input type="text" name="address_floor" bind:value={label.addressFloor} autocomplete="address-line3" />
 			</div>
 		</div>
 		<div class="field-group">
 			<div class="field neighbourhood">
 				<label for="address_neighbourhood">{$lang === 'ES' ? 'Localidad' : 'Neighbourhood'}</label>
-				<input type="text" name="address_neighbourhood" bind:value={label.neighbourhood} />
+				<input type="text" name="address_neighbourhood" bind:value={label.neighbourhood} autocomplete="address-level4" />
 			</div>
 			<div class="field postcode">
 				<label for="address_street">{$lang === 'ES' ? 'CP' : 'PC'}</label>
-				<input type="number" name="address_postcode" bind:value={label.postalCode} />
+				<input type="number" name="address_postcode" bind:value={label.postalCode} autocomplete="postal-code" />
 			</div>
 			<div class="field city">
-				<label for="address_city">{$lang === 'ES' ? 'Ciudad' : 'city'}</label>
-				<input type="text" name="address_city" bind:value={label.city} />
+				<label for="address_city">{$lang === 'ES' ? 'Ciudad' : 'city'} </label>
+				<input type="text" name="address_city" bind:value={label.city} autocomplete=""/>
 			</div>
 		</div>
 	</form>

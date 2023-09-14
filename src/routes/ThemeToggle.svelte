@@ -35,7 +35,7 @@
 	}
 </script>
 
-<div
+<button
 	class="theme-container"
 	on:click={() => {
 		changeTheme();
@@ -49,7 +49,7 @@
 		{/if}
 	</div>
 	<!-- <p class="mode">{currentTheme}</p> -->
-</div>
+</button>
 
 <style>
 	.theme-container {
@@ -60,10 +60,12 @@
 		color: var(--text-color);
 		gap: 8px;
 		cursor: pointer;
+		background-color: var(--background-color-1);
+		border:none;
 	}
 	.box {
 		background-color: var(--background-color-1);
-		border: 1px solid var(--text-color);
+		border: 1px solid var(--background-color-3);
 		border-radius: 0.5rem;
 		display: flex;
 		flex-direction: column;

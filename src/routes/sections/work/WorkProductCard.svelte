@@ -45,7 +45,7 @@
 			}
 			expand = !expand;
 		});
-		cardContainer.addEventListener('click', (e) => {
+		cardContainer?.addEventListener('click', (e) => {
 			if (expand === true) {
 				translateZ(backgroundBox, '100px', expand);
 				translateZ(colorBox, '200px', expand);

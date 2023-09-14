@@ -57,8 +57,8 @@
 			
 			let btnAll = document.getElementById('randomize-all');
 			let btnBackground = document.getElementById('randomize-background');
-			btnAll.click()
-			btnBackground.click()
+			btnAll?.click()
+			btnBackground?.click()
 		}
 	});
 </script>
@@ -76,8 +76,8 @@
 	</div>
 	<div class="selects">
 		<div class="option">
-			<label for="design-select">{$lang === 'ES' ? 'Diseño:' : 'Design:'}</label>
-			<select bind:value={$currentDesignId} name="design" id="design-select">
+			<label for="design">{$lang === 'ES' ? 'Diseño:' : 'Design:'}</label>
+			<select bind:value={$currentDesignId} name="design" >
 				{#each designList as design}
 					<option value={design.id}>{$lang === 'ES' ? design.nameAr : design.nameUs}</option>
 				{/each}
@@ -93,8 +93,8 @@
 			</div>
 		</div>
 		<div class="option">
-			<label for="product-select">{$lang === 'ES' ? 'Producto:' : 'Product:'}</label>
-			<select bind:value={$currentProductId} name="product" id="product-select">
+			<label for="product">{$lang === 'ES' ? 'Producto:' : 'Product:'}</label>
+			<select bind:value={$currentProductId} name="product" >
 				{#each productList as product}
 					<option value={product.id}>{$lang === 'ES' ? product.nameAr : product.nameUs}</option>
 				{/each}
@@ -110,8 +110,8 @@
 			</div>
 		</div>
 		<div class="option">
-			<label for="background-select">{$lang === 'ES' ? 'Fondo:' : 'Background:'}</label>
-			<select bind:value={$currentBackgroundId} name="background" id="background-select">
+			<label for="background">{$lang === 'ES' ? 'Fondo:' : 'Background:'}</label>
+			<select bind:value={$currentBackgroundId} name="background" >
 				{#each backgroundList as background}
 					<option value={background.id}
 						>{$lang === 'ES'

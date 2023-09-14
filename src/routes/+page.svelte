@@ -1,5 +1,6 @@
 <script>
 	export let data;
+	export let form;
 	import { browser } from '$app/environment';
 	import AboutMe from './sections/AboutMe.svelte';
 	import Work from './sections/Work.svelte';
@@ -104,7 +105,7 @@
 			<Work />
 			<Skills />
 			<Experience />
-			<Contact />
+			<Contact {form} />
 		</div>
 		<div class="right">
 			<Config />

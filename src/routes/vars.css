@@ -6,6 +6,7 @@
 	--darkmode-fade-1: hsla(300, 10%, 12%, 0.0);
 	--darkmode-2: hsl(300, 15%, 25%);
 	--darkmode-3: hsl(300, 5%, 40%);
+	--darkmode-4: hsl(300, 15%, 15%);
 	--darkmode-text: hsl(300, 0%, 85%);
 	--darkmode-text-weight-regular: 400;
 	--darkmode-accent: hsl(33, 85%, 60%);
@@ -15,6 +16,7 @@
 	--lightmode-fade-1: hsla(0, 0%, 96%, 0.0);
 	--lightmode-2: hsl(0, 0%, 82%);
 	--lightmode-3: hsl(300, 0%, 60%);
+	--lightmode-4: hsl(0, 0%, 90%);
 	--lightmode-shadow: hsla(0, 0%, 65%, 0.35);
 	--lightmode-accent: #e18009;
 	--lightmode-secondary: #2d95df;
@@ -23,7 +25,9 @@
 	--shadow: hsla(0, 10%, 65%, 0.8);
 	--font-size: 1rem;
 	--font-line-height: 1.5rem;
-}
+	--darkmode-error: hsl(0, 60%, 45%);
+	--lightmode-error: hsl(0, 79%, 35%);
+}	
 * {
 	box-sizing: border-box;
 	padding: 0;
@@ -36,10 +40,12 @@ body > * {
 	--accent-color: var(--lightmode-accent);
 	--accent-color-2: var(--darkmode-accent);
 	--secondary-color: var(--darkmode-secondary);
+	--error-color:var(--lightmode-error);
 	--background-color-1: var(--lightmode-1);
 	--background-fade-1: var(--lightmode-fade-1);
 	--background-color-2: var(--lightmode-2);
 	--background-color-3: var(--lightmode-3);
+	--background-color-4: var(--lightmode-4);
 	--font-weight-regular: var(--lightmode-text-weight-regular);
 }
 
@@ -48,10 +54,12 @@ body.darkmode > * {
 	--accent-color: var(--darkmode-accent);
 	--accent-color-2: var(--lightmode-accent);
 	--secondary-color: var(--lightmode-secondary);
+	--error-color:var(--darkmode-error);
 	--background-color-1: var(--darkmode-1);
 	--background-fade-1: var(--darkmode-fade-1);
 	--background-color-2: var(--darkmode-2);
 	--background-color-3: var(--darkmode-3);
+	--background-color-4: var(--darkmode-4);
 	--font-weight-regular: var(--darkmode-text-weight-regular);
 }
 

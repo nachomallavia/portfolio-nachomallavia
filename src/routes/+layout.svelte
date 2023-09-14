@@ -29,7 +29,7 @@
 		/* padding: 1rem; */
 		width: 100%;
 
-		margin: 0 auto;
+		/* margin: 0 auto; */
 		box-sizing: border-box;
 	}
 </style>
