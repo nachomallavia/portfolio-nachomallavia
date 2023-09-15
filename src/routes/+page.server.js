@@ -16,10 +16,11 @@ export async function load({ cookies }) {
 export const actions = {
 	contact: async ({request})=>{
 		const data = await request.formData();
-		console.log(data)
+		// console.log(data)
 		const name = data.get('name');
 		const email = data.get('email');
 		const message = data.get('message');
+		let firstName;
 		let error = {
 			name:{
 				ar:"",
@@ -38,17 +39,27 @@ export const actions = {
 		if(name == ""){
 			error.name.ar = "Por favor completá tu nombre";
 			error.name.us = "Please fill out your name";
+		} else if(name.length < 2){
+			error.name.ar = "Tu nombre debe contener más de una letra";
+			error.name.us = "Your name must contain more than one letter";
 		}
 		if(email == ""){
 			error.email.ar = "Por favor completá tu email";
 			error.email.us = "Please fill out your email";
+		} else if (email.indexOf("@") == -1){
+			error.email.ar = "Dirección de email invalida";
+			error.email.us = "Invalid email adress";
 		}
 		if(message == ""){
 			error.message.ar = "Por favor completá tu mensaje";
 			error.message.us = "Please fill out your message";
 		}
-		let firstName = name.split(" ")[0]
-		if (name && email && message){
+		if(name.indexOf(" ")){
+		 firstName = name.split(" ")[0]
+		} else{
+			firstName = name
+		}
+		if (name && email && message && error.name.ar == "" && error.email.ar == "" && error.message.ar == ""){
 			// const msg = {
 			// 	to: 'nachomallavia@gmail.com', // Change to your recipient
 			// 	from: 'nachomallavia@gmail.com', // Change to your verified sender
@@ -68,7 +79,10 @@ export const actions = {
 			// 	  console.error(error)
 			// 	})
 			
-			return {success: true, name:firstName}
+			return {success: true,
+			
+				firstName:firstName
+			}
 
 		}
 		
@@ -76,7 +90,14 @@ export const actions = {
 		console.log(`Name: ${name}`)
 		console.log(`Email: ${email}`)
 		console.log(`Message: ${message}`)
-		return {success: false, name:firstName, error:error}
+		return {
+			success: false,
+			firstName:firstName,
+			name:name,
+			email:email,
+			message:message,
+			error:error
+		}
 
 		
 	}

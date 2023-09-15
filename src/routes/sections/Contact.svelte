@@ -2,6 +2,7 @@
 	export let form;
 	import { enhance } from '$app/forms';
 	import { lang } from '../configStore';
+	import iconClose from '$lib/images/icon_close.svg'
 </script>
 <section class="full" id="section-contact">
 	<div class="contact-header">
@@ -10,22 +11,36 @@
 	<div class="container">
 		{#if form?.success == true}
 		<div class="thanks-modal">
-			<h1>{$lang=="ES"?`¡Gracias ${form.name}!`:`Thank you ${form.name}!`}</h1>
+			<div class="close" >
+				<button on:mouseup={()=>{form.success=false}}>
+					<img src={iconClose} alt="Close">
+				</button>
+			</div>
+			<h1>{$lang=="ES"?`¡Gracias ${form.firstName}!`:`Thank you ${form.firstName}!`}</h1>
+			<p>{$lang=="ES"?`Recibí tu mensaje y en breve voy a estar contactandome al mail que me indicaste. Espero que estemos en contacto pronto. `:`I received your message and will be writting to the email adress you filled out. I hope we get in touch soon.`}</p>
+			
 		</div>
 		{/if}
 		<div class="contact-group">
 			<div class="title">
 				<h2>{$lang=="ES"?"¡Gracias por tu tiempo!":"Thank you for your time! "}</h2>
-				<p>
-					{$lang=="ES"?"Completá este formulario si querés que entremos en contacto.":"Complete this form if you want to get in touch."}
+				{#if $lang=="ES"}
+				<p>Completá este formulario si querés que entremos en contacto.<br>
+					También podés escribirme a <a href="mailto: nachomallavia@gmail.com">nachomallavia@gmail.com</a> o contactarme en <a href="https://www.linkedin.com/in/ignacio-mallaviabarrena/" target="_blank">LinkedIn</a>
+					
 				</p>
+				{:else}
+				<p>Complete this form if you want to get in touch.<br>
+					You can also email me to <a href="mailto: nachomallavia@gmail.com">nachomallavia@gmail.com</a> or contact me on <a href="https://www.linkedin.com/in/ignacio-mallaviabarrena/" target="_blank">LinkedIn</a>
+				</p>
+				{/if}
 			</div>
 			<form action="?/contact" method="POST" use:enhance>
 				<div class="contact-grid">
 					
 					<div class="grid-element name">
 						<label for="name">{$lang=="ES"?"Nombre":"Name"}</label>
-						<input type="text" name="name" autocomplete="name">
+						<input type="text" name="name" autocomplete="name" value={form?.name?form.name:""}>
 						<div class="error-space">
 							{#if $lang=="ES"}
 							<h5>{form?.error?.name?.ar?form.error.name.ar:""}</h5>
@@ -37,7 +52,7 @@
 					
 					<div class="grid-element email">
 						<label for="email">{$lang=="ES"?"Email":"Email"}</label>
-						<input type="email" name="email" autocomplete="email">
+						<input type="email" name="email" autocomplete="email" value={form?.email?form.email:""}>
 						<div class="error-space">
 							{#if $lang=="ES"}
 							<h5>{form?.error?.email?.ar?form.error.email.ar:""}</h5>
@@ -49,7 +64,7 @@
 				
 					<div class="grid-element message">
 						<label for="message">{$lang=="ES"?"Mensaje":"message"}</label>
-						<textarea name="message" cols="30" rows="10"></textarea>
+						<textarea name="message" cols="30" rows="10" value={form?.message?form.message:""}></textarea>
 						<div class="error-space">
 							{#if $lang=="ES"}
 							<h5>{form?.error?.message?.ar?form.error.message.ar:""}</h5>
@@ -59,7 +74,7 @@
 						</div>
 					</div>
 					<div class="grid-element sub">
-						<button type="submit">{$lang=="ES"?"Enviar":"Send"}</button>
+						<button type="submit" class="submit">{$lang=="ES"?"Enviar":"Send"}</button>
 					</div>
 
 				</div>
@@ -76,6 +91,41 @@
 		color: var(--text-color);
 		
 	}
+	.container{
+		position: relative;
+	}
+	.thanks-modal{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height:100vh;
+		background-color: var(--background-color-1);
+		color: var(--text-color);
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		justify-content: center;
+		align-items: center;
+		padding-inline: 1.5rem;
+		text-align: center;
+		opacity: 80%;
+		
+	}
+	.close > button {
+		background-color: var(--background-color-1);
+		width: 40%;
+		border:none;
+		display: flex;
+		justify-content: end;
+		
+	}
+	.close > button:active{
+		background-color: var(--background-color-1);
+	}
+	.close > button >img {
+		width: 36px;
+	}
 	.full > .contact-header{
 		min-height: 5rem;
 		display: flex;
@@ -84,6 +134,14 @@
 		padding-left:4rem;
 		border-top: 1px solid var(--background-color-2);
 		border-bottom: 1px solid var(--background-color-2);
+	}
+	.title{
+		text-align: center;
+	}
+	a{
+		text-decoration: none;
+		color: var(--accent-color);
+		font-weight: 600;
 	}
 	.title > h2 {
 		color: var(--accent-color);
@@ -153,7 +211,7 @@
 		border-bottom: none;
 		grid-column: 1 / 3;
 	}
-	button{
+	button.submit{
 		width:100%;
 		padding-block: .5rem;
 		background-color: var(--background-color-1);
@@ -161,7 +219,7 @@
 		color: var(--text-color);
 		font-size: 1.1rem;
 	}
-	button:hover{
+	button.submit:hover{
 		background-color: var(--accent-color-2);
 	}
 	@media screen and (max-width: 512px){
