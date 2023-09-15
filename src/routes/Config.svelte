@@ -19,6 +19,6 @@
 		padding-right: 2rem;
 		width: 100%;
 		border-top: 1px solid var(--background-color-2);
-		border-bottom: 1px solid var(--background-color-2);
+		border-bottom: 2px solid var(--background-color-2);
 	}
 </style>
