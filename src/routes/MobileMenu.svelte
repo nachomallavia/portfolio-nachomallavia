@@ -36,17 +36,7 @@
     #mobile-menu[data-open="true"]{
         bottom:0;
     }
-    /* #mobile-menu::before{
-        backdrop-filter: blur(10px);
-        content: "";
-        display: block;
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        left: 0;
-        top: 0;
-        z-index: 50;
-    } */
+    
     @media screen and (min-width: 513px){
         #mobile-menu{
             display: none;

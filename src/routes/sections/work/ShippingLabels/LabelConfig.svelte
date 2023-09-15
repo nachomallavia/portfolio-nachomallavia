@@ -82,7 +82,9 @@
 		align-items: baseline;
 		
 	}
-	
+	#form-container{
+		max-width: 400px;
+	}
 	label {
 		margin-top: 1rem;
 		font-size: 0.8rem;

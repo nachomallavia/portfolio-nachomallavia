@@ -30,7 +30,7 @@
 		width: 100%;
 		background-color: var(--background-color-1);
 		color: var(--text-color);
-		margin-bottom:8rem;
+		
 		
 	}	
 	.full > .experience-header{

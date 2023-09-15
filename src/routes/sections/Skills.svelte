@@ -101,7 +101,7 @@
 	.skill-card{
 		padding:2rem;
 		border: 1px solid var(--background-color-2);
-		border-radius: .75rem;
+		border-radius: .25rem;
 		transition: all .3s;
 		scale:100%;
 		line-height: 1.5rem;

@@ -25,13 +25,13 @@
 			<div class="title">
 				<h2>{$lang=="ES"?"¡Gracias por tu tiempo!":"Thank you for your time! "}</h2>
 				{#if $lang=="ES"}
-				<p>Completá este formulario si querés que entremos en contacto.<br>
-					También podés escribirme a <a href="mailto: nachomallavia@gmail.com">nachomallavia@gmail.com</a> o contactarme en <a href="https://www.linkedin.com/in/ignacio-mallaviabarrena/" target="_blank">LinkedIn</a>
+				<p>Completá este formulario si querés que entremos en contacto.
+					También podés escribirme a <a href="mailto: nachomallavia@gmail.com">nachomallavia@gmail.com</a> o contactarme en <a href="https://www.linkedin.com/in/ignacio-mallaviabarrena/" target="_blank">LinkedIn.</a>
 					
 				</p>
 				{:else}
-				<p>Complete this form if you want to get in touch.<br>
-					You can also email me to <a href="mailto: nachomallavia@gmail.com">nachomallavia@gmail.com</a> or contact me on <a href="https://www.linkedin.com/in/ignacio-mallaviabarrena/" target="_blank">LinkedIn</a>
+				<p>Complete this form if you want to get in touch.
+					You can also email me at <a href="mailto: nachomallavia@gmail.com">nachomallavia@gmail.com</a> or contact me on <a href="https://www.linkedin.com/in/ignacio-mallaviabarrena/" target="_blank">LinkedIn.</a>
 				</p>
 				{/if}
 			</div>
@@ -63,7 +63,7 @@
 					</div>
 				
 					<div class="grid-element message">
-						<label for="message">{$lang=="ES"?"Mensaje":"message"}</label>
+						<label for="message">{$lang=="ES"?"Mensaje":"Message"}</label>
 						<textarea name="message" cols="30" rows="10" value={form?.message?form.message:""}></textarea>
 						<div class="error-space">
 							{#if $lang=="ES"}
@@ -137,6 +137,9 @@
 	}
 	.title{
 		text-align: center;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
 	}
 	a{
 		text-decoration: none;
@@ -227,8 +230,9 @@
 			display: none;
 		}
 		.contact-group{
-			padding-block: 4rem;
+			padding-block: 3rem;
 			padding-inline: 1.5rem;
+			gap: 3rem;
 		}
 		form{
 			width: 100%;

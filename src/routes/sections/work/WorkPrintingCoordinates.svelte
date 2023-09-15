@@ -112,6 +112,10 @@
 			// Image configuration
 			image.centeredScaling = true;
 			image.lockScalingFlip = true;
+			image.borderColor = "orange";
+			image.cornerColor = "orange";
+			image.transparentCorners = false;
+			image.hasRotatingPoint= false;
 			image.setControlsVisibility({
 				ml: false,
 				mt: false,
@@ -161,6 +165,10 @@
 			// Image configuration
 			image.centeredScaling = true;
 			image.lockScalingFlip = true;
+			image.borderColor = "orange";
+			image.cornerColor = "orange";
+			image.transparentCorners = false;
+			
 			image.setControlsVisibility({
 				ml: false,
 				mt: false,
@@ -171,7 +179,8 @@
 			image.scaleToWidth(firstImageWidth);
 			image.set({
 				top: firstImagePosition.top,
-				left: firstImagePosition.left
+				left: firstImagePosition.left,
+				
 			});
 			// Image trigger setup
 			image.on('scaling', (e) => {
@@ -418,7 +427,9 @@
 		grid-template-columns: 1fr 1fr 1fr 1fr;
 		padding-bottom: 2rem;
 		}
-		
+		.value {
+		font-size: 1rem;
+		}
 		button {
 		width: 100%;
 		padding-block: .75rem;
