@@ -60,24 +60,24 @@ export const actions = {
 			firstName = name
 		}
 		if (name && email && message && error.name.ar == "" && error.email.ar == "" && error.message.ar == ""){
-			// const msg = {
-			// 	to: 'nachomallavia@gmail.com', // Change to your recipient
-			// 	from: 'nachomallavia@gmail.com', // Change to your verified sender
-			// 	subject: 'CONTACTO PORTFOLIO',
-			// 	text: `Nombre: ${name} Email:${email} Mensaje:${message}`,
-			// 	html: `<h1>${name}</h1>
-			// 			<h2>${email}</h2>
-			// 			<p>${message}</p>
-			// 		`,
-			//   }
-			//   sgMail
-			// 	.send(msg)
-			// 	.then(() => {
-			// 	  console.log('Email sent')
-			// 	})
-			// 	.catch((error) => {
-			// 	  console.error(error)
-			// 	})
+			const msg = {
+				to: 'nachomallavia@gmail.com', // Change to your recipient
+				from: 'nachomallavia@gmail.com', // Change to your verified sender
+				subject: 'CONTACTO PORTFOLIO',
+				text: `Nombre: ${name} Email:${email} Mensaje:${message}`,
+				html: `<h1>${name}</h1>
+						<h2>${email}</h2>
+						<p>${message}</p>
+					`,
+			  }
+			  sgMail
+				.send(msg)
+				.then(() => {
+				  console.log('Email sent')
+				})
+				.catch((error) => {
+				  console.error(error)
+				})
 			
 			return {success: true,
 			

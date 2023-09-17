@@ -107,9 +107,9 @@
 		align-items: center;
 		min-width: 440px;
 		min-height: 640px;
-		border: 1px solid var(--background-color-3);
+		border: 1px solid var(--background-color-2);
 		background-color: var(--background-color);
-		border-radius: 0.5rem;
+		border-radius: 0.25rem;
 	}
 	#loading-text{
 		opacity:0%;
