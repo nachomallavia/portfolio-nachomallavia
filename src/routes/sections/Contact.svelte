@@ -2,7 +2,8 @@
 	export let form;
 	import { enhance } from '$app/forms';
 	import { lang } from '../configStore';
-	import iconClose from '$lib/images/icon_close.svg'
+	import iconClose from '$lib/images/icon_close.svg';
+	import contactIcon from '$lib/images/contact.svg';
 </script>
 <section class="full" id="section-contact">
 	<div class="contact-header">
@@ -10,28 +11,32 @@
 	</div>
 	<div class="container">
 		{#if form?.success == true}
-		<div class="thanks-modal">
-			<div class="close" >
-				<button on:mouseup={()=>{form.success=false}}>
-					<img src={iconClose} alt="Close">
-				</button>
-			</div>
-			<h1>{$lang=="ES"?`¡Gracias ${form.firstName}!`:`Thank you ${form.firstName}!`}</h1>
-			<p>{$lang=="ES"?`Recibí tu mensaje y en breve voy a estar contactandome al mail que me indicaste. Espero que estemos en contacto pronto. `:`I received your message and will be writting to the email adress you filled out. I hope we get in touch soon.`}</p>
-			
+		<div class="thanks-modal" on:mouseup={()=>{form.success=false}} on:keyup={(e)=>{console.log(e.key);if(e.key == "Escape"){form.success=false}}}>
+		
+			<img src={contactIcon} alt="Close">
+			{#if $lang=="ES"}
+			<h1>¡Gracias {form.firstName}!</h1>
+			<p>Recibí tu mensaje y en breve voy a estar escribiendo al mail que me indicaste.<br>Espero que estemos en contacto pronto.</p>
+			{:else}
+			<h1>Thank you {form.firstName}!</h1>
+			<p>
+				I got your message and will be writting to the email adress you filled out.<br> I hope we get in touch soon.
+			</p>
+			{/if}
+
 		</div>
 		{/if}
 		<div class="contact-group">
 			<div class="title">
 				<h2>{$lang=="ES"?"¡Gracias por tu tiempo!":"Thank you for your time! "}</h2>
 				{#if $lang=="ES"}
-				<p>Completá este formulario si querés que entremos en contacto.
-					También podés escribirme a <a href="mailto: nachomallavia@gmail.com">nachomallavia@gmail.com</a> o contactarme en <a href="https://www.linkedin.com/in/ignacio-mallaviabarrena/" target="_blank">LinkedIn.</a>
+				<p>Completá este formulario si querés que entremos en contacto.<br class="mobile">
+					También podés escribirme a <a href="mailto: nachomallavia@gmail.com">nachomallavia@gmail.com</a><br class="mobile"> o contactarme en <a href="https://www.linkedin.com/in/ignacio-mallaviabarrena/" target="_blank">LinkedIn.</a>
 					
 				</p>
 				{:else}
-				<p>Complete this form if you want to get in touch.
-					You can also email me at <a href="mailto: nachomallavia@gmail.com">nachomallavia@gmail.com</a> or contact me on <a href="https://www.linkedin.com/in/ignacio-mallaviabarrena/" target="_blank">LinkedIn.</a>
+				<p>Complete this form if you want to get in touch.<br class="mobile">
+					You can also email me at <a href="mailto: nachomallavia@gmail.com">nachomallavia@gmail.com</a><br class="mobile"> or contact me on <a href="https://www.linkedin.com/in/ignacio-mallaviabarrena/" target="_blank">LinkedIn.</a>
 				</p>
 				{/if}
 			</div>
@@ -99,22 +104,29 @@
 		top: 0;
 		left: 0;
 		width: 100%;
-		height:100vh;
+		height:100%;
 		background-color: var(--background-color-1);
 		color: var(--text-color);
 		display: flex;
 		flex-direction: column;
-		gap: 1.5rem;
+		/* gap: 1.5rem; */
 		justify-content: center;
 		align-items: center;
-		padding-inline: 1.5rem;
+		padding-inline: 4rem;
 		text-align: center;
-		opacity: 80%;
+		opacity: 88%;
 		
+	}
+	.thanks-modal > h1{
+		color: var(--accent-color);
+		margin-bottom: 1.5rem;
+	}
+	.thanks-modal > p{
+		line-height: 1.5rem;
 	}
 	.close > button {
 		background-color: var(--background-color-1);
-		width: 40%;
+		width: 100%;
 		border:none;
 		display: flex;
 		justify-content: end;
@@ -123,8 +135,9 @@
 	.close > button:active{
 		background-color: var(--background-color-1);
 	}
-	.close > button >img {
-		width: 36px;
+	.thanks-modal > img {
+		width: 80px;
+		
 	}
 	.full > .contact-header{
 		min-height: 5rem;

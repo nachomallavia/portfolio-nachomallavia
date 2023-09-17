@@ -124,9 +124,11 @@
 	}
 	@media screen and (max-width:512px){
 		#form-container{
-			width: 100%;			
+			width: 100%;	
+					
 		}
 		.field-group {
+			width: 100%;
 			display: flex;
 			justify-content: space-between;
 			margin-bottom: .25rem;
@@ -135,26 +137,26 @@
 			/* flex-basis: 100px; */
 		}
 		 .field.street{
-			min-width: 180px;			
+			min-width: 140px;			
 		}
 		
 		.field.number{
-			max-width: 70px;
+			max-width: 60px;
 			flex-shrink: 10;
 		}
 		.field.floor{
-			max-width: 70px;
+			max-width: 40px;
 			flex-shrink: 10;
 		}
 		.field.neighbourhood{
-			min-width: 120px;
+			min-width: 80px;
 		}
 		.field.postcode{
-			min-width: 50px;
+			max-width: 40px;
 			flex-shrink: 10;
 		}
 		.field.city{
-			min-width: 150px;
+			min-width: 120px;
 		}
 		input{
 			padding:0;
