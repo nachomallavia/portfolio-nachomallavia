@@ -13,6 +13,7 @@
 	import MobileMenu from './MobileMenu.svelte';
 	import MobileTitleToggle from './MobileTitleToggle.svelte';
 	import iconMenu from '$lib/images/icon_menu.svg';
+	
 
 	
 	function updateSection(value){
@@ -90,6 +91,7 @@
 <svelte:head>
 	<title>Nacho Mallaviabarrena</title>
 	<meta name="description" content="Dev Portfolio" />
+	
 </svelte:head>
 <svelte:window />
 <div class="page-container">
