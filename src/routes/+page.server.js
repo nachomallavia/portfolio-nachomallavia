@@ -1,11 +1,22 @@
 import sgMail from '@sendgrid/mail';
 import {SENDGRID_API_KEY} from "$env/static/private";
+import { setCookie } from '$lib/cookieHandler.js';
 import { fail } from '@sveltejs/kit';
 sgMail.setApiKey(SENDGRID_API_KEY);
-export async function load({ cookies }) {
-	const theme = await cookies.get('NachoTheme');
-	const lang = await cookies.get('NachoLang');
 
+export async function load({ params, url, cookies }) {
+	let lang = url.searchParams.get('lang');
+	const theme = await cookies.get('NachoTheme');
+	const langCookie = await cookies.get('NachoLang');
+	if(langCookie && !lang){
+		lang = langCookie;
+	}
+	if(!langCookie && lang){
+		setCookie('NachoLang', lang, 365);
+	}
+	if(langCookie && lang){
+		setCookie('NachoLang', lang, 365);
+	}
 	const config = {
 		theme,
 		lang
