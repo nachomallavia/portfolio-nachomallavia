@@ -11,12 +11,7 @@ export async function load({ params, url, cookies }) {
 	if(langCookie && !lang){
 		lang = langCookie;
 	}
-	if(!langCookie && lang){
-		setCookie('NachoLang', lang, 365);
-	}
-	if(langCookie && lang){
-		setCookie('NachoLang', lang, 365);
-	}
+
 	const config = {
 		theme,
 		lang

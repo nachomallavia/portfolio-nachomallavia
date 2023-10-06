@@ -34,7 +34,7 @@
 	"type": "module",
 	"dependencies": {
 		"@sendgrid/mail": "^7.7.0",
-		"@vercel/analytics": "^1.0.2",
+		"@vercel/analytics": "^1.1.0",
 		"fabric-pure-browser": "^5.1.0",
 		"jsdom": "^22.1.0"
 	}
