@@ -42,7 +42,7 @@ details:[
     nameUs:'Team management',
     score:7,
     descriptionAr:'En los últimos 5 años he trabajado liderando diferentes equipos de personas, abocados a tareas de fabricación, diseño, programación y atención al cliente.' ,
-    descriptionUs:'During the last 5 years, I have lead different teams of people, focused on tasks in manufacturing, design, programming and customer service.' 
+    descriptionUs:'During the last 5 years, I have led different teams of people, focused on tasks in manufacturing, design, programming and customer service.' 
 }
 
 ]
