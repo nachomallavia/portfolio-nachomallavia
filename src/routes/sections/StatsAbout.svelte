@@ -7,13 +7,13 @@
 
 	import StatBox from './StatBox.svelte';
 	let about = {
-		Age: '36 y/o',
+		Age: '37 y/o',
 		Country: 'Argentina',
 		'Coding Experience': '1+ years'
 	};
 	let selectedStats = about;
 	let aboutEsp = {
-		Edad: '36 años',
+		Edad: '37 años',
 		País: 'Argentina',
 		'Experiencia con código': '1+ años'
 	};
