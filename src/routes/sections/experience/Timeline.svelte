@@ -53,8 +53,8 @@
     let workExperience = [
         
         {   
-            dateAr : "Mayo 2020 - Agosto 2023",
-            dateUs : "May 2020 - August 2023",
+            dateAr : "Mayo 2020 - Actualmente",
+            dateUs : "May 2020 - Currently",
             type: "Work",
             place: "Flashcookie",
             url:"https://www.flashcookie.com",

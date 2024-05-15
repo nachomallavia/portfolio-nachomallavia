@@ -15,7 +15,7 @@
 		
 		<h1>¡HOLA!<br /> Mi nombre <br /> es Nacho.</h1>
 		
-		<h2>Soy un desarrollador Fullstack Jr.</h2>
+		<h2>Soy un Diseñador Sr. y Desarrollador Fullstack Jr.</h2>
 		<p>
 			Además, durante los últimos 5 años he trabajado como <strong
 				>Diseñador de Producto y Director de Operaciones</strong
@@ -32,7 +32,7 @@
 		</p>
 	{:else}
 		<h1>Hi! My name<br />is Nacho.</h1>
-		<h2>I'm a Jr. Fullstack Developer.</h2>
+		<h2>I'm a Sr. Designer & Jr. Fullstack Developer.</h2>
 		<p>
 			Also, during the last five years I've worked as a <strong
 				>Product Designer and Operations Manager</strong
