@@ -2,16 +2,38 @@
 	import { lang } from '../configStore.svelte.js';
 
 	import StatBox from './StatBox.svelte';
-	let about = {
-		Age: '37 y/o',
+
+	function calculateAge(birthDate) {
+		const today = new Date();
+		let age = today.getFullYear() - birthDate.getFullYear();
+		const monthDiff = today.getMonth() - birthDate.getMonth();
+		if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+			age--;
+		}
+		return age;
+	}
+
+	const birthDate = new Date(1987, 3, 23); // April 23, 1987 (months are 0-indexed)
+	let currentAge = $derived(calculateAge(birthDate));
+
+	const designStartYear = 2013;
+	let designYears = $derived(new Date().getFullYear() - designStartYear);
+
+	const codingStartYear = 2022;
+	let codingYears = $derived(new Date().getFullYear() - codingStartYear);
+
+	let about = $derived({
+		Age: `${currentAge} y/o`,
 		Country: 'Argentina',
-		'Coding Experience': '1+ years'
-	};
-	let aboutEsp = {
-		Edad: '37 años',
+		'Design Experience': `${designYears}+ years`,
+		'Coding Experience': `${codingYears}+ years`
+	});
+	let aboutEsp = $derived({
+		Edad: `${currentAge} años`,
 		País: 'Argentina',
-		'Experiencia con código': '1+ años'
-	};
+		'Experiencia en diseño': `${designYears}+ años`,
+		'Experiencia con código': `${codingYears}+ años`
+	});
 
 	let selectedStats = $derived(lang.value === 'ES' ? aboutEsp : about);
 	

@@ -3,11 +3,13 @@
 
 	import iconAge from '$lib/images/icon_birthday.svg';
 	import iconCountry from '$lib/images/icon_country.svg';
+	import iconDesign from '$lib/images/icon_design.svg';
 	import iconExperience from '$lib/images/icon_experience.svg';
 
 	let icon = $derived(
 		(title == 'Age' || title == 'Edad') ? iconAge :
 		(title == 'Country' || title == 'País') ? iconCountry :
+		(title == 'Design Experience' || title == 'Experiencia en diseño') ? iconDesign :
 		(title == 'Coding Experience' || title == 'Experiencia con código') ? iconExperience :
 		iconAge
 	);
