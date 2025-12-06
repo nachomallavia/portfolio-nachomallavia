@@ -12,110 +12,112 @@
 	import design9 from '$lib/images/product-card/design-9.webp';
 	import design10 from '$lib/images/product-card/design-10.webp';
 
-	import { currentDesignId, currentProductId, backgroundIndex } from './productCardStore';
+	import { currentDesignId, currentProductId, backgroundIndex } from './productCardStore.svelte.js';
 
 	import { productList } from './productList.js';
 	import { designList } from './designList.js';
 
-	import { lang } from '../../../configStore';
-	import { onMount, beforeUpdate } from 'svelte';
+	import { lang } from '../../../configStore.svelte.js';
 
-	$: product = productList.find((product) => product.id === $currentProductId);
-	$: design = designList.find((design) => design.id === $currentDesignId);
+	let product = $derived(productList.find((product) => product.id === currentProductId.value));
+	let design = $derived(designList.find((design) => design.id === currentDesignId.value));
 
-	$: selectedDesign = design1;
+	let selectedDesign = $state(design1);
 	let designScale = '';
 	let designTranslate = '';
 	
-	$: if (design.id) {
-		if (browser) {
-			switch (design.id) {
-				case 1:
-					selectedDesign = design1;
-					break;
-				case 2:
-					selectedDesign = design2;
-					break;
-				case 3:
-					selectedDesign = design3;
-					break;
-				case 4:
-					selectedDesign = design4;
-					break;
-				case 5:
-					selectedDesign = design5;
-					break;
-				case 6:
-					selectedDesign = design6;
-					break;
-				case 7:
-					selectedDesign = design7;
-					break;
-				case 8:
-					selectedDesign = design8;
-					break;
-				case 9:
-					selectedDesign = design9;
-					break;
-				case 10:
-					selectedDesign = design10;
-					break;
-			}
-		}
-	}
-	$: if (product.id != undefined) {
-		if (design != undefined) {
-			
+	$effect(() => {
+		if (design && design.id) {
 			if (browser) {
-				applyCoordinates()
+				switch (design.id) {
+					case 1:
+						selectedDesign = design1;
+						break;
+					case 2:
+						selectedDesign = design2;
+						break;
+					case 3:
+						selectedDesign = design3;
+						break;
+					case 4:
+						selectedDesign = design4;
+						break;
+					case 5:
+						selectedDesign = design5;
+						break;
+					case 6:
+						selectedDesign = design6;
+						break;
+					case 7:
+						selectedDesign = design7;
+						break;
+					case 8:
+						selectedDesign = design8;
+						break;
+					case 9:
+						selectedDesign = design9;
+						break;
+					case 10:
+						selectedDesign = design10;
+						break;
+				}
 			}
 		}
-	}
-	if(browser){
-		window.addEventListener('resize',(e)=>{
-			applyCoordinates()
-		})
-	}
+	});
+
+	$effect(() => {
+		if (product && product.id != undefined) {
+			if (design != undefined) {
+				if (browser) {
+					applyCoordinates()
+				}
+			}
+		}
+	});
+
+	$effect(() => {
+		if(browser){
+			window.addEventListener('resize',(e)=>{
+				applyCoordinates()
+			})
+		}
+	});
+
 	function applyCoordinates(){
 		let container = document.getElementById('box');
-				let containerWidth = container.offsetWidth;
-				let containerHeight = container.offsetHeight;
+		if (!container || !design) return;
+		
+		let containerWidth = container.offsetWidth;
+		let containerHeight = container.offsetHeight;
 
-				let PlacementCoordinatesArray = design.placementCoordinates;
-				let placementCoordinates = PlacementCoordinatesArray[product.id-1];
+		let PlacementCoordinatesArray = design.placementCoordinates;
+		let placementCoordinates = PlacementCoordinatesArray[product.id-1];
 
-				let designElement = document.querySelector('.artboard > img');				
-				
-				let designProportion =(containerWidth/100)*placementCoordinates.scale;
+		let designElement = document.querySelector('.artboard > img');				
+		if (!designElement) return;
+		
+		let designProportion =(containerWidth/100)*placementCoordinates.scale;
 
-				let designWidth = `${designProportion}px`;
+		let designWidth = `${designProportion}px`;
 
-				let designTranslateX = placementCoordinates.translateX;
-				let designTranslateY = placementCoordinates.translateY;
+		let designTranslateX = placementCoordinates.translateX;
+		let designTranslateY = placementCoordinates.translateY;
 
-				let designCoordinateX = Math.floor(containerWidth/100 * designTranslateX);
-				let designCoordinateY = Math.floor(containerHeight/100 * designTranslateY);
+		let designCoordinateX = Math.floor(containerWidth/100 * designTranslateX);
+		let designCoordinateY = Math.floor(containerHeight/100 * designTranslateY);
 
-				
-				designTranslate = `${designCoordinateX}px ${designCoordinateY}px`;
+		
+		designTranslate = `${designCoordinateX}px ${designCoordinateY}px`;
 
-
-
-				designElement.style['width'] = designWidth;
-
-				designElement.style['translate'] = designTranslate;
-
+		designElement.style['width'] = designWidth;
+		designElement.style['translate'] = designTranslate;
 	}
-	onMount(() => {
-		// scaleDesign()
-		// applyCoordinates();
-	});
 	
 </script>
 
 <div class="design-container card-expand" id="design-box">
 	<div class="artboard" id="artboard">
-		<img src={selectedDesign} alt={$lang === 'ES' ? design.nameAr : design.nameUs} />
+		<img src={selectedDesign} alt={lang.value === 'ES' ? design?.nameAr : design?.nameUs} />
 	</div>
 </div>
 
@@ -135,8 +137,8 @@
 	.artboard > img {
 		transform-origin: 0% 0%;
 		/* position:absolute;
-       left:0;
-       top:0; */
+      left:0;
+      top:0; */
 	}
 	#design-box {
 		transform: translateZ(0);

@@ -1,54 +1,50 @@
 <script>
     import {browser} from '$app/environment';
-	import { lang, section, open } from "./configStore";
+	import { lang, section, open } from "./configStore.svelte.js";
     import iconMenu from '$lib/images/icon_menu.svg';
 
     function openMobileMenu(){
 		if(browser){
-			$open = true;
+			open.value = true;
 		}
 	}
-    $: titleAr = function(){
 
-        switch($section){
+    let titleAr = $derived(function(){
+        switch(section.value){
         case 'aboutme':
             return 'Acerca de mí'
-            break
         case 'work':
             return 'Trabajos';
-            break;
         case 'skills':
             return 'Habilidades';
-            break;
         case 'experience':
             return 'Experiencia';
-            break;
         case 'contact':
             return 'Contacto';
-            break;
-    }}
-    $: titleUs = function(){switch($section){
+        default:
+            return 'Acerca de mí';
+    }});
+
+    let titleUs = $derived(function(){
+        switch(section.value){
         case 'aboutme':
             return 'About me'
-            break
         case 'work':
             return 'Work';
-            break;
         case 'skills':
             return 'Skills';
-            break;
         case 'experience':
             return 'Experience';
-            break;
         case 'contact':
             return 'Contact';
-            break;
-    }}
+        default:
+            return 'About me';
+    }});
 </script>
 
 <div class="mobile-title-toggle">
-    <h4>{$lang=="ES"?titleAr():titleUs()}</h4>
-    <div class="mobile-menu-toggle" on:click={()=>{openMobileMenu()}}>
+    <h4>{lang.value=="ES"?titleAr():titleUs()}</h4>
+    <div class="mobile-menu-toggle" onclick={()=>{openMobileMenu()}}>
         <button><img src={iconMenu} alt="Menu"></button>
     </div>
 </div>

@@ -1,6 +1,5 @@
-
 <script>
-    export let icon = "";
+    let { icon = "" } = $props();
 </script>
 
 {#if icon == "Programming"}

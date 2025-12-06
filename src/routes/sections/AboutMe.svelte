@@ -1,7 +1,7 @@
 <script>
 	import profilePicture from '$lib/images/profile.webp'
 	import StatsAbout from './StatsAbout.svelte';
-	import { lang } from '../configStore';
+	import { lang } from '../configStore.svelte.js';
 	import {fade} from 'svelte/transition';
 
 
@@ -11,7 +11,7 @@
 	<span>&</span>
 
 
-	{#if $lang === 'ES'}
+	{#if lang.value === 'ES'}
 		
 		<h1>¡HOLA!<br /> Mi nombre <br /> es Nacho.</h1>
 		

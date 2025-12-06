@@ -1,6 +1,7 @@
 <script>
 	import { browser } from '$app/environment';
-	import { lang } from './configStore';
+	import { lang } from './configStore.svelte.js';
+
 	function scroller(id, e) {
 		let btnColection = document.getElementsByClassName('scroll-btn');
 		let btnArray = [...btnColection];
@@ -10,48 +11,44 @@
 		el.scrollIntoView({
 			behavior: 'smooth'
 		});
-		// btnArray.forEach(element => {
-		//     element.classList.remove('current');
-		// });
-		// btn.classList.add('current');
 	}
 </script>
 
 <div class="scroll-nav">
 	<button
 		class="scroll-btn current"
-		on:click={(e) => {
+		onclick={(e) => {
 			scroller('section-aboutme', e);
 		}}
-		id="aboutme">{$lang === 'ES' ? 'Acerca de mí' : 'About me'}</button
+		id="aboutme">{lang.value === 'ES' ? 'Acerca de mí' : 'About me'}</button
 	>
 	<button
 		class="scroll-btn"
-		on:click={(e) => {
+		onclick={(e) => {
 			scroller('section-work', e);
 		}}
-		id="work">{$lang === 'ES' ? 'Trabajos' : 'Work'}</button
+		id="work">{lang.value === 'ES' ? 'Trabajos' : 'Work'}</button
 	>
 	<button
 		class="scroll-btn"
-		on:click={(e) => {
+		onclick={(e) => {
 			scroller('section-skills', e);
 		}}
-		id="skills">{$lang === 'ES' ? 'Habilidades' : 'Skills'}</button
+		id="skills">{lang.value === 'ES' ? 'Habilidades' : 'Skills'}</button
 	>
 	<button
 		class="scroll-btn"
-		on:click={(e) => {
+		onclick={(e) => {
 			scroller('section-experience', e);
 		}}
-		id="experience">{$lang === 'ES' ? 'Experiencia' : 'Experience'}</button
+		id="experience">{lang.value === 'ES' ? 'Experiencia' : 'Experience'}</button
 	>
 	<button
 		class="scroll-btn"
-		on:click={(e) => {
+		onclick={(e) => {
 			scroller('section-contact', e);
 		}}
-		id="contact">{$lang =='ES'?'Contacto':'Contact'}</button
+		id="contact">{lang.value =='ES'?'Contacto':'Contact'}</button
 	>
 </div>
 

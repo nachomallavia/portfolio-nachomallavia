@@ -1,19 +1,16 @@
 <script>
+	let { title = '', stat = '' } = $props();
 
-
-	export let title = '';
-	export let stat = '';
 	import iconAge from '$lib/images/icon_birthday.svg';
 	import iconCountry from '$lib/images/icon_country.svg';
 	import iconExperience from '$lib/images/icon_experience.svg';
-	let icon;
-	$: if(title == 'Age' || title == 'Edad'){
-		icon = iconAge;
-	} else if(title == 'Country' || title == 'País'){
-		icon = iconCountry;
-	} else if(title == 'Coding Experience'|| title == 'Experiencia con código'){
-		icon = iconExperience;
-	}
+
+	let icon = $derived(
+		(title == 'Age' || title == 'Edad') ? iconAge :
+		(title == 'Country' || title == 'País') ? iconCountry :
+		(title == 'Coding Experience' || title == 'Experiencia con código') ? iconExperience :
+		iconAge
+	);
 </script>
 
 <div class="stat-container">

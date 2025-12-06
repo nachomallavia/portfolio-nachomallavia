@@ -1,32 +1,30 @@
 <script>
 	import { browser } from '$app/environment';
-	import { beforeUpdate, onMount } from 'svelte';
 	import { labelList } from './labelList.js';
-	import { currentLabelId } from '../../../configStore';
-	$: label = labelList.find((order) => order.id === $currentLabelId);
+	import { currentLabelId } from '../../../configStore.svelte.js';
 
-	export let runLabelUpdate = false;
+	let label = $derived(labelList.find((order) => order.id === currentLabelId.value));
 
-	$: if (runLabelUpdate) {
-		setupLabel();
-		fetchLabel(fullLabel);
-	}
+	let { runLabelUpdate = false } = $props();
 
-	let labelHeader = ``;
-	let labelCode = ``;
-	let labelDetail = ``;
-	let labelCustomer = ``;
+	let labelHeader = $state('');
+	let labelCode = $state('');
+	let labelDetail = $state('');
+	let labelCustomer = $state('');
 	let labelClose = `^XZ`;
-	let fullLabel = ``;
-	let loading = true;
+	let fullLabel = $state('');
+	let loading = $state(true);
 
-	onMount(() => {
+	$effect(() => {
 		setupLabel();
 		fetchLabel(fullLabel);
 	});
-	beforeUpdate(() => {
-		setupLabel();
-		fetchLabel(fullLabel);
+
+	$effect(() => {
+		if (runLabelUpdate) {
+			setupLabel();
+			fetchLabel(fullLabel);
+		}
 	});
 
 	export function setupLabel() {
@@ -79,17 +77,19 @@
 		fullLabel = labelHeader + labelDetail + labelCode + labelCustomer + labelClose;
 		return fullLabel;
 	}
+
 	export async function test() {
 		setTimeout(() => {
 			console.log('async component tested');
 		}, 1500);
 	}
-	export async function fetchLabel(fullLabel = '') {
+
+	export async function fetchLabel(fullLabelData = '') {
 		if(browser){
 			let container = document.querySelector('#label-template-container');
-			container.classList.add('loading');
+			container?.classList.add('loading');
 			let loadingText = document.querySelector('#loading-text');
-			loadingText.classList.add('loading');
+			loadingText?.classList.add('loading');
 		}
 		try {
 
@@ -99,12 +99,9 @@
 				headers: {
 					'Content-Type': 'application/x-www-form-urlencoded',					
 				},
-				body:fullLabel
+				body: fullLabelData
 			});
 			let blob =  await res.blob()
-
-
-			// console.log({blob});
 
 			
 			if (browser) {
@@ -112,13 +109,12 @@
 				newImg.src = URL.createObjectURL(blob);
 				newImg.style['maxWidth'] = '90%';
 				newImg.classList.add('label-img');
-				document.querySelector(`#label-text`).replaceChildren(newImg);
+				document.querySelector(`#label-text`)?.replaceChildren(newImg);
 				let container = document.querySelector('#label-template-container');
-				container.classList.remove('loading');
+				container?.classList.remove('loading');
 				let loadingText = document.querySelector('#loading-text');
-				loadingText.classList.remove('loading');
+				loadingText?.classList.remove('loading');
 				loading = false;
-				runLabelUpdate = false;
 			}
 		} catch (error) {
 			console.log(error);

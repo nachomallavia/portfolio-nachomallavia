@@ -1,7 +1,6 @@
 <script>
-	export let data;
-	export let form;
 	import { browser } from '$app/environment';
+	import { onMount } from 'svelte';
 	import AboutMe from './sections/AboutMe.svelte';
 	import Work from './sections/Work.svelte';
 	import Skills from './sections/Skills.svelte';
@@ -9,75 +8,70 @@
 	import Contact from './sections/Contact.svelte';
 	import ContactData from './ContactData.svelte';
 	import Config from './Config.svelte';
-	import { lang, theme, open, section } from './configStore';
+	import { lang, theme, open, section } from './configStore.svelte.js';
 	import MobileMenu from './MobileMenu.svelte';
 	import MobileTitleToggle from './MobileTitleToggle.svelte';
 	import iconMenu from '$lib/images/icon_menu.svg';
-	
-
-	
-	function updateSection(value){
-
-		$section=value;
-
-	}
 	import ScrollNav from './ScrollNav.svelte';
 
-	if (data.lang) {
-		$lang = data.lang;
+	let { data, form } = $props();
+
+	function updateSection(value) {
+		section.value = value;
 	}
-	if (data.theme != undefined) {
-		$theme = data.theme;
-		if (browser) {
-			let bodyColection = document.getElementsByTagName('body');
-			let body = [...bodyColection][0];
 
-			if ($theme === 'Dark mode') {
-				body.classList.add('darkmode');
-			}
-			if ($theme === 'Light mode') {
-				body.classList.remove('darkmode');
-			}
-		}
-	} else {
+	function applyThemeToDOM(isDark) {
 		if (browser) {
-			let bodyColection = document.getElementsByTagName('body');
-			let body = [...bodyColection][0];
-			const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-
-			if (prefersDarkScheme.matches) {
+			const body = document.body;
+			if (isDark) {
 				body.classList.add('darkmode');
-				$theme = 'Dark mode';
 			} else {
 				body.classList.remove('darkmode');
-				$theme = 'Light mode';
 			}
 		}
 	}
+
+	// Initialize language and theme from server data on mount
+	onMount(() => {
+		// Set language from server data or cookie
+		if (data.lang) {
+			lang.value = data.lang;
+		}
+
+		// Set theme from server data (cookie) or system preference
+		if (data.theme) {
+			theme.value = data.theme;
+			applyThemeToDOM(data.theme === 'Dark mode');
+		} else {
+			// No cookie, use system preference
+			const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+			if (prefersDarkScheme.matches) {
+				theme.value = 'Dark mode';
+				applyThemeToDOM(true);
+			} else {
+				theme.value = 'Light mode';
+				applyThemeToDOM(false);
+			}
+		}
+	});
+
 	function updateScrollPosition() {
 		if (browser) {
 			let main = document.getElementById('main');
 			
-			// console.log(main.scrollTop);
-
 			let sectionCollection = document.getElementsByTagName('section');
 			let navCollection = document.getElementsByClassName('scroll-btn');
 			let navArray = [...navCollection];
 			let sectionArray = [...sectionCollection];
-			let img = document.getElementById('profile-picture');
-			let container = document.getElementById('profile-container');
 
-			sectionArray.forEach((section, index) => {
-				
-				let sectionRange = section.offsetTop + section.offsetHeight-50;
+			sectionArray.forEach((sectionEl, index) => {
+				let sectionRange = sectionEl.offsetTop + sectionEl.offsetHeight - 50;
 
-				if (main.scrollTop >= section.offsetTop && main.scrollTop < sectionRange) {
-
+				if (main.scrollTop >= sectionEl.offsetTop && main.scrollTop < sectionRange) {
 					navArray.forEach((navButton) => {
-						if ('section-' + navButton.id === section.id) {
+						if ('section-' + navButton.id === sectionEl.id) {
 							navButton.classList.add('current');
 							updateSection(navButton.id);
-							
 						} else {
 							navButton.classList.remove('current');
 						}
@@ -91,7 +85,6 @@
 <svelte:head>
 	<title>Nacho Mallaviabarrena</title>
 	<meta name="description" content="Dev Portfolio" />
-	
 </svelte:head>
 <svelte:window />
 <div class="page-container">
@@ -102,7 +95,7 @@
 		<div class="left">
 			<ContactData />
 		</div>
-		<div class="center content" on:scroll={(e) => updateScrollPosition()} id="main">
+		<div class="center content" onscroll={() => updateScrollPosition()} id="main">
 			<AboutMe />
 			<Work />
 			<Skills />
@@ -112,7 +105,7 @@
 		<div class="right">
 			<Config />
 			<ScrollNav />
-			<div />
+			<div></div>
 		</div>
 	</div>
 </div>

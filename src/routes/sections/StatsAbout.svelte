@@ -1,9 +1,5 @@
 <script>
-	import { onMount } from 'svelte';
-	import { lang } from '../configStore';
-	
-	
-	// $: selectedLang = $lang;
+	import { lang } from '../configStore.svelte.js';
 
 	import StatBox from './StatBox.svelte';
 	let about = {
@@ -11,18 +7,13 @@
 		Country: 'Argentina',
 		'Coding Experience': '1+ years'
 	};
-	let selectedStats = about;
 	let aboutEsp = {
 		Edad: '37 años',
 		País: 'Argentina',
 		'Experiencia con código': '1+ años'
 	};
-	$: if ($lang === 'ES') {
-		selectedStats = aboutEsp;
-	}
-	$: if ($lang === 'ENG') {
-		selectedStats = about;
-	}
+
+	let selectedStats = $derived(lang.value === 'ES' ? aboutEsp : about);
 	
 </script>
 

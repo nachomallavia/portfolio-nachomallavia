@@ -1,8 +1,8 @@
 <script>
-    import {lang} from '../../configStore';    
-    export let studies = false;
-    let lineColor = 'orange';
-    let textColor = 'orangeText';
+    import {lang} from '../../configStore.svelte.js';    
+    let { studies = false } = $props();
+    let lineColor = $state('orange');
+    let textColor = $state('orangeText');
 
     let studyExperience = [
         {   
@@ -108,18 +108,18 @@
             detailUs: "I designed digital communication pieces for the brands that worked with our agency. I Mainly focused on social media posts, e-mail marketing and web banners."
         }
         ]
-    let experience = workExperience;
+
+    let experience = $derived(studies ? studyExperience : workExperience);
    
-    $:if(studies){
-            experience = studyExperience;
+    $effect(() => {
+        if(studies){
             lineColor = 'blue';
-            textColor= 'blueText';
+            textColor = 'blueText';
         } else {
-            experience = workExperience;
             lineColor = 'orange';
-            textColor= 'orangeText';
+            textColor = 'orangeText';
         }
-    ;
+    });
 </script>
 
 <div class="timeline-container">
@@ -134,36 +134,26 @@
                         <div class="timeline-item right big-offset-left">
                             <div class="timeline-pointer">
                                 <div class="spot orange">
-                                    <!-- {#if item.place == "Flashcookie"}
-                                    <img src={logoFlashcookie} alt="logo Flashcookie">
-                                    {:else if item.place == "Coupé"}
-                                    <img src={logoCoupe} alt="logo Coupé" class="bigger">
-                                    {/if} -->
                                 </div>
                                 <div class="tiny-line orange"></div>
                             </div>
                             <div class="item-description">
-                                <h4>{$lang=="ES"?item.dateAr:item.dateUs}</h4>
-                                <p class="experience-title"><a href={item.url} target="blank" class="work">{item.place}</a> - <em class={textColor}>{$lang == "ES"?item.titleAr:item.titleUs}</em></p>
-                                <p class="detail">{$lang == "ES"?item.detailAr:item.detailUs}</p>
+                                <h4>{lang.value=="ES"?item.dateAr:item.dateUs}</h4>
+                                <p class="experience-title"><a href={item.url} target="blank" class="work">{item.place}</a> - <em class={textColor}>{lang.value == "ES"?item.titleAr:item.titleUs}</em></p>
+                                <p class="detail">{lang.value == "ES"?item.detailAr:item.detailUs}</p>
                             </div>
                         </div>
                     {:else}
                         <div class="timeline-item left big-offset-right">
                             <div class="timeline-pointer">
                                 <div class=" spot orange">
-                                    <!-- {#if item.place == "Flashcookie"}
-                                    <img src={logoFlashcookie} alt="logo Flashcookie">
-                                    {:else if item.place == "Coupé"}
-                                    <img src={logoCoupe} alt="logo Coupé" class="bigger">
-                                    {/if} -->
                                 </div>
                                 <div class="tiny-line orange"></div>
                             </div>
                             <div class="item-description">
-                                <h4>{$lang=="ES"?item.dateAr:item.dateUs}</h4>
-                                <p class="experience-title"><a href={item.url} target="blank" class="work">{item.place}</a> - <em class={textColor}>{$lang == "ES"?item.titleAr:item.titleUs}</em></p>
-                                <p class="detail">{$lang == "ES"?item.detailAr:item.detailUs}</p>
+                                <h4>{lang.value=="ES"?item.dateAr:item.dateUs}</h4>
+                                <p class="experience-title"><a href={item.url} target="blank" class="work">{item.place}</a> - <em class={textColor}>{lang.value == "ES"?item.titleAr:item.titleUs}</em></p>
+                                <p class="detail">{lang.value == "ES"?item.detailAr:item.detailUs}</p>
                             </div>
                         </div>
                     {/if}
@@ -179,36 +169,26 @@
                     <div class="timeline-item right big-offset-left">
                         <div class="timeline-pointer">
                             <div class="spot blue">
-                                <!-- {#if item.place == "Flashcookie"}
-                                <img src={logoFlashcookie} alt="logo Flashcookie">
-                                {:else if item.place == "Coupé"}
-                                <img src={logoCoupe} alt="logo Coupé" class="bigger">
-                                {/if} -->
                             </div>
                             <div class="tiny-line blue"></div>
                         </div>
                         <div class="item-description">
-                            <h4>{$lang=="ES"?item.dateAr:item.dateUs}</h4>
-                            <p class="experience-title"><a href={item.url} target="blank" class="study">{item.place}</a> - <em class={textColor}>{$lang == "ES"?item.titleAr:item.titleUs}</em></p>
-                            <p class="detail">{$lang == "ES"?item.detailAr:item.detailUs}</p>
+                            <h4>{lang.value=="ES"?item.dateAr:item.dateUs}</h4>
+                            <p class="experience-title"><a href={item.url} target="blank" class="study">{item.place}</a> - <em class={textColor}>{lang.value == "ES"?item.titleAr:item.titleUs}</em></p>
+                            <p class="detail">{lang.value == "ES"?item.detailAr:item.detailUs}</p>
                         </div>
                     </div>
                 {:else}
                     <div class="timeline-item left big-offset-right">
                         <div class="timeline-pointer">
                             <div class=" spot blue">
-                                <!-- {#if item.place == "Flashcookie"}
-                                <img src={logoFlashcookie} alt="logo Flashcookie">
-                                {:else if item.place == "Coupé"}
-                                <img src={logoCoupe} alt="logo Coupé" class="bigger">
-                                {/if} -->
                             </div>
                             <div class="tiny-line blue"></div>
                         </div>
                         <div class="item-description">
-                            <h4>{$lang=="ES"?item.dateAr:item.dateUs}</h4>
-                            <p class="experience-title"><a href={item.url} target="blank" class="study">{item.place}</a> - <em class={textColor}>{$lang == "ES"?item.titleAr:item.titleUs}</em></p>
-                            <p class="detail">{$lang == "ES"?item.detailAr:item.detailUs}</p>
+                            <h4>{lang.value=="ES"?item.dateAr:item.dateUs}</h4>
+                            <p class="experience-title"><a href={item.url} target="blank" class="study">{item.place}</a> - <em class={textColor}>{lang.value == "ES"?item.titleAr:item.titleUs}</em></p>
+                            <p class="detail">{lang.value == "ES"?item.detailAr:item.detailUs}</p>
                         </div>
                     </div>
                 {/if}

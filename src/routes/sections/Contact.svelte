@@ -1,20 +1,34 @@
 <script>
-	export let form;
 	import { enhance } from '$app/forms';
-	import { lang } from '../configStore';
+	import { lang } from '../configStore.svelte.js';
 	import iconClose from '$lib/images/icon_close.svg';
 	import contactIcon from '$lib/images/contact.svg';
+
+	let { form } = $props();
+
+	function closeModal() {
+		if (form) {
+			form.success = false;
+		}
+	}
+
+	function handleKeyup(e) {
+		console.log(e.key);
+		if(e.key == "Escape"){
+			closeModal();
+		}
+	}
 </script>
 <section class="full" id="section-contact">
 	<div class="contact-header">
-		<h2>{$lang=="ES"?"Contacto":"Contact"}</h2>
+		<h2>{lang.value=="ES"?"Contacto":"Contact"}</h2>
 	</div>
 	<div class="container">
 		{#if form?.success == true}
-		<div class="thanks-modal" on:mouseup={()=>{form.success=false}} on:keyup={(e)=>{console.log(e.key);if(e.key == "Escape"){form.success=false}}}>
+		<div class="thanks-modal" onmouseup={closeModal} onkeyup={handleKeyup}>
 		
 			<img src={contactIcon} alt="Close">
-			{#if $lang=="ES"}
+			{#if lang.value=="ES"}
 			<h1>¡Gracias {form.firstName}!</h1>
 			<p>Recibí tu mensaje y en breve voy a estar escribiendo al mail que me indicaste.<br>Espero que estemos en contacto pronto.</p>
 			{:else}
@@ -28,8 +42,8 @@
 		{/if}
 		<div class="contact-group">
 			<div class="title">
-				<h2>{$lang=="ES"?"¡Gracias por tu tiempo!":"Thank you for your time! "}</h2>
-				{#if $lang=="ES"}
+				<h2>{lang.value=="ES"?"¡Gracias por tu tiempo!":"Thank you for your time! "}</h2>
+				{#if lang.value=="ES"}
 				<p>Completá este formulario si querés que entremos en contacto.<br class="mobile">
 					También podés escribirme a <a href="mailto: nachomallavia@gmail.com">nachomallavia@gmail.com</a><br class="mobile"> o contactarme en <a href="https://www.linkedin.com/in/ignacio-mallaviabarrena/" target="_blank">LinkedIn.</a>
 					
@@ -44,10 +58,10 @@
 				<div class="contact-grid">
 					
 					<div class="grid-element name">
-						<label for="name">{$lang=="ES"?"Nombre":"Name"}</label>
+						<label for="name">{lang.value=="ES"?"Nombre":"Name"}</label>
 						<input type="text" name="name" autocomplete="name" value={form?.name?form.name:""}>
 						<div class="error-space">
-							{#if $lang=="ES"}
+							{#if lang.value=="ES"}
 							<h5>{form?.error?.name?.ar?form.error.name.ar:""}</h5>
 							{:else}
 							<h5>{form?.error?.name?.us?form.error.name.us:""}</h5>
@@ -56,10 +70,10 @@
 					</div>
 					
 					<div class="grid-element email">
-						<label for="email">{$lang=="ES"?"Email":"Email"}</label>
+						<label for="email">{lang.value=="ES"?"Email":"Email"}</label>
 						<input type="email" name="email" autocomplete="email" value={form?.email?form.email:""}>
 						<div class="error-space">
-							{#if $lang=="ES"}
+							{#if lang.value=="ES"}
 							<h5>{form?.error?.email?.ar?form.error.email.ar:""}</h5>
 							{:else}
 							<h5>{form?.error?.email?.us?form.error.email.us:""}</h5>
@@ -68,10 +82,10 @@
 					</div>
 				
 					<div class="grid-element message">
-						<label for="message">{$lang=="ES"?"Mensaje":"Message"}</label>
+						<label for="message">{lang.value=="ES"?"Mensaje":"Message"}</label>
 						<textarea name="message" cols="30" rows="10" value={form?.message?form.message:""}></textarea>
 						<div class="error-space">
-							{#if $lang=="ES"}
+							{#if lang.value=="ES"}
 							<h5>{form?.error?.message?.ar?form.error.message.ar:""}</h5>
 							{:else}
 							<h5>{form?.error?.message?.us?form.error.message.us:""}</h5>
@@ -79,7 +93,7 @@
 						</div>
 					</div>
 					<div class="grid-element sub">
-						<button type="submit" class="submit">{$lang=="ES"?"Enviar":"Send"}</button>
+						<button type="submit" class="submit">{lang.value=="ES"?"Enviar":"Send"}</button>
 					</div>
 
 				</div>

@@ -1,8 +1,7 @@
 import sgMail from '@sendgrid/mail';
-import {SENDGRID_API_KEY} from "$env/static/private";
+import { env } from "$env/dynamic/private";
 import { setCookie } from '$lib/cookieHandler.js';
 import { fail } from '@sveltejs/kit';
-sgMail.setApiKey(SENDGRID_API_KEY);
 
 export async function load({ params, url, cookies }) {
 	let lang = url.searchParams.get('lang');
@@ -66,6 +65,11 @@ export const actions = {
 			firstName = name
 		}
 		if (name && email && message && error.name.ar == "" && error.email.ar == "" && error.message.ar == ""){
+			// Set API key at runtime
+			if (env.SENDGRID_API_KEY) {
+				sgMail.setApiKey(env.SENDGRID_API_KEY);
+			}
+			
 			const msg = {
 				to: 'nachomallavia@gmail.com', // Change to your recipient
 				from: 'nachomallavia@gmail.com', // Change to your verified sender

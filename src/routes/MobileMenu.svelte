@@ -1,12 +1,12 @@
 <script>
-    import {lang, open} from './configStore';
+    import {lang, open} from './configStore.svelte.js';
     import MobileConfig from './MobileConfig.svelte';
     import MobileScrollNav from './MobileScrollNav.svelte';
     import MobileContactData from './MobileContactData.svelte';
 
 </script>
 
-<div id="mobile-menu" data-open={$open} >
+<div id="mobile-menu" data-open={open.value} >
 
     <MobileConfig />
     <MobileScrollNav/>

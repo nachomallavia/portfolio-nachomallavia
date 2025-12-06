@@ -1,67 +1,75 @@
 <script>
 	import { browser } from '$app/environment';
 	import { setCookie } from '$lib/cookieHandler.js';
-	import { theme } from './configStore.js';
+	import { theme } from './configStore.svelte.js';
 	import sunIcon from '$lib/images/Sun.png';
 	import moonIcon from '$lib/images/Moon.png';
 
-	let currentTheme = $theme;
-
-	function changeTheme() {
+	function applyTheme(isDark) {
 		if (browser) {
-			let bodyColection = document.getElementsByTagName('body');
-			let body = [...bodyColection][0];
-			let iconCollection = document.querySelectorAll('#contact-group > a > img');
-			let iconArray = [...iconCollection];
-
-			if (currentTheme === 'Light mode') {
-				setCookie('NachoTheme', 'Dark mode', 365);
-				$theme = 'Dark mode';
+			const body = document.body;
+			const icons = document.querySelectorAll('#contact-group > a > img');
+			
+			if (isDark) {
 				body.classList.add('darkmode');
-				currentTheme = 'Dark mode';
-				iconArray.forEach((element) => {
-					element.classList.add('darkmode');
-				});
-			} else if (currentTheme === 'Dark mode') {
-				setCookie('NachoTheme', 'Light mode', 365);
-				$theme = 'Light mode';
+				icons.forEach((el) => el.classList.add('darkmode'));
+			} else {
 				body.classList.remove('darkmode');
-				currentTheme = 'Light mode';
-				iconArray.forEach((element) => {
-					element.classList.remove('darkmode');
-				});
+				icons.forEach((el) => el.classList.remove('darkmode'));
 			}
 		}
 	}
+
+	function changeTheme() {
+		if (browser) {
+			const isDark = theme.value !== 'Light mode';
+			
+			if (isDark) {
+				// Currently dark, switch to light
+				setCookie('NachoTheme', 'Light mode', 365);
+				theme.value = 'Light mode';
+				applyTheme(false);
+			} else {
+				// Currently light, switch to dark
+				setCookie('NachoTheme', 'Dark mode', 365);
+				theme.value = 'Dark mode';
+				applyTheme(true);
+			}
+		}
+	}
+
+	// Sync theme with DOM whenever theme.value changes
+	$effect(() => {
+		const currentTheme = theme.value;
+		if (browser && currentTheme) {
+			applyTheme(currentTheme === 'Dark mode');
+		}
+	});
 </script>
 
 <button
 	class="theme-container"
-	on:click={() => {
-		changeTheme();
-	}}
+	onclick={changeTheme}
 >
 	<div class="box">
-		{#if currentTheme === 'Light mode'}
+		{#if theme.value === 'Light mode'}
 			<img src={sunIcon} alt="Light mode Icon" class="sun" />
-		{:else if currentTheme === 'Dark mode'}
+		{:else}
 			<img src={moonIcon} alt="Dark mode Icon" class="moon" />
 		{/if}
 	</div>
-	<!-- <p class="mode">{currentTheme}</p> -->
 </button>
 
 <style>
 	.theme-container {
 		display: flex;
-		/* flex-direction: column; */
 		align-items: center;
 		font-size: 1rem;
 		color: var(--text-color);
 		gap: 8px;
 		cursor: pointer;
 		background-color: var(--background-color-1);
-		border:none;
+		border: none;
 	}
 	.box {
 		background-color: var(--background-color-1);
@@ -71,10 +79,8 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		/* gap: 1rem; */
 		min-width: 36px;
 		min-height: 36px;
-
 		overflow: hidden;
 	}
 	.sun {
@@ -84,3 +90,4 @@
 		max-width: 18px;
 	}
 </style>
+

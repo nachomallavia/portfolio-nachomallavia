@@ -1,17 +1,16 @@
 <script>
 	import { backgroundList } from './backgroundList';
 	import { designList } from './designList';
-	import { currentBackgroundId, currentDesignId } from './productCardStore';
+	import { currentBackgroundId, currentDesignId } from './productCardStore.svelte.js';
 	import BackgroundRender from './BackgroundRender.svelte';
-	import { beforeUpdate, onMount } from 'svelte';
 	import { browser } from '$app/environment';
 
-	$: design = designList.find((design) => design.id === $currentDesignId);
-	$: background = backgroundList.find((background) => background.id === $currentBackgroundId);
+	let design = $derived(designList.find((design) => design.id === currentDesignId.value));
+	let background = $derived(backgroundList.find((background) => background.id === currentBackgroundId.value));
 </script>
 
 <div class="bg-box card-expand" id="background-box">
-	<BackgroundRender svgContent={background.svg} colors={design.palette} />
+	<BackgroundRender svgContent={background?.svg} colors={design?.palette} />
 </div>
 
 <style>

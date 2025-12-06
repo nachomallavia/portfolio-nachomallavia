@@ -3,6 +3,8 @@
 	import './vars.css';
 	import { dev } from '$app/environment';
 	import { inject } from '@vercel/analytics';
+
+	let { children } = $props();
  
 	inject({ mode: dev ? 'development' : 'production' });
 </script>
@@ -11,7 +13,7 @@
 	<!-- <Header /> -->
 
 	<main>
-		<slot />
+		{@render children()}
 	</main>
 
 	<!-- <footer>

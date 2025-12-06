@@ -1,5 +1,5 @@
 <script>
-	import { currentProductId } from './productCardStore';
+	import { currentProductId } from './productCardStore.svelte.js';
 
 	import HoodieColor from './HoodieColor.svelte';
 
@@ -8,7 +8,7 @@
 	import TshirtColor from './TshirtColor.svelte';
 	import ToteBagColor from './ToteBagColor.svelte';
 
-	$: product = productList.find((product) => product.id === $currentProductId);
+	let product = $derived(productList.find((product) => product.id === currentProductId.value));
 </script>
 
 <div class="color-container card-expand" id="color-box">

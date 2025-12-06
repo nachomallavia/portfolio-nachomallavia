@@ -3,10 +3,11 @@
 	import LangToggle from './LangToggle.svelte';
 	import iconClose from '$lib/images/icon_close.svg'
 	import { browser } from '$app/environment';
-	import {open } from './configStore';
+	import {open } from './configStore.svelte.js';
+
 	function closeMobileMenu(){
 		if(browser){
-			$open = false;
+			open.value = false;
 		}
 	}
 </script>
@@ -17,7 +18,7 @@
 		<LangToggle />
 	</div>
 	<div class="close" >
-		<button on:click={()=>{closeMobileMenu()}}>
+		<button onclick={()=>{closeMobileMenu()}}>
 			<img src={iconClose} alt="Close">
 		</button>
 	</div>

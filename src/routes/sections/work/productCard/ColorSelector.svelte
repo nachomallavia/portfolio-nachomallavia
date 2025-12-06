@@ -1,81 +1,82 @@
 <script>
-	import { lang } from '../../../configStore';
-	import { beforeUpdate, onMount, afterUpdate } from 'svelte';
+	import { lang } from '../../../configStore.svelte.js';
 	import {
 		currentProductId,
 		currentDesignId,
 		colorIndex,
 		currentColorId
-	} from './productCardStore';
+	} from './productCardStore.svelte.js';
 	import { productList } from './productList';
 	import { designList } from './designList';
 	import { colorList } from './colorList';
-	import { element } from 'svelte/internal';
+	import { untrack } from 'svelte';
 
-	$: product = productList.find((product) => product.id === $currentProductId);
-	$: design = designList.find((design) => design.id === $currentDesignId);
-	$: currentColor = colorList.find((color) => color.id === $currentColorId);
+	let product = $derived(productList.find((product) => product.id === currentProductId.value));
+	let design = $derived(designList.find((design) => design.id === currentDesignId.value));
+	let currentColor = $derived(colorList.find((color) => color.id === currentColorId.value));
 
-	let availableColorsArray = [];
-	onMount(() => {
-		updateColor(currentColor);
-	});
-	beforeUpdate(() => {
-		if (design !== undefined) {
-			let designPickedColors = design.selectedProductColors;
+	// Compute available colors as a derived value instead of using effect
+	let availableColorsArray = $derived.by(() => {
+		if (design === undefined || product === undefined) return [];
+		
+		let result = [];
+		let designPickedColors = design.selectedProductColors;
 
-			for (let i = 0; i < designPickedColors.length; i++) {
-				let idCombinator = designPickedColors[i];
+		for (let i = 0; i < designPickedColors.length; i++) {
+			let idCombinator = designPickedColors[i];
 
-				if (idCombinator.productId == product.id) {
-					availableColorsArray = [];
-					idCombinator.colorIds.forEach((colorId) => {
-						let includedColor = colorList.find((obj) => obj.id === colorId);
-						if (availableColorsArray.indexOf(includedColor) === -1) {
-							availableColorsArray.push(includedColor);
-						}
-					});
-				}
+			if (idCombinator.productId == product.id) {
+				idCombinator.colorIds.forEach((colorId) => {
+					let includedColor = colorList.find((obj) => obj.id === colorId);
+					if (includedColor && result.indexOf(includedColor) === -1) {
+						result.push(includedColor);
+					}
+				});
 			}
-			if (availableColorsArray.length > 0) {
-				if (availableColorsArray.indexOf(currentColor) === -1) {
-					$currentColorId = availableColorsArray[0].id;
-					currentColor = colorList.find((color) => color.id === $currentColorId);
-				}
+		}
+		return result;
+	});
+
+	// Separate effect to update currentColorId if needed - only runs when availableColorsArray changes
+	$effect(() => {
+		const colors = availableColorsArray;
+		const color = currentColor;
+		
+		if (colors.length > 0 && color) {
+			if (colors.indexOf(color) === -1) {
+				untrack(() => {
+					currentColorId.value = colors[0].id;
+				});
 			}
 		}
 	});
-	afterUpdate(() => {
-		updateColor(currentColor);
-	});
 
 	function updateColor(color) {
-		$currentColorId = color.id;
-		let sampleCollection = document.getElementsByClassName('sample');
-		let sampleArray = [...sampleCollection];
-		sampleArray.forEach((sample) => sample.classList.remove('selected'));
-		let selectedSample = sampleArray.find((element) => element.id === $currentColorId.toString());
-
-		selectedSample.classList.add('selected');
+		currentColorId.value = color.id;
 	}
 </script>
 
 <div class="color-container">
-	<h3>{$lang === 'ES' ? 'Colores disponibles' : 'Available Colors'}</h3>
+	<h3>{lang.value === 'ES' ? 'Colores disponibles' : 'Available Colors'}</h3>
 	<div class="color-menu">
 		{#each availableColorsArray as color, i}
 			<div
 				class="color-option"
-				on:click={() => {
+				role="button"
+				tabindex="0"
+				onclick={() => {
 					updateColor(color);
 				}}
+				onkeydown={(e) => {
+					if (e.key === 'Enter' || e.key === ' ') updateColor(color);
+				}}
 			>
-				{#if color.id === colorList[$currentColorId]}
-					<button class="sample selected" id={color.id} style={'background-color:' + color.code} />
-					<span class="label">{$lang === 'ES' ? color.nameAr : color.nameUs}</span>
+				{#if color.id === currentColorId.value}
+					<button class="sample selected" id={color.id} style={'background-color:' + color.code} aria-label={lang.value === 'ES' ? color.nameAr : color.nameUs}></button>
+					<span class="label">{lang.value === 'ES' ? color.nameAr : color.nameUs}</span>
 				{:else}
-					<button class="sample" id={color.id} style={'background-color:' + color.code} />
-					<span class="label">{$lang === 'ES' ? color.nameAr : color.nameUs}</span>
+					<button class="sample" id={color.id} style={'background-color:' + color.code} aria-label={lang.value === 'ES' ? color.nameAr : color.nameUs}></button>
+					<span class="label">{lang.value === 'ES' ? color.nameAr : color.nameUs}</span>
 				{/if}
 			</div>
 		{/each}

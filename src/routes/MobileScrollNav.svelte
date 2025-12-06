@@ -1,6 +1,6 @@
 <script>
 	import { browser } from '$app/environment';
-	import { lang, open } from './configStore';
+	import { lang, open } from './configStore.svelte.js';
 	
 
 	function scroller(id, e) {
@@ -12,45 +12,55 @@
 		el.scrollIntoView({
 			behavior: 'smooth'
 		});
-		$open=false;
+		open.value = false;
+	}
+
+	function handleClick() {
+		open.value = false;
+	}
+
+	function handleKeyup(e) {
+		if(e.key == "Escape"){
+			open.value = false;
+		}
 	}
 </script>
 
-<div class="scroll-nav" on:click={()=>{$open = false}} on:keyup={(e)=>{if(e.key == "Escape"){$open = false}}}>
+<div class="scroll-nav" onclick={handleClick} onkeyup={handleKeyup}>
 	<button
 		class="scroll-btn current"
-		on:click={(e) => {
+		onclick={(e) => {
 			scroller('section-aboutme', e);
 		}}
-		id="aboutme">{$lang === 'ES' ? 'Acerca de mí' : 'About me'}</button
+		id="aboutme">{lang.value === 'ES' ? 'Acerca de mí' : 'About me'}</button
 	>
 	<button
 		class="scroll-btn"
-		on:click={(e) => {
+		onclick={(e) => {
 			scroller('section-work', e);
 		}}
-		id="work">{$lang === 'ES' ? 'Trabajos' : 'Work'}</button
+		id="work">{lang.value === 'ES' ? 'Trabajos' : 'Work'}</button
 	>
 	<button
 		class="scroll-btn"
-		on:click={(e) => {
+		onclick={(e) => {
 			scroller('section-skills', e);
 		}}
-		id="skills">{$lang === 'ES' ? 'Habilidades' : 'Skills'}</button
+		id="skills">{lang.value === 'ES' ? 'Habilidades' : 'Skills'}</button
 	>
 	<button
 		class="scroll-btn"
-		on:click={(e) => {
+		onclick={(e) => {
 			scroller('section-experience', e);
 		}}
-		id="experience">{$lang === 'ES' ? 'Experiencia' : 'Experience'}</button
+		id="experience">{lang.value === 'ES' ? 'Experiencia' : 'Experience'}</button
 	>
 	<button
 		class="scroll-btn"
-		on:click={(e) => {
+		onclick={(e) => {
 			scroller('section-contact', e);
 		}}
-		id="contact">{$lang =='ES'?'Contacto':'Contact'}</button
+		id="contact">{lang.value =='ES'?'Contacto':'Contact'}</button
 	>
 </div>
 

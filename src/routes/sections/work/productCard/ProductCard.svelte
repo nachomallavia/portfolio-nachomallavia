@@ -6,19 +6,19 @@
 		currentDesignId,
 		currentColorId,
 		backgroundIndex
-	} from './productCardStore';
-	import { lang } from '../../../configStore';
+	} from './productCardStore.svelte.js';
+	import { lang } from '../../../configStore.svelte.js';
 	import { colorList } from './colorList.js';
 	import { productList } from './productList.js';
 	import { designList } from './designList.js';
 	import ProductInfo from './ProductInfo.svelte';
 
-	$: product = productList.find((product) => product.id === $currentProductId);
+	let product = $derived(productList.find((product) => product.id === currentProductId.value));
 </script>
 
 <div class="product-card card-expand" id="product-card">
 	<div class="price-like">
-		<h3>${$lang === 'ES' ? product.priceAr : product.priceUs}</h3>
+		<h3>${lang.value === 'ES' ? product.priceAr : product.priceUs}</h3>
 		<Like />
 	</div>
 	<ProductBox />

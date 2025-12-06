@@ -1,37 +1,39 @@
 <script>
 	import {browser} from '$app/environment';
-	import { onMount } from 'svelte';
-	import { lang } from '../../configStore';
+	import { lang } from '../../configStore.svelte.js';
 	import LabelConfig from './ShippingLabels/LabelConfig.svelte';
 
 	import LabelTemplate from './ShippingLabels/LabelTemplate.svelte';
-	let labelExample;
-	let mobileScreenDetected = false;
+	let labelExample = $state(null);
+	let mobileScreenDetected = $state(false);
 
-	onMount(()=>{
+	$effect(() => {
 		if(browser){
-
 			if(window.innerWidth <= 512){
 				mobileScreenDetected = true;
 			}
 		}
-	})
+	});
+
+	function handleUpdateClick() {
+		if (labelExample) {
+			labelExample.fetchLabel(labelExample.setupLabel());
+		}
+	}
 </script>
 
 <div class="container" id="work-label-printer">
 	{#if mobileScreenDetected == true}
 		<button
 			id="update-btn"
-			on:click={() => {
-				labelExample.fetchLabel(labelExample.setupLabel());
-			}}>{$lang === 'ES' ? 'Actualizar etiqueta' : 'Update label'}</button
+			onclick={handleUpdateClick}>{lang.value === 'ES' ? 'Actualizar etiqueta' : 'Update label'}</button
 		>
 		<LabelConfig />
 	{/if}
 	<div class="label-example">
 		<div>
 			<LabelTemplate bind:this={labelExample} />
-			<p id="loading-text" class="loading">{$lang=="ES"?"Cargando etiqueta...":"Fetching Label..."}</p>
+			<p id="loading-text" class="loading">{lang.value=="ES"?"Cargando etiqueta...":"Fetching Label..."}</p>
 			<div id="label-template-container" class="loading">
 				<div id="label-text">
 
@@ -41,8 +43,8 @@
 	</div>
 	
 	<div class="description">
-		<h2>{$lang === 'ES' ? 'Impresora de etiquetas de envío' : 'Shipping label printer'}</h2>
-		{#if $lang === 'ES'}
+		<h2>{lang.value === 'ES' ? 'Impresora de etiquetas de envío' : 'Shipping label printer'}</h2>
+		{#if lang.value === 'ES'}
 			<p>
 				Unificamos el flujo de trabajo de empaquetado y etiquetado para todos los métodos
 				disponibles de envío o retiro de compras. Para esto utilizamos <a
@@ -64,9 +66,7 @@
 			<LabelConfig />
 			<button
 			id="update-btn"
-			on:click={() => {
-				labelExample.fetchLabel(labelExample.setupLabel());
-			}}>{$lang === 'ES' ? 'Actualizar etiqueta' : 'Update label'}</button>
+			onclick={handleUpdateClick}>{lang.value === 'ES' ? 'Actualizar etiqueta' : 'Update label'}</button>
 		{/if}
 
 		

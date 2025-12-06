@@ -1,12 +1,12 @@
 <script>
 	import { browser } from '$app/environment';
 	import { backgroundList } from './backgroundList';
-	import { onMount, beforeUpdate, afterUpdate } from 'svelte';
-	import { currentBackgroundId } from './productCardStore';
-	export let svgContent = ` <h2> CARGANDO FONDO </h2> `;
-	let svgToRender = htmlToElement(svgContent);
-	export let colors = [];
-	$: defsConfig = `
+	import { currentBackgroundId } from './productCardStore.svelte.js';
+	import { untrack } from 'svelte';
+
+	let { svgContent = ` <h2> CARGANDO FONDO </h2> `, colors = [] } = $props();
+
+	let defsConfig = $derived(`
     <defs>
       <style>
         .cls-1 {
@@ -14,17 +14,17 @@
         }
   
         .cls-2 {
-          fill: ${colors[0]};
+          fill: ${colors?.[0] || '#000'};
         }
   
         .cls-3 {
-          fill: ${colors[1]};
+          fill: ${colors?.[1] || '#000'};
         }
         .cls-4 {
-          fill: ${colors[2]};
+          fill: ${colors?.[2] || '#000'};
         }
       </style>
-    </defs>`;
+    </defs>`);
 
 	function htmlToElement(html) {
 		if (browser) {
@@ -33,21 +33,34 @@
 			template.innerHTML = html;
 			return template.content.firstElementChild;
 		}
+		return null;
 	}
 
 	function renderSvg() {
-		if (browser) {
+		if (browser && svgContent) {
 			let box = document.getElementById('svg-box');
+			if (!box) return;
 			let defsTorender = htmlToElement(defsConfig);
-			svgToRender = htmlToElement(svgContent);
-			svgToRender.appendChild(defsTorender);
-			box.replaceChildren(svgToRender);
+			let svgToRender = htmlToElement(svgContent);
+			if (svgToRender && defsTorender) {
+				svgToRender.appendChild(defsTorender);
+				box.replaceChildren(svgToRender);
+			}
 		}
 	}
 
-	afterUpdate(() => {
-		renderSvg();
+	// Use effect with explicit dependencies
+	$effect(() => {
+		// Read the reactive values to track them
+		const content = svgContent;
+		const colorValues = colors;
+		const defs = defsConfig;
+		
+		// Run render in untrack to prevent further subscriptions
+		untrack(() => {
+			renderSvg();
+		});
 	});
 </script>
 
-<div id="svg-box" />
+<div id="svg-box"></div>

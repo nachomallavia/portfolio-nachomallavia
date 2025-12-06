@@ -3,7 +3,7 @@
 	import iconDesign from '../../lib/images/icon_design.svg'
 	import iconEnglish from '../../lib/images/icon_english.svg'
 	import iconGroup from '../../lib/images/icon_group.svg'
-	import { lang } from '../configStore';
+	import { lang } from '../configStore.svelte.js';
 	import Skill from './skills/Skill.svelte';
 	import Icon from './skills/Icon.svelte';
 	import Detail from './skills/Detail.svelte';
@@ -15,7 +15,7 @@
 
 <section class="full" id="section-skills">
 	<div class="skills-header">
-		<h2 class="section-title">{$lang === 'ES' ? 'HABILIDADES' : 'SKILLS'}</h2>
+		<h2 class="section-title">{lang.value === 'ES' ? 'HABILIDADES' : 'SKILLS'}</h2>
 	</div>
 	<div class="skill-container">
 		<div class="skill-list">
@@ -35,20 +35,20 @@
 							<img src={iconGroup} alt="" class="">
 							{/if}
 						</div>
-						<h3>{$lang==='ES'?skillItem.nameAr:skillItem.nameUs}</h3>
+						<h3>{lang.value==='ES'?skillItem.nameAr:skillItem.nameUs}</h3>
 					</div>
 					<Skill score={skillItem.score}/>
 					
 				</div>
-				<p>{$lang==='ES'?skillItem.descriptionAr:skillItem.descriptionUs}</p>
+				<p>{lang.value==='ES'?skillItem.descriptionAr:skillItem.descriptionUs}</p>
 				{#if skillItem.details != undefined}
 				<div class="details">
 				{#each skillItem.details as detail}
 				
 				<div class="group">
 					
-				<span class="detail-name">{$lang==='ES'?detail.name:detail.name}:</span>
-				<span>{$lang==='ES'?detail.levelAr:detail.levelUs}</span>
+				<span class="detail-name">{lang.value==='ES'?detail.name:detail.name}:</span>
+				<span>{lang.value==='ES'?detail.levelAr:detail.levelUs}</span>
 				<Detail score={detail.number}/>
 				</div>
 				{/each}

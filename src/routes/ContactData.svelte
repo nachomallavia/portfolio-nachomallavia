@@ -1,31 +1,29 @@
 <script>
 	import profilePicture from '$lib/images/foto2.png'
 	import { browser } from '$app/environment';
-	import { onMount } from 'svelte';
-	import { theme } from './configStore';
+	import { theme } from './configStore.svelte.js';
 
 	import gitHubLogo from '$lib/images/github.svg';
 	import linkedInLogo from '$lib/images/linkedin.svg';
 	import mailIcon from '$lib/images/mail.svg';
 
-	
 	let expandPicture = true;
 
-	onMount(() => {
+	// Sync icon classes with theme
+	$effect(() => {
+		const currentTheme = theme.value;
 		if (browser) {
-
 			let iconCollection = document.querySelectorAll('#contact-group > a > img');
 			let iconArray = [...iconCollection];
-			if ($theme === 'Light mode') {
-				iconArray.forEach((element) => {
+			iconArray.forEach((element) => {
+				if (currentTheme === 'Dark mode') {
+					element.classList.add('darkmode');
+				} else {
 					element.classList.remove('darkmode');
-				});
-			}
-			
+				}
+			});
 		}
 	});
-	
-	
 </script>
 
 <div class="contact-container">
@@ -36,13 +34,13 @@
 	
 	<div class="contacts" id="contact-group">
 		<a href="https://github.com/nachomallavia" target="blank"
-			><img src={gitHubLogo} alt="Github Ignacio Mallaviabarrena" class="icon darkmode" /></a
+			><img src={gitHubLogo} alt="Github Ignacio Mallaviabarrena" class="icon" class:darkmode={theme.value === 'Dark mode'} /></a
 		>
 		<a href="https://www.linkedin.com/in/ignacio-mallaviabarrena/" target="blank"
-			><img src={linkedInLogo} alt="LinkedIn Ignacio Mallaviabarrena" class="icon darkmode" /></a
+			><img src={linkedInLogo} alt="LinkedIn Ignacio Mallaviabarrena" class="icon" class:darkmode={theme.value === 'Dark mode'} /></a
 		>
 		<a href="mailto: nachomallavia@gmail.com"
-			><img src={mailIcon} alt="email nachomallavia@gmail.com" class="icon darkmode" /></a
+			><img src={mailIcon} alt="email nachomallavia@gmail.com" class="icon" class:darkmode={theme.value === 'Dark mode'} /></a
 		>
 	</div>
 </div>
@@ -97,7 +95,7 @@
 		min-width: 2rem;
 		max-width: 2.5rem;
 	}
-	#contact-group > a > img.darkmode {
+	.icon.darkmode {
 		filter: invert();
 	}
 </style>

@@ -1,9 +1,7 @@
 <script>
-	import {lang} from '../../configStore';
+	import {lang} from '../../configStore.svelte.js';
 	
-	export let skillNameAr = '';
-	export let skillNameUs = '';
-	export let score = 10;
+	let { skillNameAr = '', skillNameUs = '', score = 10 } = $props();
 	let scoreArray = [];
 
 	for (let i = 1; i <= 10; i++) {
@@ -22,7 +20,7 @@
 <div class="skill-container">
 	
 	<div class="title-score">
-		<h3>{$lang==="ES"?skillNameAr:skillNameUs}</h3>
+		<h3>{lang.value==="ES"?skillNameAr:skillNameUs}</h3>
 		<div class="score-container">
 			{#each scoreArray as point}
 				{#if point === 1}

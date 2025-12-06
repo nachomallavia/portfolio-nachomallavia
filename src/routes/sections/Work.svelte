@@ -2,7 +2,7 @@
 	import WorkProductCard from './work/WorkProductCard.svelte';
 	import WorkLabelPrinter from './work/WorkLabelPrinter.svelte';
 	import WorkPrintingCoordinates from './work/WorkPrintingCoordinates.svelte';
-	import { lang } from '../configStore';
+	import { lang } from '../configStore.svelte.js';
 
 	function showWork(e) {
 		let buttonsCollection = document.getElementsByClassName('work-btn');
@@ -24,31 +24,31 @@
 
 <section class="full" id="section-work">
 	<div class="work-header">
-		<h2 class="section-title">{$lang === 'ES' ? 'TRABAJOS' : 'WORK'}</h2>
+		<h2 class="section-title">{lang.value === 'ES' ? 'TRABAJOS' : 'WORK'}</h2>
 		<div class="work-nav">
 			<button
 				class="work-btn active"
 				data-work="work-product-card"
-				on:click={(e) => {
+				onclick={(e) => {
 					showWork(e);
 				}}
-				>{$lang === 'ES'
+				>{lang.value === 'ES'
 					? 'Tarjeta dinámica'
 					: 'Dynamic Product Card'}</button
 			>
 			<button
 				class="work-btn"
 				data-work="work-shipping-labels"
-				on:click={(e) => {
+				onclick={(e) => {
 					showWork(e);
-				}}>{$lang === 'ES' ? 'Impresora de etiquetas' : 'Shipping Labels'}</button
+				}}>{lang.value === 'ES' ? 'Impresora de etiquetas' : 'Shipping Labels'}</button
 			>
 			<button
 				class="work-btn"
 				data-work="work-printing-cordinates"
-				on:click={(e) => {
+				onclick={(e) => {
 					showWork(e);
-				}}>{$lang === 'ES' ? 'Coordenadas de impresión' : 'Printing Coordinates'}</button
+				}}>{lang.value === 'ES' ? 'Coordenadas de impresión' : 'Printing Coordinates'}</button
 			>
 		</div>
 	</div>

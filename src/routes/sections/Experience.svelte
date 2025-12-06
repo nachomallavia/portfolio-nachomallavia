@@ -1,9 +1,10 @@
 <script>
 // @ts-nocheck
 	
-	import {lang} from '../configStore';
+	import {lang} from '../configStore.svelte.js';
 	import Timeline from './experience/Timeline.svelte'
-	let studies = false;
+	let studies = $state(false);
+
 	function changeExperience(bool){
         studies = bool;
 		let buttonCollection = document.getElementsByClassName("experience-btn");
@@ -13,12 +14,12 @@
 </script>
 <section class="full" id="section-experience">
 	<div class="experience-header">
-		<h2 class="section-title">{$lang=="ES"?"Experiencia":"Experience"}</h2>
+		<h2 class="section-title">{lang.value=="ES"?"Experiencia":"Experience"}</h2>
 
 			<div class="experience-nav">
-				<span>{$lang=="ES"?"Mostrar: ":"Show: "}</span>
-				<button on:click={()=>{changeExperience(false)}} class="experience-btn selected"><div class="spot orange" ></div>{$lang=="ES"?"Trabajo":"Work"}</button>
-    			<button on:click={()=>{changeExperience(true)}} class="experience-btn"><div class="spot blue" ></div>{$lang=="ES"?"Estudios":"Studies"}</button>
+				<span>{lang.value=="ES"?"Mostrar: ":"Show: "}</span>
+				<button onclick={()=>{changeExperience(false)}} class="experience-btn selected"><div class="spot orange" ></div>{lang.value=="ES"?"Trabajo":"Work"}</button>
+    			<button onclick={()=>{changeExperience(true)}} class="experience-btn"><div class="spot blue" ></div>{lang.value=="ES"?"Estudios":"Studies"}</button>
 			</div>
 	</div>
 	<Timeline studies={studies}/>

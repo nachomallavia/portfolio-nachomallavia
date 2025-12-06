@@ -5,116 +5,126 @@
 		currentDesignId,
 		currentColorId,
 		currentBackgroundId
-	} from './productCardStore';
-	import { lang } from '../../../configStore';
+	} from './productCardStore.svelte.js';
+	import { lang } from '../../../configStore.svelte.js';
 	import { colorList } from './colorList.js';
 	import { productList } from './productList.js';
 	import { designList } from './designList.js';
 	import { backgroundList } from './backgroundList.js';
 	import ColorSelector from './ColorSelector.svelte';
 
-	import { beforeUpdate, onMount } from 'svelte';
-
-	$: product = productList.find((product) => product.id === $currentProductId);
-	$: design = designList.find((design) => design.id === $currentDesignId);
-	$: color = colorList.find((color) => color.id === $currentColorId);
-	$: background = backgroundList.find((background) => background.id === $currentBackgroundId);
+	let product = $derived(productList.find((product) => product.id === currentProductId.value));
+	let design = $derived(designList.find((design) => design.id === currentDesignId.value));
+	let color = $derived(colorList.find((color) => color.id === currentColorId.value));
+	let background = $derived(backgroundList.find((background) => background.id === currentBackgroundId.value));
 
 	function randomize(subject = 'all') {
 		if (subject === 'product') {
 			let newProductId = Math.floor(Math.random() * productList.length) + 1;
-			if ($currentProductId != newProductId) {
-				$currentProductId = newProductId;
+			if (currentProductId.value != newProductId) {
+				currentProductId.value = newProductId;
 			} else {
 				randomize('product');
 			}
 		}
 		if (subject === 'design') {
 			let newDesignId = Math.floor(Math.random() * designList.length) + 1;
-			if ($currentDesignId != newDesignId) {
-				$currentDesignId = newDesignId;
+			if (currentDesignId.value != newDesignId) {
+				currentDesignId.value = newDesignId;
 			} else {
 				randomize('design');
 			}
 		}
 		if (subject === 'background') {
 			let newBackgroundId = Math.floor(Math.random() * backgroundList.length) + 1;
-			if ($currentBackgroundId != newBackgroundId) {
-				$currentBackgroundId = newBackgroundId;
+			if (currentBackgroundId.value != newBackgroundId) {
+				currentBackgroundId.value = newBackgroundId;
 			} else {
 				randomize('background');
 			}
 		}
 		if (subject === 'all') {
-			$currentProductId = Math.floor(Math.random() * productList.length) + 1;
-			$currentDesignId = Math.floor(Math.random() * designList.length) + 1;
-			$currentBackgroundId = Math.floor(Math.random() * backgroundList.length) + 1;
+			currentProductId.value = Math.floor(Math.random() * productList.length) + 1;
+			currentDesignId.value = Math.floor(Math.random() * designList.length) + 1;
+			currentBackgroundId.value = Math.floor(Math.random() * backgroundList.length) + 1;
 		}
 	}
-	onMount(() => {
+
+	$effect(() => {
 		randomize('all')
 		if (browser) {
-			
 			let btnAll = document.getElementById('randomize-all');
 			let btnBackground = document.getElementById('randomize-background');
 			btnAll?.click()
 			btnBackground?.click()
 		}
 	});
+
+	function handleDesignChange(e) {
+		currentDesignId.value = parseInt(e.target.value);
+	}
+
+	function handleProductChange(e) {
+		currentProductId.value = parseInt(e.target.value);
+	}
+
+	function handleBackgroundChange(e) {
+		currentBackgroundId.value = parseInt(e.target.value);
+	}
 </script>
 
 <div class="container">
 	<div class="title-random">
-		<h3>{$lang === 'ES' ? 'Cambiar opciones' : 'Change options'}</h3>
+		<h3>{lang.value === 'ES' ? 'Cambiar opciones' : 'Change options'}</h3>
 		<button id="randomize-all"
-			on:click={() => {
+			onclick={() => {
 				randomize('all');
 			}}
 		>
-			{$lang === 'ES' ? 'Randomizar todas' : 'Randomize all'}
+			{lang.value === 'ES' ? 'Randomizar todas' : 'Randomize all'}
 		</button>
 	</div>
 	<div class="selects">
 		<div class="option">
-			<label for="design">{$lang === 'ES' ? 'Diseño:' : 'Design:'}</label>
-			<select bind:value={$currentDesignId} name="design" >
+			<label for="design">{lang.value === 'ES' ? 'Diseño:' : 'Design:'}</label>
+			<select value={currentDesignId.value} name="design" onchange={handleDesignChange}>
 				{#each designList as design}
-					<option value={design.id}>{$lang === 'ES' ? design.nameAr : design.nameUs}</option>
+					<option value={design.id}>{lang.value === 'ES' ? design.nameAr : design.nameUs}</option>
 				{/each}
 			</select>
 			<div class="random">
 				<button
-					on:click={() => {
+					onclick={() => {
 						randomize('design');
 					}}
 				>
-					{$lang === 'ES' ? 'Randomizar' : 'Randomize'}
+					{lang.value === 'ES' ? 'Randomizar' : 'Randomize'}
 				</button>
 			</div>
 		</div>
 		<div class="option">
-			<label for="product">{$lang === 'ES' ? 'Producto:' : 'Product:'}</label>
-			<select bind:value={$currentProductId} name="product" >
+			<label for="product">{lang.value === 'ES' ? 'Producto:' : 'Product:'}</label>
+			<select value={currentProductId.value} name="product" onchange={handleProductChange}>
 				{#each productList as product}
-					<option value={product.id}>{$lang === 'ES' ? product.nameAr : product.nameUs}</option>
+					<option value={product.id}>{lang.value === 'ES' ? product.nameAr : product.nameUs}</option>
 				{/each}
 			</select>
 			<div class="random">
 				<button
-					on:click={() => {
+					onclick={() => {
 						randomize('product');
 					}}
 				>
-					{$lang === 'ES' ? 'Randomizar' : 'Randomize'}
+					{lang.value === 'ES' ? 'Randomizar' : 'Randomize'}
 				</button>
 			</div>
 		</div>
 		<div class="option">
-			<label for="background">{$lang === 'ES' ? 'Fondo:' : 'Background:'}</label>
-			<select bind:value={$currentBackgroundId} name="background" >
+			<label for="background">{lang.value === 'ES' ? 'Fondo:' : 'Background:'}</label>
+			<select value={currentBackgroundId.value} name="background" onchange={handleBackgroundChange}>
 				{#each backgroundList as background}
 					<option value={background.id}
-						>{$lang === 'ES'
+						>{lang.value === 'ES'
 							? background.categoryAr + ' ' + background.id
 							: background.category + ' ' + background.id}</option
 					>
@@ -122,12 +132,12 @@
 			</select>
 			<div class="random">
 				<button id="randomize-background"
-					on:click={() => {
+					onclick={() => {
 						randomize('background');
 
 					}}
 				>
-					{$lang === 'ES' ? 'Randomizar' : 'Randomize'}
+					{lang.value === 'ES' ? 'Randomizar' : 'Randomize'}
 				</button>
 			</div>
 		</div>

@@ -1,111 +1,81 @@
 <script>
-	import { onMount } from 'svelte';
-	import { lang } from '../../configStore';
+	import { lang } from '../../configStore.svelte.js';
 	import { fabric } from 'fabric-pure-browser';
-	import {browser} from '$app/environment';
+	import { browser } from '$app/environment';
+	import { onMount } from 'svelte';
 
 	import logo from '$lib/images/batman-logo.png';
 
 	import tshirtTexture from '../../../lib/images/product-card/unisex-t-shirt-front.webp';
 	import tshirtColor from '../../../lib/images/product-card/unisex-t-shirt-front-color.svg';
 
-	let canvasId;
+	let canvasId = $state(null);
 	let printerWidth = 40;
 	let printerHeight = 50;
-	let canvasWidth = 180;
-	let canvasHeight = 225;
+	let canvasWidth = $state(180);
+	let canvasHeight = $state(225);
 
-	$: scale = printerWidth / canvasWidth;
+	let scale = $derived(printerWidth / canvasWidth);
 
 	let sizeOptions = [
-		{
-			id: 1,
-			label: '3XL',
-			proportion: 1
-		},
-		{
-			id: 2,
-			label: '2XL',
-			proportion: 0.97
-		},
-		{
-			id: 3,
-			label: 'XL',
-			proportion: 0.96
-		},
-		{
-			id: 4,
-			label: 'L',
-			proportion: 0.95
-		},
-		{
-			id: 5,
-			label: 'M',
-			proportion: 0.94
-		},
-		{
-			id: 6,
-			label: 'S',
-			proportion: 0.92
-		},
-		{
-			id: 7,
-			label: 'XS',
-			proportion: 0.9
-		},
-		{
-			id: 8,
-			label: '2XS',
-			proportion: 0.88
-		},
-		{
-			id: 9,
-			label: '3XS',
-			proportion: 0.86
-		}
+		{ id: 1, label: '3XL', proportion: 1 },
+		{ id: 2, label: '2XL', proportion: 0.97 },
+		{ id: 3, label: 'XL', proportion: 0.96 },
+		{ id: 4, label: 'L', proportion: 0.95 },
+		{ id: 5, label: 'M', proportion: 0.94 },
+		{ id: 6, label: 'S', proportion: 0.92 },
+		{ id: 7, label: 'XS', proportion: 0.9 },
+		{ id: 8, label: '2XS', proportion: 0.88 },
+		{ id: 9, label: '3XS', proportion: 0.86 }
 	];
-	let selectedSizeProportion = 1;
+	let selectedSizeProportion = $state(1);
 
-	let firstImageWidth = 90;
-	let imageWidth = 90;
-	let imageHeight = 0;
+	let firstImageWidth = $state(90);
+	let imageWidth = $state(90);
+	let imageHeight = $state(0);
 
-	let firstImagePosition = {
+	let firstImagePosition = $state({
 		left: 45,
 		top: 10
-	};
-	let imagePosition = {
+	});
+	let imagePosition = $state({
 		x: 45,
 		y: 10
-	};
+	});
 
-	$: calculatedImageWidth = (imageWidth * scale * selectedSizeProportion).toFixed(1);
-	$: calculatedImageHeight = (imageHeight * scale * selectedSizeProportion).toFixed(1);
-	$: calculatedX = (imagePosition.x * scale * 1 + (imagePosition.x * scale * 1 - imagePosition.x * scale *selectedSizeProportion)).toFixed(1);
-	$: calculatedY = (imagePosition.y * scale * 1 + (imagePosition.y * scale * 1 - imagePosition.y * scale * selectedSizeProportion)).toFixed(1);
+	let calculatedImageWidth = $derived((imageWidth * scale * selectedSizeProportion).toFixed(1));
+	let calculatedImageHeight = $derived((imageHeight * scale * selectedSizeProportion).toFixed(1));
+	let calculatedX = $derived((imagePosition.x * scale * 1 + (imagePosition.x * scale * 1 - imagePosition.x * scale *selectedSizeProportion)).toFixed(1));
+	let calculatedY = $derived((imagePosition.y * scale * 1 + (imagePosition.y * scale * 1 - imagePosition.y * scale * selectedSizeProportion)).toFixed(1));
 
-	let canvas;
+	let canvas = $state(null);
 
 	function setupCanvas() {
 		let sectionContainer = document.getElementById('section-coordinates');
+		if (!sectionContainer) return;
+		
 		let canvasProportion = 0.44;
 		let containerWidth = 400;
 		
-		console.log(window.innerWidth)
 		if(window.innerWidth <= 424){			
 			containerWidth = window.innerWidth - 24;
 		}
-		canvasWidth = containerWidth * canvasProportion;
-		canvasHeight = canvasWidth * 1.25;
-		let canvasWidthOffset = (containerWidth / 2) - (canvasWidth / 2);
+		const newCanvasWidth = containerWidth * canvasProportion;
+		const newCanvasHeight = newCanvasWidth * 1.25;
+		canvasWidth = newCanvasWidth;
+		canvasHeight = newCanvasHeight;
+		
+		let canvasWidthOffset = (containerWidth / 2) - (newCanvasWidth / 2);
 		sectionContainer.style.setProperty('--canvas-width-offset', `${canvasWidthOffset*0.975}px`)
 		sectionContainer.style.setProperty('--canvas-height-offest', `${(containerWidth*1.25)*0.32}px`)
-		firstImageWidth = canvasWidth/2;
-		firstImagePosition.left = firstImageWidth/2;
+		
+		const newFirstImageWidth = newCanvasWidth/2;
+		firstImageWidth = newFirstImageWidth;
+		firstImagePosition = { left: newFirstImageWidth/2, top: 10 };
 		
 		canvas = new fabric.Canvas(canvasId, {
-			width: canvasWidth,
-			height: canvasHeight
+			width: newCanvasWidth,
+			height: newCanvasHeight
 		});
 
 		fabric.Image.fromURL(logo, (image) => {
@@ -123,10 +93,10 @@
 				mb: false
 			});
 			// Image scale and positioning
-			image.scaleToWidth(firstImageWidth);
+			image.scaleToWidth(newFirstImageWidth);
 			image.set({
-				top: firstImagePosition.top,
-				left: firstImagePosition.left
+				top: 10,
+				left: newFirstImageWidth/2
 			});
 			// Image trigger setup
 			image.on('scaling', (e) => {
@@ -144,22 +114,25 @@
 
 		canvas.renderAll();
 	}
+
 	function updateCoordinates(image) {
 		imageWidth = image.getScaledWidth();
 		imageHeight = image.getScaledHeight();
-		imagePosition.x = image.getCoords()[0].x;
-		imagePosition.y = image.getCoords()[0].y;
-		
+		const coords = image.getCoords();
+		if (coords && coords[0]) {
+			imagePosition = { x: coords[0].x, y: coords[0].y };
+		}
 	}
+
+	// Use onMount for one-time setup instead of $effect
 	onMount(() => {
-		if(browser){
+		if (browser) {
 			setupCanvas();
 		}
 	});
 
 	function resetCanvas() {
-
-		// console.log(canvas)
+		if (!canvas) return;
 		canvas.clear();
 		fabric.Image.fromURL(logo, (image) => {
 			// Image configuration
@@ -195,36 +168,22 @@
 
 			canvas.setActiveObject(image);
 		})
-
 	}
-	
-	if(browser){
-
-		let valueCollection = document.getElementsByClassName('value');
-		let valueArray = [...valueCollection];
-		valueArray.forEach(value=>{
-			value.addEventListener('change',(ev)=>{
-				value.classList.toggle('changing');
-				console.log('change detected')
-			})
-
-	})}
 </script>
 
 <div id="section-coordinates" class="container" style="--canvas-container-width: 400px">
 	<div class="controls mobile">
 		<button
-			on:click={() => {
+			onclick={() => {
 				resetCanvas();
-			}}>{$lang==="ES"?"Restaurar Imagen":"Reset Image"}</button
+			}}>{lang.value==="ES"?"Restaurar Imagen":"Reset Image"}</button
 		>
-		<!-- <button on:click={()=>{resetCanvas()}}>Change Image</button> -->
 	</div>
 	<div class="data-grid mobile">
-		<span class="title">{$lang === 'ES' ? 'Ancho' : 'Width'}</span>
-		<span class="title">{$lang === 'ES' ? 'Alto' : 'Height'}</span>
-		<span class="title">{$lang === 'ES' ? 'Pos. X' : 'X Pos. '}</span>
-		<span class="title">{$lang === 'ES' ? 'Pos. Y' : 'Y Pos. '}</span>
+		<span class="title">{lang.value === 'ES' ? 'Ancho' : 'Width'}</span>
+		<span class="title">{lang.value === 'ES' ? 'Alto' : 'Height'}</span>
+		<span class="title">{lang.value === 'ES' ? 'Pos. X' : 'X Pos. '}</span>
+		<span class="title">{lang.value === 'ES' ? 'Pos. Y' : 'Y Pos. '}</span>
 		<span class="2-1 value">{calculatedImageWidth} Cms</span>
 		<span class="2-2 value">{calculatedImageHeight} Cms</span>
 		<span class="2-3 value">{calculatedX} Cms</span>
@@ -234,15 +193,15 @@
 		<div class="layer-container" id="layer-container">
 			<img src={tshirtColor} alt="" class="tshirt-color" draggable="false" />
 			<div id="canvas-positioner">
-				<canvas bind:this={canvasId} id="canvas" />		
+				<canvas bind:this={canvasId} id="canvas"></canvas>
 			</div>
 			<img src={tshirtTexture} alt="" class="tshirt-texture" draggable="false" />
 		</div>
 	</div>
 
 	<div class="description">
-		<h2>{$lang === 'ES' ? 'Coordenadas de impresión' : 'Printing Coordinates'}</h2>
-		{#if $lang === 'ES'}
+		<h2>{lang.value === 'ES' ? 'Coordenadas de impresión' : 'Printing Coordinates'}</h2>
+		{#if lang.value === 'ES'}
 			<p>
 				Diseñamos el sistema de referencia para la creación de productos digitales y su impresión en
 				la vida real. Brindamos al usuario la posibilidad de ver su diseño "plasmado" en un mockup,
@@ -257,17 +216,17 @@
 				garment.
 			</p>
 		{/if}
-		<label for="item-size-select">{$lang === 'ES' ? 'Talle de remera' : 'T-shirt size'}</label>
+		<label for="item-size-select">{lang.value === 'ES' ? 'Talle de remera' : 'T-shirt size'}</label>
 		<select name="item-size" id="item-size-select" bind:value={selectedSizeProportion}>
 			{#each sizeOptions as size}
 				<option value={size.proportion}>{size.label}</option>
 			{/each}
 		</select>
 		<div class="data-grid desktop">
-			<span class="title">{$lang === 'ES' ? 'Ancho' : 'Width'}</span>
-			<span class="title">{$lang === 'ES' ? 'Alto' : 'Height'}</span>
-			<span class="title">{$lang === 'ES' ? 'Pos. X' : 'X Pos. '}</span>
-			<span class="title">{$lang === 'ES' ? 'Pos. Y' : 'Y Pos. '}</span>
+			<span class="title">{lang.value === 'ES' ? 'Ancho' : 'Width'}</span>
+			<span class="title">{lang.value === 'ES' ? 'Alto' : 'Height'}</span>
+			<span class="title">{lang.value === 'ES' ? 'Pos. X' : 'X Pos. '}</span>
+			<span class="title">{lang.value === 'ES' ? 'Pos. Y' : 'Y Pos. '}</span>
 			<span class="2-1 value">{calculatedImageWidth} Cms</span>
 			<span class="2-2 value">{calculatedImageHeight} Cms</span>
 			<span class="2-3 value">{calculatedX} Cms</span>
@@ -275,11 +234,10 @@
 		</div>
 		<div class="controls desktop">
 			<button
-				on:click={() => {
+				onclick={() => {
 					resetCanvas();
-				}}>{$lang==="ES"?"Restaurar Imagen":"Reset Image"}</button
+				}}>{lang.value==="ES"?"Restaurar Imagen":"Reset Image"}</button
 			>
-			<!-- <button on:click={()=>{resetCanvas()}}>Change Image</button> -->
 		</div>
 	</div>
 	

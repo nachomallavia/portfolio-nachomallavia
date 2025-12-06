@@ -1,7 +1,8 @@
 <script>
 	import LabelTemplate from './LabelTemplate.svelte';
-	import { lang } from '../../../configStore';
-	export let label = {
+	import { lang } from '../../../configStore.svelte.js';
+
+	let { label = {
 		id: 100121,
 		shippingTypeId: 1,
 		customerName: 'Luis',
@@ -14,7 +15,7 @@
 		neighbourhood: 'Palermo',
 		city: 'Capital Federal',
 		province: 'Buenos Aires'
-	};
+	} } = $props();
 </script>
 
 <div class="label-container">
@@ -24,7 +25,7 @@
 		</div>
 	{:else}
 		<div class="frame">
-			<h3>{$lang === 'ES' ? 'Seleccioná un Id de orden' : 'Select an Order Id'}</h3>
+			<h3>{lang.value === 'ES' ? 'Seleccioná un Id de orden' : 'Select an Order Id'}</h3>
 		</div>
 	{/if}
 </div>

@@ -1,40 +1,38 @@
 <script>
-	import { productIndex, designIndex, favList } from './productCardStore';
-	$: favId = $productIndex.toString() + $designIndex.toString();
+	import { productIndex, designIndex, favList } from './productCardStore.svelte.js';
 	import { browser } from '$app/environment';
-	import { onMount } from 'svelte';
 
 	import likeFull from '$lib/images/like-full.svg';
 	import likeEmpty from '$lib/images/like-empty.svg';
 
-	let liked = false;
+	let liked = $state(false);
+	let favId = $derived(productIndex.value.toString() + designIndex.value.toString());
 
-	onMount(() => {
+	$effect(() => {
 		if (browser) {
-			let favCheck = $favList.indexOf(favId);
+			let favCheck = favList.value.indexOf(favId);
 			if (favCheck != -1) {
 				liked = true;
 			}
 		}
 	});
+
 	function toggleLike() {
 		if (liked) {
-			let newList = $favList.filter((id) => {
-				id != favId;
-			});
-			$favList = newList;
+			let newList = favList.value.filter((id) => id != favId);
+			favList.value = newList;
 		} else {
-			$favList.push(favId);
+			favList.value = [...favList.value, favId];
 		}
 
-		console.log($favList);
+		console.log(favList.value);
 		liked = !liked;
 	}
 </script>
 
 <div
 	class="like"
-	on:click={() => {
+	onclick={() => {
 		toggleLike();
 	}}
 >
