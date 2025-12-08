@@ -49,14 +49,14 @@
 	.stats {
 		margin-top: 2rem;
 		width: 100%;
-		max-width: 700px;
+		max-width: 900px;
 		/* padding-inline: 2rem; */
 		padding-block: 1rem;
 		background-color: var(--background-color);
 		/* border: 1px solid var(--text-color); */
 		border-radius: 0.25rem;
 		display: flex;
-		gap: 4rem;
+		gap: 3rem;
 		justify-content: space-between;
 	}
 	@media screen and (max-width:512px){
