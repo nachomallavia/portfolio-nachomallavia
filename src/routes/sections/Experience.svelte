@@ -27,12 +27,10 @@
 
 <style>
 	.full {
-		
 		width: 100%;
 		background-color: var(--background-color-1);
 		color: var(--text-color);
-		
-		
+		scroll-snap-align: start;
 	}	
 	.full > .experience-header{
 		min-height: 5rem;

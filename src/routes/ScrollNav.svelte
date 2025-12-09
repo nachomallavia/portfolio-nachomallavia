@@ -63,7 +63,7 @@
 			onclick={(e) => {
 				scroller('section-work-illustration', e);
 			}}
-			id="work-illustration">{lang.value === 'ES' ? 'Ilustración y Diseño' : 'Illustration & Design'}</button
+			id="work-illustration">{lang.value === 'ES' ? 'Diseño e Ilustración' : 'Design & Illustration'}</button
 		>
 	</div>
 	<button

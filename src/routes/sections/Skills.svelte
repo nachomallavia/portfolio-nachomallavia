@@ -67,8 +67,8 @@
 		width: 100%;
 		background-color: var(--background-color-1);
 		color: var(--text-color);
-		margin-bottom:8rem;
-
+		margin-bottom: 8rem;
+		scroll-snap-align: start;
 	}
 	.full > .skills-header{
 		padding-left:6rem;

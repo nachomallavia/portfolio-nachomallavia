@@ -47,7 +47,7 @@
 
 <style>
 	.stats {
-		margin-top: 2rem;
+		margin-top: 6rem;
 		width: 100%;
 		max-width: 900px;
 		/* padding-inline: 2rem; */

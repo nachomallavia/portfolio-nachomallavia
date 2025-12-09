@@ -108,7 +108,7 @@
 		min-height: 100%;
 		background-color: var(--background-color-1);
 		color: var(--text-color);
-		
+		scroll-snap-align: start;
 	}
 	.container{
 		position: relative;

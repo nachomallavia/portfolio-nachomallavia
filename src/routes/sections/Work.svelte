@@ -2,6 +2,7 @@
 	import WorkProductCard from './work/WorkProductCard.svelte';
 	import WorkLabelPrinter from './work/WorkLabelPrinter.svelte';
 	import WorkPrintingCoordinates from './work/WorkPrintingCoordinates.svelte';
+	import WebVideo from './work/WebVideo.svelte';
 	import { lang } from '../configStore.svelte.js';
 
 	// Product Design tabs
@@ -79,21 +80,21 @@
 	</div>
 	<div class="work-content">
 		{#if activeWebDev === 'sixth-sense'}
-			<div class="placeholder">
-				<h2>{lang.value === 'ES' ? 'Próximamente...' : 'Coming soon...'}</h2>
+			<WebVideo videoSrc="/src/lib/videos/sixth-sense-pay.webm" alt="Sixth Sense Pay demo" glowColor="#ff3a00"  />
+			<div class="web-dev-description">
+				<h3>Sixth Sense Pay</h3>
+				{#if lang.value === 'ES'}
+					<p>Sixth Sense Pay es una pasarela de pago que permite realizar y aceptar pagos online con criptomonedas, todo 100% regulado y de manera segura.<br/> El trabajo consistió en diseñar y desarrollar una landing page de 5 secciones en español e inglés, con un diseño amigable y minimalista para contar sus características.</p>
+				{:else}
+					<p>Sixth Sense Pay is a payment gateway that allows you to accept payments online with cryptocurrencies, 100% regulated and securely.<br/> The work consisted of designing and developing a landing page in Spanish and English, with a friendly and minimalistic design to showcase its features.</p>
+				{/if}
 			</div>
 		{:else if activeWebDev === 'bafi'}
-			<div class="placeholder">
-				<h2>{lang.value === 'ES' ? 'Próximamente...' : 'Coming soon...'}</h2>
-			</div>
+			<WebVideo videoSrc="/src/lib/videos/bafi.webm" alt="Bafi demo" glowColor="#10b981" />
 		{:else if activeWebDev === 'ecolatina'}
-			<div class="placeholder">
-				<h2>{lang.value === 'ES' ? 'Próximamente...' : 'Coming soon...'}</h2>
-			</div>
+			<WebVideo videoSrc="/src/lib/videos/ecolatina.webm" alt="Club Ecolatina demo" glowColor="#22c55e" />
 		{:else if activeWebDev === 'tennis-camp'}
-			<div class="placeholder">
-				<h2>{lang.value === 'ES' ? 'Próximamente...' : 'Coming soon...'}</h2>
-			</div>
+			<WebVideo videoSrc="/src/lib/videos/tennis-camp.webm" alt="Advanced Tennis Camp demo" glowColor="#f59e0b" />
 		{/if}
 	</div>
 </section>
@@ -149,7 +150,7 @@
 <!-- Illustration & Graphic Design Section -->
 <section class="work-section" id="section-work-illustration">
 	<div class="work-header">
-		<h2 class="section-title">{lang.value === 'ES' ? 'ILUSTRACIÓN & DISEÑO GRÁFICO' : 'ILLUSTRATION & GRAPHIC DESIGN'}</h2>
+		<h2 class="section-title">{lang.value === 'ES' ? 'DISEÑO GRÁFICO E ILUSTRACIÓN' : 'GRAPHIC DESIGN & ILLUSTRATION'}</h2>
 		<div class="work-nav">
 			<button
 				class="work-btn"
@@ -193,9 +194,11 @@
 		display: flex;
 		flex-direction: column;
 		width: 100%;
+		min-height: 100vh;
 		background-color: var(--background-color-1);
 		color: var(--text-color);
 		margin-bottom: 4rem;
+		scroll-snap-align: start;
 	}
 	.work-header {
 		width: 100%;
@@ -246,7 +249,31 @@
 	.work-content {
 		display: flex;
 		flex-direction: column;
+		min-height: calc(100vh - 5rem);
+		justify-content: center;
+		align-items: center;
+	}
+	.web-dev-description{
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		justify-content: center;
+		gap: 1rem;
+		padding-inline: 2rem;
+
+		border-radius: 0.5rem;
 		margin-top: 2rem;
+	}
+	.web-dev-description h3 {
+		font-size: 1.5rem;
+		font-weight: 600;
+		margin-bottom: .5rem;
+		color: var(--accent-color);
+	}
+	.web-dev-description p {
+		font-size: var(--font-size);
+        line-height:var(--font-line-height);
+
 	}
 
 	/* Placeholder for coming soon sections */

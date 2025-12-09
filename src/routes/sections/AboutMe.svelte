@@ -8,35 +8,27 @@
 </script>
 
 <section class="full about" id="section-aboutme" >
-	<span>&</span>
-
-
 	{#if lang.value === 'ES'}
 		
 		<h1>¡HOLA!<br /> Mi nombre <br /> es Nacho.</h1>
 		
-		<h2>Soy un Diseñador Sr. y Desarrollador Fullstack Jr.</h2>
+		<h2>Soy un Diseñador Sr. y Desarrollador Fullstack</h2>
 		<p>
-			Además, durante los últimos 5 años he trabajado como <strong
-				>Diseñador de Producto y Director de Operaciones</strong
-			>
-			en <a href="https://flashcookie.com" target="blank">Flashcookie.com</a>, un Marketplace de
-			Merchandise On-demand en Argentina.
+			Además, durante los últimos 7 años  he trabajado como Diseñador de Producto y Director de Operaciones en Flashcookie.com, un Marketplace de Merchandise On-demand en Argentina.
 		</p>
 		<br />
 		<p>
-			A lo largo de los años, <strong
-				>diseñé y programé varios features dentro de la plataforma.</strong
-			><br /> También he gestionado y coordinado un equipo de hasta 20 personas, dirigido y asignado
+			A lo largo de los años, diseñé y programé varios features dentro de la plataforma.
+			<br /> También he gestionado y coordinado un equipo de hasta 20 personas, dirigido y asignado
 			recursos y supervisado el desarrollo de una plataforma web con más de 35,000 usuarios.
 		</p>
 	{:else}
 		<h1>Hi! My name<br />is Nacho.</h1>
-		<h2>I'm a Sr. Designer & Jr. Fullstack Developer.</h2>
+		<h2>I'm a Sr. Designer & Fullstack Developer.</h2>
 		<p>
-			Also, during the last five years I've worked as a <strong
+			Also, during the last 7 years I've worked as a <strong
 				>Product Designer and Operations Manager</strong
-			><br /> at <a href="https://flashcookie.com" target="blank">Flashcookie.com</a>, an On-demand
+				><br /> at <strong>Flashcookie.com</strong>, an On-demand
 			Merchandise Platform in Argentina.
 		</p>
 		<br />
@@ -60,14 +52,17 @@
 		color: var(--text-color);
 		display: flex;
 		flex-direction: column;
+		
+		min-height: 100vh;
 		/* justify-content: center;
 		align-items: start; */
 		padding-left: 8rem;
 		margin-bottom: 8rem;
-
+		scroll-snap-align: start;
 	}
 	.full h2 {
 		font-weight: 600;
+		margin-bottom: 5rem;
 	}
 	h1 {
 		font-size: 6.5rem;
@@ -75,30 +70,18 @@
 		line-height: 6rem;
 		/* max-width: 800px; */
 		color: var(--accent-color);
-		margin-bottom: 2rem;
+		margin-bottom: 1rem;
 	}
 	.full > * {
 		z-index: 2;
 	}
 	p {
-		max-width: 800px;
+		max-width: 700px;
 		font-size: var(--font-size);
         line-height:var(--font-line-height);
 		font-weight: var(--font-weight-regular);
 	}
-	.full > span {
-		position: absolute;
-		left: 38%;
-		top: 10%;
-		z-index: 1;
-		font-size: 20rem;
-		font-weight: 600;
-		color: var(--background-color-2);
-	}
-	a {
-		color: var(--accent-color);
-		font-weight: 600;
-	}
+	
 	@media screen and (max-width: 512px){
 		
 		.about{
@@ -114,9 +97,6 @@
 		h2{
 			font-size: 1.5rem;
 			margin-bottom: 2rem;
-		}
-		.full > span {
-			display: none;			
 		}
 		p{
 			font-size: 1rem;

@@ -2,7 +2,7 @@
 :root {
 	--translateZ: '0px';
 
-	--darkmode-1: hsl(300, 10%, 12%);
+	--darkmode-1: hsl(300, 5%, 10%);
 	--darkmode-fade-1: hsla(300, 10%, 12%, 0.0);
 	--darkmode-2: hsl(300, 15%, 25%);
 	--darkmode-3: hsl(300, 5%, 40%);
@@ -11,7 +11,7 @@
 	--darkmode-text-weight-regular: 400;
 	--darkmode-accent: hsl(33, 85%, 60%);
 	--darkmode-secondary: #37A9FD;
-	--font-family: 'Source Sans Pro', sans-serif;
+	--font-family: 'Helvetica', 'Source Sans Pro', sans-serif;
 	--lightmode-1: hsl(0, 0%, 96%);
 	--lightmode-fade-1: hsla(0, 0%, 96%, 0.0);
 	--lightmode-2: hsl(0, 0%, 82%);
