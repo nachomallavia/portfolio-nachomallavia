@@ -80,7 +80,7 @@
 	</div>
 	<div class="work-content">
 		{#if activeWebDev === 'sixth-sense'}
-			<WebVideo videoSrc="/src/lib/videos/sixth-sense-pay.webm" alt="Sixth Sense Pay demo" glowColor="#ff3a00"  />
+			<WebVideo videoSrc="https://res.cloudinary.com/duykgwmak/video/upload/v1765993160/sixth-sense-pay_luf6uv.webm" alt="Sixth Sense Pay demo" glowColor="#ff3a00"  />
 			<div class="web-dev-description">
 				<h3>Sixth Sense Pay</h3>
 				{#if lang.value === 'ES'}

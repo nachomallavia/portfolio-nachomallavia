@@ -53,3 +53,4 @@ With these settings, you should achieve:
 - Videos use lazy loading for better performance
 - WebM format provides excellent compression with good quality
 
+
