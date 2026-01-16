@@ -1,4 +1,3 @@
-import sgMail from '@sendgrid/mail';
 import { env } from "$env/dynamic/private";
 import { setCookie } from '$lib/cookieHandler.js';
 import { fail } from '@sveltejs/kit';
@@ -65,29 +64,35 @@ export const actions = {
 			firstName = name
 		}
 		if (name && email && message && error.name.ar == "" && error.email.ar == "" && error.message.ar == ""){
-			// Set API key at runtime
+			// Send email using native fetch to SendGrid API
 			if (env.SENDGRID_API_KEY) {
-				sgMail.setApiKey(env.SENDGRID_API_KEY);
+				try {
+					const response = await fetch('https://api.sendgrid.com/v3/mail/send', {
+						method: 'POST',
+						headers: {
+							'Authorization': `Bearer ${env.SENDGRID_API_KEY}`,
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({
+							personalizations: [{ to: [{ email: 'nachomallavia@gmail.com' }] }],
+							from: { email: 'nachomallavia@gmail.com' },
+							subject: 'CONTACTO PORTFOLIO',
+							content: [
+								{ type: 'text/plain', value: `Nombre: ${name} Email:${email} Mensaje:${message}` },
+								{ type: 'text/html', value: `<h1>${name}</h1><h2>${email}</h2><p>${message}</p>` }
+							]
+						})
+					});
+
+					if (response.ok) {
+						console.log('Email sent');
+					} else {
+						console.error('SendGrid error:', response.status, await response.text());
+					}
+				} catch (error) {
+					console.error('Email send error:', error);
+				}
 			}
-			
-			const msg = {
-				to: 'nachomallavia@gmail.com', // Change to your recipient
-				from: 'nachomallavia@gmail.com', // Change to your verified sender
-				subject: 'CONTACTO PORTFOLIO',
-				text: `Nombre: ${name} Email:${email} Mensaje:${message}`,
-				html: `<h1>${name}</h1>
-						<h2>${email}</h2>
-						<p>${message}</p>
-					`,
-			  }
-			  sgMail
-				.send(msg)
-				.then(() => {
-				  console.log('Email sent')
-				})
-				.catch((error) => {
-				  console.error(error)
-				})
 			
 			return {success: true,
 			
