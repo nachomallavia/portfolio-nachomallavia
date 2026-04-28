@@ -33,6 +33,13 @@
 
 	// Initialize language and theme from server data on mount
 	onMount(() => {
+		// Warm up the Render.com label API instance so it's ready when the user reaches the Shipping Labels section
+		fetch('https://label-api-proxy.onrender.com/label', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+			body: '^XA^XZ'
+		}).catch(() => {});
+
 		// Set language from server data or cookie
 		if (data.lang) {
 			lang.value = data.lang;

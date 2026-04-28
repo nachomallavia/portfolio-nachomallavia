@@ -1,15 +1,8 @@
 <script>
-	let { videoSrc = '', alt = 'Website demo video', glowColor = '', loop = true } = $props();
-	
+	let { videoSrc = '', alt = 'Website demo video', glowColor = '', loop = true, startTime = 0 } = $props();
+
 	let videoElement = $state();
 	let isPlaying = $state(true);
-	
-	// Create the glow shadow effect if glowColor is provided
-	let glowStyle = $derived(
-		glowColor 
-			? `0 0 20px ${glowColor}40, 0 0 40px ${glowColor}30, 0 0 60px ${glowColor}20, 0 4px 6px rgba(0, 0, 0, 0.1)`
-			: '0 4px 6px rgba(0, 0, 0, 0.1)'
-	);
 
 	function togglePlayPause() {
 		if (videoElement) {
@@ -33,16 +26,28 @@
 		}
 	}
 
-	// Ensure loop attribute is set when video loads
 	$effect(() => {
 		if (videoElement) {
-			videoElement.loop = loop;
+			videoElement.loop = startTime > 0 ? false : loop;
+
+			if (startTime > 0) {
+				const seek = () => { videoElement.currentTime = startTime; };
+				const restart = () => { videoElement.currentTime = startTime; videoElement.play(); };
+
+				videoElement.addEventListener('loadedmetadata', seek);
+				if (loop) videoElement.addEventListener('ended', restart);
+
+				return () => {
+					videoElement.removeEventListener('loadedmetadata', seek);
+					videoElement.removeEventListener('ended', restart);
+				};
+			}
 		}
 	});
 </script>
 
 <div class="video-container">
-	<div class="video-wrapper">
+	<div class="video-wrapper" style="--glow-color: {glowColor}">
 		<video
 			bind:this={videoElement}
 			autoplay
@@ -50,7 +55,6 @@
 			muted
 			playsinline
 			class="demo-video"
-			style="box-shadow: {glowStyle}"
 			aria-label={alt}
 			onclick={togglePlayPause}
 		>
@@ -79,27 +83,37 @@
 <style>
 	.video-container {
 		width: 100%;
-		max-width: 1200px;
-		margin: 0 auto;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		/* padding: 2rem; */
 	}
 
 	.video-wrapper {
 		position: relative;
 		width: 100%;
+		aspect-ratio: 16/9;
 	}
 
 	.demo-video {
+		position: absolute;
+		top: 0;
+		left: 0;
 		width: 100%;
-		height: auto;
-		border-radius: 0.5rem;
-		background-color: var(--background-color-2);
-		transition: box-shadow 0.3s ease;
+		height: 100%;
+		object-fit: cover;
+
 		cursor: pointer;
 		display: block;
+		box-shadow:
+			0 0 20px color-mix(in srgb, var(--glow-color) 25%, transparent),
+			0 0 40px color-mix(in srgb, var(--glow-color) 19%, transparent),
+			0 0 60px color-mix(in srgb, var(--glow-color) 12%, transparent),
+			0 4px 6px rgba(0, 0, 0, 0.1);
+		transition: box-shadow 0.3s ease;
+	}
+
+	:global(body:not(.darkmode)) .demo-video {
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	}
 
 	.pause-overlay {
