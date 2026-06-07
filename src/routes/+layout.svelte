@@ -7,10 +7,20 @@
 	let { children } = $props();
  
 	inject({ mode: dev ? 'development' : 'production' });
+	
 </script>
 
 <div class="app">
 	<!-- <Header /> -->
+	 <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LZN40DVK4X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LZN40DVK4X');
+</script>
 
 	<main>
 		{@render children()}
